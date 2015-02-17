@@ -1,18 +1,26 @@
+{namespace g=Blog\Golb\ViewHelpers}
+
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en"
-      xmlns:f="http://xsd.helmut-hummel.de/ns/TYPO3/Fluid/ViewHelpers">
+      xmlns:f="http://xsd.helmut-hummel.de/ns/TYPO3/Fluid/ViewHelpers"
+      xmlns:g="http://xsd.marcel-wieser.de/ns/Blog/Golb/ViewHelpers/index.xml">
 <f:layout name="Default"/>
 
 <f:section name="Main">
     <ul>
-        <f:for each="{posts}" as="post">
-            <li>{post.title} -
-                <ul>
-                    <f:for each="{post.categories}" as="category">
-                        <li>{category.title}</li>
-                    </f:for>
-                </ul>
-            </li>
-        </f:for>
+        <g:paginate objects="{posts}"
+                    as="paginatedPosts"
+                    configuration="{itemsPerPage: 2, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 10}">
+            <f:for each="{paginatedPosts}" as="post">
+                <li>{post.title} -
+                    <ul>
+
+                        <f:for each="{post.categories}" as="category">
+                            <li>{category.title}</li>
+                        </f:for>
+                    </ul>
+                </li>
+            </f:for>
+        </g:paginate>
     </ul>
 </f:section>
 </html>
