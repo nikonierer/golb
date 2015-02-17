@@ -1,0 +1,65 @@
+config.tx_extbase {
+	persistence{
+		classes {
+			Blog\Golb\Domain\Model\Page {
+				mapping {
+					tableName = pages
+					columns {
+						abstract.mapOnProperty = abstract
+						alias.mapOnProperty = alias
+						author_email.mapOnProperty = authorEmail
+						author.mapOnProperty = authorName
+						backend_layout.mapOnProperty = backendLayout
+						backend_layout_next_level.mapOnProperty = backendLayoutNextLevel
+						cache_tags.mapOnProperty = cacheTags
+						cache_timeout.mapOnProperty = cacheTimeout
+						categories.mapOnProperty = categories
+						content_from_pid.mapOnProperty = contentFromPid
+						crdate.mapOnProperty = crdate
+						cruserId.mapOnProperty = cruserId
+						deleted.mapOnProperty = deleted
+						description.mapOnProperty = description
+						doktype.mapOnProperty = doktype
+						endtime.mapOnProperty = endTime
+						extendToSubpages.mapOnProperty = extendToSubPages
+						fe_group.mapOnProperty = feGroup
+						hidden.mapOnProperty = hidden
+						nav_hide.mapOnProperty = hiddenInNavigation
+						is_siteroot.mapOnProperty = siteRoot
+						keywords.mapOnProperty = keywords
+						lastUpdated.mapOnProperty = lastUpdated
+						layout.mapOnProperty = layout
+						media.mapOnProperty = media
+						mount_pid.mapOnProperty = mountPid
+						mount_pid_ol.mapOnProperty = mountPidOverlay
+						nav_title.mapOnProperty = navigationTitle
+						newUntil.mapOnProperty = newUntil
+						no_cache.mapOnProperty = noCache
+						no_search.mapOnProperty = noSearch
+						pid.mapOnProperty = pid
+						shortcut.mapOnProperty = shortcut
+						shortcut_mode.mapOnProperty = shortcutMode
+						sorting.mapOnProperty = sorting
+						starttime.mapOnProperty = startTime
+						subtitle.mapOnProperty = subtitle
+						target.mapOnProperty = target
+						tstamp.mapOnProperty = timestamp
+						title.mapOnProperty = title
+						uid.mapOnProperty = uid
+						url.mapOnProperty = url
+						url_scheme.mapOnProperty = urlScheme
+						url_type.mapOnProperty = urlType
+					}
+				}
+			}
+			Blog\Golb\Domain\Model\Category {
+				mapping {
+					tableName = sys_category
+				}
+			}
+		}
+	}
+}
+
+tt_content.golb < tt_content.list.20.golb_blog
+tt_content.golb.switchableControllerActions.Blog.1 = latest

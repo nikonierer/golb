@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en"
+      xmlns:f="http://xsd.helmut-hummel.de/ns/TYPO3/Fluid/ViewHelpers">
+<f:layout name="Default"/>
+
+<f:section name="Main">
+    <ul>
+        <f:for each="{posts}" as="post">
+            <li>{post.title} -
+                <ul>
+                    <f:for each="{post.categories}" as="category">
+                        <li>{category.title}</li>
+                    </f:for>
+                </ul>
+            </li>
+        </f:for>
+    </ul>
+</f:section>
+</html>
