@@ -49,6 +49,7 @@ config.tx_extbase {
 						url.mapOnProperty = url
 						url_scheme.mapOnProperty = urlScheme
 						url_type.mapOnProperty = urlType
+						view_count.mapOnProperty = viewCount
 					}
 				}
 			}
@@ -63,3 +64,19 @@ config.tx_extbase {
 
 tt_content.golb < tt_content.list.20.golb_blog
 tt_content.golb.switchableControllerActions.Blog.1 = latest
+
+lib.BlogCountView = USER
+lib.BlogCountView {
+	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+	extensionName = Golb
+	pluginName = ViewCount
+	vendorName = Blog
+	switchableControllerActions {
+		ViewCount {
+			1 = countView
+		}
+	}
+	view < plugin.tx_golb.view
+	persistence < plugin.tx_golb.persistence
+	settings < plugin.tx_golb.settings
+}

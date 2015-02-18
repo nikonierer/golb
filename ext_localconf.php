@@ -14,6 +14,16 @@ $boot = function($packageKey) {
 			'Blog' => 'latest'
 		)
 	);
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+		'Blog.' . $packageKey,
+		'ViewCount',
+		array(
+			'ViewCount' => 'countView'
+		),
+		array(
+			'ViewCount' => 'countView'
+		)
+	);
 
 	$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Extbase\\Domain\\Model\\Category'] = array(
 		'className' => 'Blog\\Golb\\Domain\\Model\\Category',

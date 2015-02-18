@@ -382,6 +382,13 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $urlType;
 
 	/**
+	 * Contains number of views
+	 *
+	 * @var int $viewCount
+	 */
+	protected $viewCount;
+
+	/**
 	 * Returns abstract
 	 *
 	 * @return string
@@ -1266,6 +1273,35 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setUrlType($urlType) {
 		$this->urlType = $urlType;
+	}
+
+	/**
+	 * Returns view count
+	 *
+	 * @return int
+	 */
+	public function getViewCount() {
+		return $this->viewCount;
+	}
+
+	/**
+	 * Sets new view count
+	 *
+	 * @param int $viewCount
+	 * @return void
+	 */
+	public function setViewCount($viewCount) {
+		$this->viewCount = $viewCount;
+	}
+
+	/**
+	 * Increases view count by given amount
+	 *
+	 * @param int $amount
+	 * @return void
+	 */
+	public function increaseViewCount($amount = 1) {
+		$this->viewCount = (int)$this->viewCount+$amount;
 	}
 
 }

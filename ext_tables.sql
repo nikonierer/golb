@@ -2,7 +2,8 @@
 # Table structure for table 'pages'
 #
 CREATE TABLE pages (
-	subpages int(11) DEFAULT '0' NOT NULL
+	subpages int(11) DEFAULT '0' NOT NULL,
+	view_count int(11) DEFAULT '0' NOT NULL
 );
 
 #
@@ -20,5 +21,5 @@ CREATE TABLE tt_content (
 	golb_sorting_direction varchar(255) DEFAULT NULL,
 	golb_limit int(4) DEFAULT NULL,
 	golb_offset int(4) DEFAULT NULL,
-	golb_related varchar(255)
+	golb_related varchar(255) DEFAULT NULL
 );

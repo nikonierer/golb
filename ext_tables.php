@@ -11,6 +11,11 @@ $boot = function($packageKey) {
 		'Blog',
 		'Blog'
 	);
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+		'Blog.' . $packageKey,
+		'ViewCount',
+		'ViewCount'
+	);
 
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($packageKey, 'Configuration/TypoScript', 'Golb');
 
