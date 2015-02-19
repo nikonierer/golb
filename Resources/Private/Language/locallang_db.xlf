@@ -15,7 +15,7 @@
 			<trans-unit id="ttcontent.offset">
 				<source>Offset</source>
 			</trans-unit>
-			<trans-unit id="ttcontent.related">
+			<trans-unit id="pages.related">
 				<source>Related posts</source>
 			</trans-unit>
 		</body>

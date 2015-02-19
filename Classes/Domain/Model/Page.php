@@ -275,6 +275,11 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $pid;
 
 	/**
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
+	 */
+	protected $relatedPages;
+
+	/**
 	 * Shortcut target for document type shortcut depending on shortcut mode
 	 *
 	 * @var int $shortcut
@@ -987,6 +992,45 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function getPid() {
 		return $this->pid;
+	}
+
+	/**
+	 * Returns list of related pages
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
+	 */
+	public function getRelatedPages() {
+		return $this->relatedPages;
+	}
+
+	/**
+	 * Adds a related page
+	 *
+	 * @param \Blog\Golb\Domain\Model\Page $relatedPage
+	 * @return void
+	 */
+	public function addRelatedPage(\Blog\Golb\Domain\Model\Page $relatedPage) {
+		$this->relatedPages->attach($relatedPage);
+	}
+
+	/**
+	 * Removes a related page
+	 *
+	 * @param \Blog\Golb\Domain\Model\Page $relatedPage
+	 * @return void
+	 */
+	public function removeRelatedPage(\Blog\Golb\Domain\Model\Page $relatedPage) {
+		$this->relatedPages->detach($relatedPage);
+	}
+
+	/**
+	 * Sets the related pages
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $relatedPages
+	 * @return void
+	 */
+	public function setRelatedPages(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $relatedPages) {
+		$this->relatedPages = $relatedPages;
 	}
 
 	/**

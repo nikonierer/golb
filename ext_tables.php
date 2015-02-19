@@ -56,15 +56,22 @@ $boot = function($packageKey) {
 			'eval' => 'int'
 		),
 	);
-	$GLOBALS['TCA']['tt_content']['columns']['golb_related'] = array(
+	$GLOBALS['TCA']['pages']['columns']['golb_related'] = array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:ttcontent.related',
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.related',
 		'config' => array(
-			'type' => 'input',
-			'size' => 30,
-			'eval' => 'varchar'
+			'type' => 'select',
+			'foreign_table' => 'pages',
+			'foreign_table_where' => 'AND doktype = 41 ORDER BY crdate ASC',
+			'size' => 5,
+			'minitems' => 0,
+			'maxitems' => 4,
+			'enableMultiSelectFilterTextfield' => TRUE,
 		),
 	);
+
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','--div--;Golb, golb_related');
+
 
 	$GLOBALS['TCA']['pages']['columns']['subpages'] = array(
 		'exclude' => 0,
