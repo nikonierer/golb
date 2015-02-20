@@ -48,21 +48,68 @@ class BlogController extends BaseController {
 	protected $categoryRepository;
 
 	/**
+	 * Contains array with pages to load blog posts from
+	 *
+	 * @var array $pages
+	 */
+	protected $pages;
+
+	/**
+	 * Contains categories to filter posts
+	 *
+	 * @var array $categories
+	 */
+	protected $categories;
+
+	/**
+	 * Sets pages and categories properties
+	 *
+	 * @return void
+	 */
+	public function initializeAction() {
+		parent::initializeAction();
+
+		$this->pages = array_map('trim', explode(',', $this->contentObject->data['pages']));
+		$this->categories = $this->categoryRepository->findByRelation($this->contentObject->data['uid'])->toArray();
+
+		/** @ToDo: Find another solution?! */
+		if($this->contentObject->data['golb_action'] !== '' &&
+			$this->reflectionService->hasMethod(get_class($this), $this->contentObject->data['golb_action'].'Action')) {
+			/** @ToDo Find a better solution. */
+			$action = $this->contentObject->data['golb_action'];
+			$this->contentObject->data['golb_action'] = '';
+			$this->forward($action);
+		}
+	}
+
+	/**
 	 * Lists latest blog posts
 	 *
 	 * @return void
 	 */
 	public function latestAction() {
-		$pages = array_map('trim', explode(',', $this->contentObject->data['pages']));
-		$categories = $this->categoryRepository->findByRelation($this->contentObject->data['uid'])->toArray();
 		$posts = $this->pageRepository->findPosts(
-			$pages,
+			$this->pages,
 			$this->contentObject->data['golb_limit'],
 			$this->contentObject->data['golb_offset'],
-			$categories
+			$this->categories
 		);
 
+		$this->view->assign('posts', $posts);
+	}
 
+	/**
+	 * Lists blog posts
+	 *
+	 * @return void
+	 */
+	public function listAction() {
+		$posts = $this->pageRepository->findPosts(
+			$this->pages,
+			$this->contentObject->data['golb_limit'],
+			$this->contentObject->data['golb_offset'],
+			$this->categories
+		);
 
 		$this->view->assign('posts', $posts);
 	}

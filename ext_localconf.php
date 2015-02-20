@@ -8,10 +8,9 @@ $boot = function($packageKey) {
 		'Blog.' . $packageKey,
 		'Blog',
 		array(
-			'Blog' => 'latest'
+			'Blog' => 'latest, list'
 		),
 		array(
-			'Blog' => 'latest'
 		)
 	);
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(

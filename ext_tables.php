@@ -56,6 +56,18 @@ $boot = function($packageKey) {
 			'eval' => 'int'
 		),
 	);
+
+	$GLOBALS['TCA']['tt_content']['columns']['golb_action'] = array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:ttcontent.action',
+		'config' => array(
+			'type' => 'select',
+			'items' => array(
+				array('Latest', ''),
+				array('List', 'list')
+			)
+		),
+	);
 	$GLOBALS['TCA']['pages']['columns']['golb_related'] = array(
 		'exclude' => 0,
 		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.related',
@@ -71,7 +83,6 @@ $boot = function($packageKey) {
 	);
 
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','--div--;Golb, golb_related');
-
 
 	$GLOBALS['TCA']['pages']['columns']['subpages'] = array(
 		'exclude' => 0,
@@ -95,7 +106,7 @@ $boot = function($packageKey) {
 
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(array('Blog', 'golb'), 'CType');
 	$GLOBALS['TCA']['tt_content']['types']['golb']['showitem'] =
-		'CType;;4;button;1-1-1, golb_sorting, golb_sorting_direction, golb_limit, golb_offset, golb_related, pages, categories,
+		'CType;;4;button;1-1-1, golb_action, golb_sorting, golb_sorting_direction, golb_limit, golb_offset, golb_related, pages, categories,
 		--div--;LLL:EXT:cms/locallang_tca.xml:pages.tabs.access,starttime, endtime, fe_group';
 
 	//Set new page types
