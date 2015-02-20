@@ -33,7 +33,7 @@ namespace Blog\Golb\Controller;
  *
  * @package Blog\Golb\Domain\Controller
  */
-class ViewCountController extends BaseController {
+class ViewCountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController {
 
 	/**
 	 * @var \Blog\Golb\Domain\Repository\PageRepository
