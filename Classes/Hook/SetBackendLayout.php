@@ -47,7 +47,7 @@ class SetBackendLayout {
 			$objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
 		$settings = $configurationManager->getConfiguration(
 			\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
-			'tx_golb'
+			'golb'
 		);
 
 		if($table == 'pages' &&
