@@ -275,6 +275,9 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $pid;
 
 	/**
+	 * Contains related pages
+	 *
+	 * @lazy
 	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
 	 */
 	protected $relatedPages;

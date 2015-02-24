@@ -50,6 +50,7 @@ config.tx_extbase {
 						url_scheme.mapOnProperty = urlScheme
 						url_type.mapOnProperty = urlType
 						view_count.mapOnProperty = viewCount
+						golb_related.mapOnProperty = relatedPages
 					}
 				}
 			}
