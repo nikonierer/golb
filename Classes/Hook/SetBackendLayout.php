@@ -54,9 +54,8 @@ class SetBackendLayout {
 			($status == 'new' || $status == 'update') &&
 			$fieldArray['doktype'] == self::$blogPostDokType) {
 
-			/** @ToDo: Make backend layout configurable. */
-			$fieldArray['backend_layout'] = 4;
-			$fieldArray['backend_layout_next_level'] = 4;
+			$fieldArray['backend_layout'] = $settings['defaultBackendLayout'];
+			$fieldArray['backend_layout_next_level'] = $settings['defaultBackendLayout'];
 		}
 	}
 }
