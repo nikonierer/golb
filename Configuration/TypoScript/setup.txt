@@ -1,3 +1,11 @@
+plugin.tx_golb {
+	settings {
+		defaultBackendLayout = 4
+	}
+}
+
+module.tx_golb < plugin.tx_golb
+
 config.tx_extbase {
 	persistence{
 		classes {

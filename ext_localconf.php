@@ -24,13 +24,13 @@ $boot = function($packageKey) {
 		)
 	);
 
+	$GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] =
+		'EXT:golb/Classes/Hook/SetBackendLayout.php:Blog\Golb\Hook\SetBackendLayout';
+
 	$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Extbase\\Domain\\Model\\Category'] = array(
 		'className' => 'Blog\\Golb\\Domain\\Model\\Category',
 	);
 
-	$GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Backend\\Controller\\NewRecordController'] = array(
-		'className' => 'Blog\\Golb\\Controller\\NewRecordController'
-	);
 };
 
 /** @var string $_EXTKEY */
