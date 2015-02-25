@@ -116,6 +116,17 @@ $boot = function($packageKey) {
 	array_push($pageItems, array('Golb', '--div--'));
 	array_push($pageItems, array('Blog post', '41', 'EXT:golb/Resources/Public/Icons/doktype_blogpost.gif'));
 
+	$pageOverlayItems = &$GLOBALS['TCA']['pages_language_overlay']['columns']['doktype']['config']['items'];
+	array_push($pageOverlayItems, array('Golb', '--div--'));
+	array_push($pageOverlayItems, array('Blog post', '41', 'EXT:golb/Resources/Public/Icons/doktype_blogpost.gif'));
+
+
+	$GLOBALS['TCA']['pages_language_overlay']['columns']['doktype']['config']['items'][] = array(
+		'Blog post',
+		'41',
+		'EXT:golb/Resources/Public/Icons/doktype_blogpost.gif'
+	);
+
 	\TYPO3\CMS\Backend\Sprite\SpriteManager::addTcaTypeIcon(
 		'pages',
 		'41',
