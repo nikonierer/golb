@@ -82,7 +82,19 @@ $boot = function($packageKey) {
 		),
 	);
 
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','--div--;Golb, golb_related');
+	$GLOBALS['TCA']['pages']['columns']['tt_content'] = array(
+		'exclude' => 0,
+		'label' => 'tt_content',
+		'config' => array(
+			'type' => 'inline',
+			'foreign_table' => 'tt_content',
+			'foreign_field' => 'pid',
+			'foreign_sortby' => 'sorting',
+			'maxitems' => 9999,
+		),
+	);
+
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','--div--;Golb, golb_related, tt_content');
 
 	$GLOBALS['TCA']['pages']['columns']['subpages'] = array(
 		'exclude' => 0,

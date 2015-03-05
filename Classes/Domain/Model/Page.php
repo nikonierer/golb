@@ -397,6 +397,14 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $viewCount;
 
 	/**
+	 * List of content elements
+	 *
+	 * @lazy
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\TtContent>
+	 */
+	protected $ttContent;
+
+	/**
 	 * Returns abstract
 	 *
 	 * @return string
@@ -1351,4 +1359,42 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->viewCount = (int)$this->viewCount+$amount;
 	}
 
+	/**
+	 * Returns list of content elements
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\TtContent>
+	 */
+	public function getTtContent() {
+		return $this->ttContent;
+	}
+
+	/**
+	 * Adds a content element
+	 *
+	 * @param \Blog\Golb\Domain\Model\TtContent $ttContent
+	 * @return void
+	 */
+	public function addTtContent(\Blog\Golb\Domain\Model\TtContent $ttContent) {
+		$this->ttContent->attach($ttContent);
+	}
+
+	/**
+	 * Removes a content element
+	 *
+	 * @param \Blog\Golb\Domain\Model\TtContent $ttContent
+	 * @return void
+	 */
+	public function removeTtContent(\Blog\Golb\Domain\Model\TtContent $ttContent) {
+		$this->ttContent->detach($ttContent);
+	}
+
+	/**
+	 * Sets the content element
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
+	 * @return void
+	 */
+	public function setTtContent(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent) {
+		$this->ttContent = $ttContent;
+	}
 }

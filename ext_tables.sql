@@ -4,7 +4,8 @@
 CREATE TABLE pages (
 	subpages int(11) DEFAULT '0' NOT NULL,
 	view_count int(11) DEFAULT '0' NOT NULL,
-	golb_related varchar(255) DEFAULT NULL
+	golb_related varchar(255) DEFAULT NULL,
+	tt_content int(11) DEFAULT '0' NOT NULL,
 );
 
 #

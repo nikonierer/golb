@@ -67,6 +67,78 @@ config.tx_extbase {
 					tableName = sys_category
 				}
 			}
+			Blog\Golb\Domain\Model\TtContent {
+				mapping {
+					tableName = tt_content
+					columns {
+						accessibility_title.mapOnProperty = accessibilityTitle
+						accessibility_bypass.mapOnProperty = accessibilityBypass
+						accessibility_bypass_text.mapOnProperty = accessibilityBypassText
+						altText.mapOnProperty = altText
+						backupColPos.mapOnProperty = backupColPos
+						bodytext.mapOnProperty = bodyText
+						crdate.mapOnProperty = crDate
+						cruserId.mapOnProperty = crUserId
+						colPos.mapOnProperty = colPos
+						cols.mapOnProperty = cols
+						CType.mapOnProperty = cType
+						date.mapOnProperty = date
+						deleted.mapOnProperty = deleted
+						endtime.mapOnProperty = endTime
+						fe_group.mapOnProperty = feGroup
+						file_collections.mapOnProperty = fileCollections
+						filelink_size.mapOnProperty = fileLinkSize
+						filelink_sorting.mapOnProperty = fileLinkSorting
+						header.mapOnProperty = header
+						header_layout.mapOnProperty = headerLayout
+						header_link.mapOnProperty = headerLink
+						header_position.mapOnProperty = headerPosition
+						hidden.mapOnProperty = hidden
+						image.mapOnProperty = image
+						imageborder.mapOnProperty = imageBorder
+						imagecaption_position.mapOnProperty = imageCaptionPosition
+						imagecols.mapOnProperty = imageCols
+						imageheight.mapOnProperty = imageHeight
+						imageorient.mapOnProperty = imageOrient
+						imagewidth.mapOnProperty = imageWidth
+						image_compression.mapOnProperty = imageCompression
+						image_effects.mapOnProperty = imageEffects
+						image_frames.mapOnProperty = imageFrames
+						image_link.mapOnProperty = imageLink
+						image_noRows.mapOnProperty = imageNoRows
+						image_zoom.mapOnProperty = imageZoom
+						layout.mapOnProperty = layout
+						linkToTop.mapOnProperty = linkToTop
+						list_type.mapOnProperty = listType
+						longdescURL.mapOnProperty = longDescURL
+						media.mapOnProperty = media
+						menu_type.mapOnProperty = menuType
+						multimedia.mapOnProperty = multimedia
+						pages.mapOnProperty = pages
+						pid.mapOnProperty = pid
+						pi_flexform.mapOnProperty = piFlexForm
+						records.mapOnProperty = records
+						recursive.mapOnProperty = recursive
+						rte_enabled.mapOnProperty = rteEnabled
+						sectionIndex.mapOnProperty = sectionIndex
+						sorting.mapOnProperty = sorting
+						section_frame.mapOnProperty = sectionFrame
+						select_key.mapOnProperty = selectKey
+						subheader.mapOnProperty = subHeader
+						spaceAfter.mapOnProperty = spaceAfter
+						spaceBefore.mapOnProperty = spaceBefore
+						starttime.mapOnProperty = startTime
+						sys_language_uid.mapOnProperty = sysLanguageUid
+						table_bgColor.mapOnProperty = tableBgColor
+						table_border.mapOnProperty = tableBorder
+						table_cellpadding.mapOnProperty = tableCellPadding
+						table_cellspacing.mapOnProperty = tableCellSpacing
+						target.mapOnProperty = target
+						titleText.mapOnProperty = titleText
+						tstamp.mapOnProperty = timestamp
+					}
+				}
+			}
 		}
 	}
 }
