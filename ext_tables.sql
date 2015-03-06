@@ -6,6 +6,7 @@ CREATE TABLE pages (
 	view_count int(11) DEFAULT '0' NOT NULL,
 	golb_related varchar(255) DEFAULT NULL,
 	tt_content int(11) DEFAULT '0' NOT NULL,
+	author_image int(11) unsigned DEFAULT '0'
 );
 
 #

@@ -24,6 +24,9 @@
 			<trans-unit id="pages.tt_content">
 				<source>TT Content</source>
 			</trans-unit>
+			<trans-unit id="pages.authorImage">
+				<source>Author image</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

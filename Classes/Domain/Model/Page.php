@@ -61,6 +61,14 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $authorEmail;
 
 	/**
+	 * Contains author image
+	 *
+	 * @lazy
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 */
+	protected $authorImage;
+
+	/**
 	 * Contains author name
 	 *
 	 * Use golb:author.name view helper to switch between this field and
@@ -460,6 +468,25 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setAuthorEmail($authorEmail) {
 		$this->authorEmail = $authorEmail;
+	}
+
+	/**
+	 * Returns relations to author image
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 */
+	public function getAuthorImage() {
+		return $this->authorImage;
+	}
+
+	/**
+	 * Sets relations to author image
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $authorImage
+	 * @return void
+	 */
+	public function setAuthorImage(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $authorImage) {
+		$this->authorImage = $authorImage;
 	}
 
 	/**
