@@ -21,6 +21,9 @@
 			<trans-unit id="pages.related">
 				<source>Related posts</source>
 			</trans-unit>
+			<trans-unit id="pages.tt_content">
+				<source>TT Content</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

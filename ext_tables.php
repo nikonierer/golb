@@ -84,7 +84,7 @@ $boot = function($packageKey) {
 
 	$GLOBALS['TCA']['pages']['columns']['tt_content'] = array(
 		'exclude' => 0,
-		'label' => 'tt_content',
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tt_content',
 		'config' => array(
 			'type' => 'inline',
 			'foreign_table' => 'tt_content',
