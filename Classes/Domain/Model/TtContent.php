@@ -8,7 +8,8 @@ namespace Blog\Golb\Domain\Model;
  *
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
  *           Philipp Thiele <philipp.thiele@phth.de>
- *
+ *           Sascha Zander <sascha.zander@denkwerk.com>
+ * 
  *  All rights reserved
  *
  *  This script is part of the TYPO3 project. The TYPO3 project is
@@ -30,6 +31,10 @@ namespace Blog\Golb\Domain\Model;
 
 /**
  * Maps on table 'pages'
+ *
+ * @author     Sascha Zander <sascha.zander@denkwerk.com>
+ * @copyright  2015 Copyright belongs to the respective authors
+ * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  *
  * @package Blog\Golb\Domain\Model
  */

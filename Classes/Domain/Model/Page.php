@@ -8,6 +8,7 @@ namespace Blog\Golb\Domain\Model;
  *
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
  *           Philipp Thiele <philipp.thiele@phth.de>
+ *           Sascha Zander <sascha.zander@denkwerk.com>
  *
  *  All rights reserved
  *
