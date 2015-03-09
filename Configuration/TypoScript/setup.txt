@@ -16,6 +16,7 @@ config.tx_extbase {
 						abstract.mapOnProperty = abstract
 						alias.mapOnProperty = alias
 						author_email.mapOnProperty = authorEmail
+						author_image.mapOnProperty = authorImage
 						author.mapOnProperty = authorName
 						backend_layout.mapOnProperty = backendLayout
 						backend_layout_next_level.mapOnProperty = backendLayoutNextLevel
