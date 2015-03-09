@@ -8,6 +8,7 @@ namespace Blog\Golb\Domain\Model;
  *
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
  *           Philipp Thiele <philipp.thiele@phth.de>
+ *           Sascha Zander <sascha.zander@denkwerk.com>
  *
  *  All rights reserved
  *
@@ -58,6 +59,14 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @var string $authorEmail
 	 */
 	protected $authorEmail;
+
+	/**
+	 * Contains author image
+	 *
+	 * @lazy
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+	 */
+	protected $authorImage;
 
 	/**
 	 * Contains author name
@@ -397,6 +406,26 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $viewCount;
 
 	/**
+	 * List of content elements
+	 *
+	 * @lazy
+	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\TtContent>
+	 */
+	protected $ttContent;
+
+	/**
+	 * The construtor
+	 */
+	public function __construct() {
+
+		$this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+
+		$this->relatedPages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+
+		$this->subpages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
+	/**
 	 * Returns abstract
 	 *
 	 * @return string
@@ -451,6 +480,25 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 */
 	public function setAuthorEmail($authorEmail) {
 		$this->authorEmail = $authorEmail;
+	}
+
+	/**
+	 * Returns a author image
+	 *
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
+	 */
+	public function getAuthorImage() {
+		return $this->authorImage;
+	}
+
+	/**
+	 * Sets a author image
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
+	 * @return void
+	 */
+	public function setAuthorImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage) {
+		$this->authorImage = $authorImage;
 	}
 
 	/**
@@ -1351,4 +1399,42 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 		$this->viewCount = (int)$this->viewCount+$amount;
 	}
 
+	/**
+	 * Returns list of content elements
+	 *
+	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\TtContent>
+	 */
+	public function getTtContents() {
+		return $this->ttContent;
+	}
+
+	/**
+	 * Adds a content element
+	 *
+	 * @param \Blog\Golb\Domain\Model\TtContent $ttContent
+	 * @return void
+	 */
+	public function addTtContent(\Blog\Golb\Domain\Model\TtContent $ttContent) {
+		$this->ttContent->attach($ttContent);
+	}
+
+	/**
+	 * Removes a content element
+	 *
+	 * @param \Blog\Golb\Domain\Model\TtContent $ttContent
+	 * @return void
+	 */
+	public function removeTtContent(\Blog\Golb\Domain\Model\TtContent $ttContent) {
+		$this->ttContent->detach($ttContent);
+	}
+
+	/**
+	 * Sets the content element
+	 *
+	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
+	 * @return void
+	 */
+	public function setTtContents(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent) {
+		$this->ttContent = $ttContent;
+	}
 }

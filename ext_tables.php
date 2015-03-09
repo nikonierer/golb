@@ -82,7 +82,39 @@ $boot = function($packageKey) {
 		),
 	);
 
+	$GLOBALS['TCA']['pages']['columns']['tt_content'] = array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tt_content',
+		'config' => array(
+			'type' => 'inline',
+			'foreign_table' => 'tt_content',
+			'foreign_field' => 'pid',
+			'foreign_sortby' => 'sorting',
+			'maxitems' => 9999,
+		),
+	);
+
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','--div--;Golb, golb_related');
+
+	$GLOBALS['TCA']['pages']['columns']['author_image'] = array(
+		'exclude' => 0,
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.authorImage',
+		'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('authorImage', array(
+				'appearance' => array(
+					'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
+				),
+				'minitems' => 0,
+				'maxitems' => 1,
+			)
+		)
+	);
+
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+		'pages', // table
+		'author_image', // your field definition
+		'', // at which types it should appear (f.e. in table tt_content 'textpic' or 'image')
+		'after:author_email' // before: or after: the field in the TCA
+	);
 
 	$GLOBALS['TCA']['pages']['columns']['subpages'] = array(
 		'exclude' => 0,

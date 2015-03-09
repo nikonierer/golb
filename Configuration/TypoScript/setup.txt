@@ -16,6 +16,7 @@ config.tx_extbase {
 						abstract.mapOnProperty = abstract
 						alias.mapOnProperty = alias
 						author_email.mapOnProperty = authorEmail
+						author_image.mapOnProperty = authorImage
 						author.mapOnProperty = authorName
 						backend_layout.mapOnProperty = backendLayout
 						backend_layout_next_level.mapOnProperty = backendLayoutNextLevel
@@ -65,6 +66,34 @@ config.tx_extbase {
 			Blog\Golb\Domain\Model\Category {
 				mapping {
 					tableName = sys_category
+				}
+			}
+			Blog\Golb\Domain\Model\TtContent {
+				mapping {
+					tableName = tt_content
+					columns {
+						bodytext.mapOnProperty = bodyText
+						crdate.mapOnProperty = crDate
+						cruserId.mapOnProperty = crUserId
+						CType.mapOnProperty = cType
+						date.mapOnProperty = date
+						deleted.mapOnProperty = deleted
+						endtime.mapOnProperty = endTime
+						fe_group.mapOnProperty = feGroup
+						header.mapOnProperty = header
+						header_link.mapOnProperty = headerLink
+						hidden.mapOnProperty = hidden
+						image.mapOnProperty = image
+						layout.mapOnProperty = layout
+						list_type.mapOnProperty = listType
+						media.mapOnProperty = media
+						pid.mapOnProperty = pid
+						sorting.mapOnProperty = sorting
+						subheader.mapOnProperty = subHeader
+						starttime.mapOnProperty = startTime
+						target.mapOnProperty = target
+						tstamp.mapOnProperty = timestamp
+					}
 				}
 			}
 		}
