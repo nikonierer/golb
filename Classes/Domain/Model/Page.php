@@ -414,6 +414,18 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	protected $ttContent;
 
 	/**
+	 * The construtor
+	 */
+	public function __construct() {
+
+		$this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+
+		$this->relatedPages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+
+		$this->subpages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+	}
+
+	/**
 	 * Returns abstract
 	 *
 	 * @return string
