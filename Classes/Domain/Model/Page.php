@@ -471,6 +471,26 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
+	 * Adds a author image
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
+	 * @return void
+	 */
+	public function addAuthorImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage) {
+		$this->authorImage->attach($authorImage);
+	}
+
+	/**
+	 * Removes a author image
+	 *
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
+	 * @return void
+	 */
+	public function removeAuthorImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage) {
+		$this->authorImage->detach($authorImage);
+	}
+
+	/**
 	 * Returns relations to author image
 	 *
 	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
