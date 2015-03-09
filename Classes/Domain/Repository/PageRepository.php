@@ -57,19 +57,13 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	/**
 	 * Finds a list of blog posts based on a root page
 	 *
-	 * @param array $rootPages
+	 * @param int|array $rootPages
 	 *
 	 * @return array
 	 */
 	public function findSubPagesByPageIds($rootPages) {
-		if(count($rootPages) == 1) {
-			$result = $this->findByIdentifier($rootPages);
 
-			if($result instanceof \Blog\Golb\Domain\Model\Page) {
-				/** @var \Blog\Golb\Domain\Model\Page $result */
-				return $result->getSubpages()->toArray();
-			}
-		} else {
+		if(is_array($rootPages)) {
 			$resultArray = array();
 
 			foreach($rootPages as $rootPage) {
@@ -83,9 +77,18 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			}
 
 			return $resultArray;
+
+		} else {
+			$result = $this->findByIdentifier((int)$rootPages);
+
+			if($result instanceof \Blog\Golb\Domain\Model\Page) {
+				/** @var \Blog\Golb\Domain\Model\Page $result */
+				return $result->getSubpages()->toArray();
+			}
+
 		}
 
-		return null;
+		return array();
 	}
 
 	/**
@@ -107,6 +110,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		 * @ToDo: Refactoring needed.
 		 */
 		if(count($categories) > 0) {
+			$this->categories = array();
 			$categoryIds = array();
 			/** @var \Blog\Golb\Domain\Model\Category $category */
 			$this->traverseCategories($categories);
@@ -133,7 +137,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		// Remove duplicates
 		$this->posts = array_map('unserialize', array_unique(array_map('serialize', $this->posts)));
 
-		return array_slice($this->posts, $offset, $limit);
+		return array_slice($this->posts, $offset, ($limit > 0 ? $limit : null));
 	}
 
 	/**
