@@ -64,7 +64,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * Contains author image
 	 *
 	 * @lazy
-	 * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+	 * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
 	 */
 	protected $authorImage;
 
@@ -471,41 +471,21 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	}
 
 	/**
-	 * Adds a author image
+	 * Returns a author image
 	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
-	 * @return void
-	 */
-	public function addAuthorImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage) {
-		$this->authorImage->attach($authorImage);
-	}
-
-	/**
-	 * Removes a author image
-	 *
-	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
-	 * @return void
-	 */
-	public function removeAuthorImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage) {
-		$this->authorImage->detach($authorImage);
-	}
-
-	/**
-	 * Returns relations to author image
-	 *
-	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+	 * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
 	 */
 	public function getAuthorImage() {
 		return $this->authorImage;
 	}
 
 	/**
-	 * Sets relations to author image
+	 * Sets a author image
 	 *
-	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $authorImage
+	 * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
 	 * @return void
 	 */
-	public function setAuthorImage(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $authorImage) {
+	public function setAuthorImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage) {
 		$this->authorImage = $authorImage;
 	}
 
@@ -1412,7 +1392,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 *
 	 * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\TtContent>
 	 */
-	public function getTtContent() {
+	public function getTtContents() {
 		return $this->ttContent;
 	}
 
@@ -1442,7 +1422,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 	 * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent
 	 * @return void
 	 */
-	public function setTtContent(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent) {
+	public function setTtContents(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $ttContent) {
 		$this->ttContent = $ttContent;
 	}
 }

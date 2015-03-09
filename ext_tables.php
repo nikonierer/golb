@@ -99,7 +99,7 @@ $boot = function($packageKey) {
 	$GLOBALS['TCA']['pages']['columns']['author_image'] = array(
 		'exclude' => 0,
 		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.authorImage',
-		'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('author_image', array(
+		'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('authorImage', array(
 				'appearance' => array(
 					'createNewRelationLinkTitle' => 'LLL:EXT:cms/locallang_ttc.xlf:images.addFileReference'
 				),
@@ -115,7 +115,6 @@ $boot = function($packageKey) {
 		'', // at which types it should appear (f.e. in table tt_content 'textpic' or 'image')
 		'after:author_email' // before: or after: the field in the TCA
 	);
-
 
 	$GLOBALS['TCA']['pages']['columns']['subpages'] = array(
 		'exclude' => 0,
