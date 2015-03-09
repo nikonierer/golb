@@ -94,7 +94,7 @@ $boot = function($packageKey) {
 		),
 	);
 
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','--div--;Golb, golb_related, tt_content');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','--div--;Golb, golb_related');
 
 	$GLOBALS['TCA']['pages']['columns']['author_image'] = array(
 		'exclude' => 0,
