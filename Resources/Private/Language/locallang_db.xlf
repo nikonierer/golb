@@ -27,6 +27,9 @@
 			<trans-unit id="pages.authorImage">
 				<source>Author image</source>
 			</trans-unit>
+			<trans-unit id="pages.excludepages">
+                <source>Exclude pages</source>
+            </trans-unit>
 		</body>
 	</file>
 </xliff>

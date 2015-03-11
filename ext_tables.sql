@@ -24,5 +24,6 @@ CREATE TABLE tt_content (
 	golb_sorting_direction varchar(255) DEFAULT NULL,
 	golb_limit int(4) DEFAULT NULL,
 	golb_offset int(4) DEFAULT NULL,
-	golb_action varchar(40) DEFAULT '' NOT NULL
+	golb_action varchar(40) DEFAULT '' NOT NULL,
+	golb_exclude varchar(40) DEFAULT '' NOT NULL
 );
