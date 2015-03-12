@@ -100,11 +100,17 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param array $categories
 	 * @return array
 	 */
-	public function findPosts($rootPages, $limit, $offset = 0, $categories = null) {
+	public function findPosts($rootPages, $limit, $offset = 0, $categories = null, $exclude = false) {
 		$pages = $this->findSubPagesByPageIds($rootPages);
 
 		$this->posts = array();
 		$this->traversePages($pages);
+
+		if ($exclude) {
+			$excludedPages = explode(',', $exclude);
+		} else {
+			$excludedPages = array();
+		}
 
 		/**
 		 * @ToDo: Refactoring needed.
@@ -133,6 +139,13 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 
 
 		}
+
+		foreach ($this->posts as $key => $post) {
+			if (in_array($post->getUid(), $excludedPages)) {
+				unset($this->posts[$key]);
+			}
+		}
+
 
 		// Remove duplicates
 		$this->posts = array_map('unserialize', array_unique(array_map('serialize', $this->posts)));
