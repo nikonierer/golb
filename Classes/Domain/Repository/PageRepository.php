@@ -100,7 +100,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 	 * @param array $categories
 	 * @return array
 	 */
-	public function findPosts($rootPages, $limit, $offset = 0, $categories = null, $exclude = false) {
+	public function findPosts($rootPages, $limit, $offset = 0, $categories = null, $exclude = false, $sorting = null) {
 		$pages = $this->findSubPagesByPageIds($rootPages);
 
 		$this->posts = array();
@@ -110,6 +110,35 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			$excludedPages = explode(',', $exclude);
 		} else {
 			$excludedPages = array();
+		}
+		/**
+		 * if sorting is provided as an argument the array is sorted based on the type of sorting
+		 */
+		if($sorting!=null){
+			switch($sorting){
+				case "date":
+					usort($this->posts, function($a, $b) {
+						return $a->getCrdate() < $b->getCrdate();
+					});
+					break;
+				case "views":
+					usort($this->posts, function($a, $b) {
+						return $a->getViewCount() < $b->getViewCount();
+					});
+					break;
+				case "author":
+					usort($this->posts, function($a, $b) {
+						/* if no author value is present (''), it will be set as 'zz' to appear latest in array with objects */
+						$al = ($a->getAuthorName() == '') ? 'zz' : substr(strtolower($a->getAuthorName()), 0, 2) ;
+						$bl = ($a->getAuthorName() == '') ? 'zz' : substr(strtolower($b->getAuthorName()), 0, 2) ;
+						if ($al == $bl) {
+							return 0;
+						}
+						return ($al > $bl) ? +1 : -1;
+					});
+					break;
+			}
+
 		}
 
 		/**

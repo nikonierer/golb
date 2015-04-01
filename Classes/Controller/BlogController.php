@@ -110,7 +110,8 @@ class BlogController extends BaseController {
 			$this->contentObject->data['golb_limit'],
 			$this->contentObject->data['golb_offset'],
 			$this->categories,
-			$this->contentObject->data['golb_exclude']
+			$this->contentObject->data['golb_exclude'],
+			$GLOBALS['TSFE']->fe_user->getKey('ses','blogSorting')
 		);
 
 		$this->view->assign('posts', $posts);

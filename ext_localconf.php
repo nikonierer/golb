@@ -6,11 +6,22 @@ if (!defined('TYPO3_MODE')) {
 $boot = function($packageKey) {
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
 		'Blog.' . $packageKey,
+		'Sorting',
+		array(
+			'Sorting' => 'sortBy'
+		),
+		array(
+			'Sorting' => 'sortBy'
+		)
+	);
+	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
+		'Blog.' . $packageKey,
 		'Blog',
 		array(
 			'Blog' => 'latest, list'
 		),
 		array(
+			'Blog' => 'list'
 		)
 	);
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
