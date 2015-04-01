@@ -21,6 +21,7 @@ $boot = function($packageKey) {
 			'Blog' => 'latest, list'
 		),
 		array(
+			'Blog' => 'list'
 		)
 	);
 	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(

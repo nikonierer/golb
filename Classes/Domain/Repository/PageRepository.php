@@ -111,7 +111,9 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 		} else {
 			$excludedPages = array();
 		}
-
+		/**
+		 * if sorting is provided as an argument the array is sorted based on the type of sorting
+		 */
 		if($sorting!=null){
 			switch($sorting){
 				case "date":
@@ -126,16 +128,9 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 					break;
 				case "author":
 					usort($this->posts, function($a, $b) {
-						$al = substr(strtolower($a->getAuthorName()), 0, 2);
-						$bl = substr(strtolower($b->getAuthorName()), 0, 2);
-
-						if($al == ''){
-							$al = 'zz';
-						}
-						if($bl == ''){
-							$bl = 'zz';
-						}
-
+						/* if no author value is present (''), it will be set as 'zz' to appear latest in array with objects */
+						$al = ($a->getAuthorName() == '') ? 'zz' : substr(strtolower($a->getAuthorName()), 0, 2) ;
+						$bl = ($a->getAuthorName() == '') ? 'zz' : substr(strtolower($b->getAuthorName()), 0, 2) ;
 						if ($al == $bl) {
 							return 0;
 						}

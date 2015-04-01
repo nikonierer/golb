@@ -118,3 +118,19 @@ lib.BlogCountView {
 	persistence < plugin.tx_golb.persistence
 	settings < plugin.tx_golb.settings
 }
+
+lib.BlogSorting = USER_INT
+lib.BlogSorting {
+	userFunc = TYPO3\CMS\Extbase\Core\Bootstrap->run
+	extensionName = Golb
+	pluginName = Sorting
+	vendorName = Blog
+	switchableControllerActions {
+		Sorting {
+			1 = setSorting
+		}
+	}
+	view < plugin.tx_golb.view
+	persistence < plugin.tx_golb.persistence
+	settings < plugin.tx_golb.settings
+}
