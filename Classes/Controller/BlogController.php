@@ -93,7 +93,8 @@ class BlogController extends BaseController {
 			$this->contentObject->data['golb_limit'],
 			$this->contentObject->data['golb_offset'],
 			$this->categories,
-			$this->contentObject->data['golb_exclude']
+			$this->contentObject->data['golb_exclude'],
+			'date'
 		);
 
 		$this->view->assign('posts', $posts);
