@@ -8,6 +8,7 @@ namespace Blog\Golb\Domain\Repository;
  *
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
  *           Philipp Thiele <philipp.thiele@phth.de>
+ * 			 Sascha Zander <sascha.zander@denkwerk.com>
  *
  *  All rights reserved
  *
@@ -118,7 +119,21 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository {
 			switch($sorting){
 				case "date":
 					usort($this->posts, function($a, $b) {
-						return $a->getCrdate() < $b->getCrdate();
+
+						//If publish date is set use this else create date
+						if($a->getStartTime()) {
+							$a = $a->getStartTime();
+						} else {
+							$a = $a->getCrdate();
+						}
+
+						if($b->getStartTime()) {
+							$b = $b->getStartTime();
+						} else {
+							$b = $b->getCrdate();
+						}
+
+						return $a < $b;
 					});
 					break;
 				case "views":
