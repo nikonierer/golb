@@ -38,7 +38,7 @@ namespace Blog\Golb\Domain\Model;
  *
  * @package Blog\Golb\Domain\Model
  */
-class TtContent extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
+class ContentElement extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity {
 
 	/**
 	 * Contains body text

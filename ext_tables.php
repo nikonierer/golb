@@ -25,36 +25,36 @@ $boot = function($packageKey) {
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($packageKey, 'Configuration/TypoScript', 'Golb');
 
 	//New fields
-	$GLOBALS['TCA']['tt_content']['columns']['golb_sorting'] = array(
+	$GLOBALS['TCA']['tt_content']['columns']['tx_golb_sorting'] = array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:ttcontent.sorting',
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:contentElements.sorting',
 		'config' => array(
 			'type' => 'input',
 			'size' => 30,
 			'eval' => 'varchar'
 		),
 	);
-	$GLOBALS['TCA']['tt_content']['columns']['golb_sorting_direction'] = array(
+	$GLOBALS['TCA']['tt_content']['columns']['tx_golb_sorting_direction'] = array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:ttcontent.sortingdirection',
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:contentElements.sortingDirection',
 		'config' => array(
 			'type' => 'input',
 			'size' => 30,
 			'eval' => 'varchar'
 		),
 	);
-	$GLOBALS['TCA']['tt_content']['columns']['golb_limit'] = array(
+	$GLOBALS['TCA']['tt_content']['columns']['tx_golb_limit'] = array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:ttcontent.limit',
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:contentElements.limit',
 		'config' => array(
 			'type' => 'input',
 			'size' => 30,
 			'eval' => 'int'
 		),
 	);
-	$GLOBALS['TCA']['tt_content']['columns']['golb_offset'] = array(
+	$GLOBALS['TCA']['tt_content']['columns']['tx_golb_offset'] = array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:ttcontent.offset',
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:contentElements.offset',
 		'config' => array(
 			'type' => 'input',
 			'size' => 30,
@@ -62,9 +62,9 @@ $boot = function($packageKey) {
 		),
 	);
 
-	$GLOBALS['TCA']['tt_content']['columns']['golb_action'] = array(
+	$GLOBALS['TCA']['tt_content']['columns']['tx_golb_action'] = array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:ttcontent.action',
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:contentElements.action',
 		'config' => array(
 			'type' => 'select',
 			'items' => array(
@@ -73,7 +73,7 @@ $boot = function($packageKey) {
 			)
 		),
 	);
-	$GLOBALS['TCA']['pages']['columns']['golb_related'] = array(
+	$GLOBALS['TCA']['pages']['columns']['tx_golb_related'] = array(
 		'exclude' => 0,
 		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.related',
 		'config' => array(
@@ -87,9 +87,9 @@ $boot = function($packageKey) {
 		),
 	);
 
-	$GLOBALS['TCA']['pages']['columns']['tt_content'] = array(
+	$GLOBALS['TCA']['pages']['columns']['tx_golb_content_elements'] = array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tt_content',
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.contentElements',
 		'config' => array(
 			'type' => 'inline',
 			'foreign_table' => 'tt_content',
@@ -99,9 +99,9 @@ $boot = function($packageKey) {
 		),
 	);
 
-	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','--div--;Golb, golb_related');
+	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes('pages','--div--;Golb, tx_golb_related');
 
-	$GLOBALS['TCA']['pages']['columns']['author_image'] = array(
+	$GLOBALS['TCA']['pages']['columns']['tx_golb_author_image'] = array(
 		'exclude' => 0,
 		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.authorImage',
 		'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('authorImage', array(
@@ -116,12 +116,12 @@ $boot = function($packageKey) {
 
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
 		'pages', // table
-		'author_image', // your field definition
+		'tx_golb_author_image', // your field definition
 		'', // at which types it should appear (f.e. in table tt_content 'textpic' or 'image')
 		'after:author_email' // before: or after: the field in the TCA
 	);
 
-	$GLOBALS['TCA']['pages']['columns']['subpages'] = array(
+	$GLOBALS['TCA']['pages']['columns']['tx_golb_subpages'] = array(
 		'exclude' => 0,
 		'config' => array(
 			'type' => 'inline',
@@ -131,7 +131,7 @@ $boot = function($packageKey) {
 		),
 	);
 
-	$GLOBALS['TCA']['sys_category']['columns']['sub_categories'] = array(
+	$GLOBALS['TCA']['sys_category']['columns']['tx_golb_sub_categories'] = array(
 		'exclude' => 0,
 		'config' => array(
 			'type' => 'inline',
@@ -141,9 +141,9 @@ $boot = function($packageKey) {
 		),
 	);
 
-	$GLOBALS['TCA']['tt_content']['columns']['golb_exclude'] = array(
+	$GLOBALS['TCA']['tt_content']['columns']['tx_golb_exclude'] = array(
 		'exclude' => 0,
-		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.excludepages',
+		'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.excludedPages',
 		'config' => array(
 			'type' => 'select',
 			'foreign_table' => 'pages',
@@ -157,7 +157,7 @@ $boot = function($packageKey) {
 
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(array('Blog', 'golb'), 'CType');
 	$GLOBALS['TCA']['tt_content']['types']['golb']['showitem'] =
-		'CType;;4;button;1-1-1, golb_action, golb_sorting, golb_sorting_direction, golb_limit, golb_offset, golb_related, pages, golb_exclude, categories,
+		'CType;;4;button;1-1-1, tx_golb_action, tx_golb_sorting, tx_golb_sorting_direction, tx_golb_limit, tx_golb_offset, tx_golb_related, pages, tx_golb_exclude, categories,
 		--div--;LLL:EXT:cms/locallang_tca.xml:pages.tabs.access,starttime, endtime, fe_group';
 
 	//Set new page types

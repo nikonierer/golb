@@ -13,53 +13,23 @@ config.tx_extbase {
 				mapping {
 					tableName = pages
 					columns {
-						abstract.mapOnProperty = abstract
-						alias.mapOnProperty = alias
-						author_email.mapOnProperty = authorEmail
-						author_image.mapOnProperty = authorImage
-						author.mapOnProperty = authorName
-						backend_layout.mapOnProperty = backendLayout
-						backend_layout_next_level.mapOnProperty = backendLayoutNextLevel
-						cache_tags.mapOnProperty = cacheTags
-						cache_timeout.mapOnProperty = cacheTimeout
-						categories.mapOnProperty = categories
-						content_from_pid.mapOnProperty = contentFromPid
-						crdate.mapOnProperty = crdate
-						cruserId.mapOnProperty = cruserId
-						deleted.mapOnProperty = deleted
-						description.mapOnProperty = description
-						doktype.mapOnProperty = doktype
-						endtime.mapOnProperty = endTime
-						extendToSubpages.mapOnProperty = extendToSubPages
-						fe_group.mapOnProperty = feGroup
-						hidden.mapOnProperty = hidden
-						nav_hide.mapOnProperty = hiddenInNavigation
-						is_siteroot.mapOnProperty = siteRoot
-						keywords.mapOnProperty = keywords
+						extendToSubpages.mapOnProperty = extendToSubpages
 						lastUpdated.mapOnProperty = lastUpdated
-						layout.mapOnProperty = layout
-						media.mapOnProperty = media
-						mount_pid.mapOnProperty = mountPid
-						mount_pid_ol.mapOnProperty = mountPidOverlay
-						nav_title.mapOnProperty = navigationTitle
 						newUntil.mapOnProperty = newUntil
-						no_cache.mapOnProperty = noCache
-						no_search.mapOnProperty = noSearch
-						pid.mapOnProperty = pid
-						shortcut.mapOnProperty = shortcut
-						shortcut_mode.mapOnProperty = shortcutMode
-						sorting.mapOnProperty = sorting
-						starttime.mapOnProperty = startTime
-						subtitle.mapOnProperty = subtitle
-						target.mapOnProperty = target
-						tstamp.mapOnProperty = timestamp
-						title.mapOnProperty = title
-						uid.mapOnProperty = uid
-						url.mapOnProperty = url
-						url_scheme.mapOnProperty = urlScheme
-						url_type.mapOnProperty = urlType
-						view_count.mapOnProperty = viewCount
-						golb_related.mapOnProperty = relatedPages
+
+						tx_golb_author_image.mapOnProperty = authorImage
+						tx_golb_view_count.mapOnProperty = viewCount
+						tx_golb_related.mapOnProperty = relatedPosts
+						tx_golb_sorting.mapOnProperty = postsSorting
+						tx_golb_sorting_direction.mapOnProperty = postsSortingDirection
+						tx_golb_limit.mapOnProperty = limit
+						tx_golb_offset.mapOnProperty = offset
+						tx_golb_action.mapOnProperty = action
+                        tx_golb_content_elements.mapOnProperty = contentElements
+                        tx_golb_subpages.mapOnProperty = subpages
+                        tx_golb_exclude.mapOnProperty = excludedPages
+                        tx_golb_sub_categories.mapOnProperty = subCategories
+
 					}
 				}
 			}
@@ -68,32 +38,9 @@ config.tx_extbase {
 					tableName = sys_category
 				}
 			}
-			Blog\Golb\Domain\Model\TtContent {
+			Blog\Golb\Domain\Model\ContentElement {
 				mapping {
 					tableName = tt_content
-					columns {
-						bodytext.mapOnProperty = bodyText
-						crdate.mapOnProperty = crDate
-						cruserId.mapOnProperty = crUserId
-						CType.mapOnProperty = cType
-						date.mapOnProperty = date
-						deleted.mapOnProperty = deleted
-						endtime.mapOnProperty = endTime
-						fe_group.mapOnProperty = feGroup
-						header.mapOnProperty = header
-						header_link.mapOnProperty = headerLink
-						hidden.mapOnProperty = hidden
-						image.mapOnProperty = image
-						layout.mapOnProperty = layout
-						list_type.mapOnProperty = listType
-						media.mapOnProperty = media
-						pid.mapOnProperty = pid
-						sorting.mapOnProperty = sorting
-						subheader.mapOnProperty = subHeader
-						starttime.mapOnProperty = startTime
-						target.mapOnProperty = target
-						tstamp.mapOnProperty = timestamp
-					}
 				}
 			}
 		}
