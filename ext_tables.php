@@ -16,11 +16,6 @@ $boot = function($packageKey) {
 		'ViewCount',
 		'ViewCount'
 	);
-	\TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-		'Blog.' . $packageKey,
-		'Sorting',
-		'Sorting'
-	);
 
 	\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($packageKey, 'Configuration/TypoScript', 'Golb');
 
