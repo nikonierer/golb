@@ -1,0 +1,22 @@
+{
+    "name": "",
+    "type": "typo3-cms-extension",
+    "description": "denkwerk TYPO3 social media meta data",
+    "homepage": "http://git.satis.devnet.nil/summary/?r=dw-typo3/dw-social-media.git",
+    "require": {
+        "typo3/cms-core": ">=6.2.1,<7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Denkwerk\\DwSocialMedia\\": "Classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sascha Zander",
+            "email": "sascha.zander@denkwerk.com",
+            "homepage": "https://denkwerk.com",
+            "role": "Developer"
+        }
+    ]
+}
