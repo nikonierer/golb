@@ -62,6 +62,7 @@ $boot = function ($packageKey) {
         'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:contentElements.action',
         'config' => array(
             'type' => 'select',
+            'renderType' => 'selectSingle',
             'items' => array(
                 array('Latest', ''),
                 array('List', 'list')
@@ -73,6 +74,7 @@ $boot = function ($packageKey) {
         'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.related',
         'config' => array(
             'type' => 'select',
+            'renderType' => 'selectMultipleSideBySide',
             'foreign_table' => 'pages',
             'foreign_table_where' => 'AND doktype = 41 ORDER BY crdate ASC',
             'size' => 5,
@@ -141,6 +143,7 @@ $boot = function ($packageKey) {
         'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.excludedPages',
         'config' => array(
             'type' => 'select',
+            'renderType' => 'selectMultipleSideBySide',
             'foreign_table' => 'pages',
             'foreign_table_where' => 'AND doktype = 41 ORDER BY crdate ASC',
             'size' => 5,
