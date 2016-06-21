@@ -1,6 +1,7 @@
 plugin.tx_golb {
 	settings {
 		defaultBackendLayout = 4
+		useRefactoredRepositoryMethods = true
 	}
 }
 

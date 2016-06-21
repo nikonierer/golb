@@ -67,12 +67,12 @@ class BlogController extends BaseController
         $this->categories = $this->categoryRepository->findByRelation($this->contentObject->data['uid'])->toArray();
 
         /** @ToDo: Find another solution?! */
-        if ($this->contentObject->data['golb_action'] !== '' &&
-            $this->reflectionService->hasMethod(get_class($this), $this->contentObject->data['golb_action'] . 'Action')
+        if ($this->contentObject->data['tx_golb_action'] !== '' &&
+            $this->reflectionService->hasMethod(get_class($this), $this->contentObject->data['tx_golb_action'] . 'Action')
         ) {
             /** @ToDo Find a better solution. */
-            $action = $this->contentObject->data['golb_action'];
-            $this->contentObject->data['golb_action'] = '';
+            $action = $this->contentObject->data['tx_golb_action'];
+            $this->contentObject->data['tx_golb_action'] = '';
             $this->forward($action);
         }
     }
@@ -84,14 +84,24 @@ class BlogController extends BaseController
      */
     public function latestAction()
     {
-        $posts = $this->pageRepository->findPosts(
-            $this->pages,
-            $this->contentObject->data['golb_limit'],
-            $this->contentObject->data['golb_offset'],
-            $this->categories,
-            $this->contentObject->data['golb_exclude'],
-            'date'
-        );
+        if($this->settings['useRefactoredRepositoryMethods']) {
+            $posts = $this->pageRepository->findFilteredPosts(
+                $this->contentObject->data['golb_limit'],
+                $this->contentObject->data['golb_offset'],
+                $this->categories,
+                $this->contentObject->data['golb_exclude'],
+                'date'
+            );
+        } else {
+            $posts = $this->pageRepository->findPosts(
+                $this->pages,
+                $this->contentObject->data['golb_limit'],
+                $this->contentObject->data['golb_offset'],
+                $this->categories,
+                $this->contentObject->data['golb_exclude'],
+                'date'
+            );
+        }
 
         $this->view->assign('posts', $posts);
     }
@@ -103,14 +113,24 @@ class BlogController extends BaseController
      */
     public function listAction()
     {
-        $posts = $this->pageRepository->findPosts(
-            $this->pages,
-            $this->contentObject->data['golb_limit'],
-            $this->contentObject->data['golb_offset'],
-            $this->categories,
-            $this->contentObject->data['golb_exclude'],
-            'date'
-        );
+        if($this->settings['useRefactoredRepositoryMethods']) {
+            $posts = $this->pageRepository->findFilteredPosts(
+                $this->contentObject->data['golb_limit'],
+                $this->contentObject->data['golb_offset'],
+                $this->categories,
+                $this->contentObject->data['golb_exclude'],
+                'date'
+            );
+        } else {
+            $posts = $this->pageRepository->findPosts(
+                $this->pages,
+                $this->contentObject->data['golb_limit'],
+                $this->contentObject->data['golb_offset'],
+                $this->categories,
+                $this->contentObject->data['golb_exclude'],
+                'date'
+            );
+        }
 
         $this->view->assign('posts', $posts);
     }

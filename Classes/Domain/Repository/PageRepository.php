@@ -49,6 +49,74 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     protected $categories = array();
 
     /**
+     * Finds all posts based on doktype
+     *
+     * @param int $limit
+     * @param int $offset
+     * @param array $categories
+     * @param string $exclude
+     * @param string $sorting
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findFilteredPosts(
+        $limit = null,
+        $offset = null,
+        $categories = null,
+        $exclude = null,
+        $sorting = null
+    ) {
+        $query = $this->createQuery();
+
+        if ($limit) {
+            $query->setLimit($limit);
+        }
+
+        if ($offset) {
+            $query->setOffset($offset);
+        }
+
+        if ($sorting) {
+            if($sorting == 'date') {
+                $query->setOrderings(
+                    [
+                        'crdate' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING,
+                        'starttime' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+                    ]
+                );
+            } else {
+                $query->setOrderings([$sorting => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
+            }
+        }
+
+        $constraints = [];
+
+        if ($categories) {
+            $subConstraints = [];
+            foreach($categories as $category) {
+                $subConstraints[] = $query->contains('categories', $category);
+            }
+
+            $constraints[] = $query->logicalOr($subConstraints);
+        }
+
+        if ($exclude) {
+            $constraints[] = $query->logicalNot(
+                $query->in('uid', \TYPO3\CMS\Core\Utility\GeneralUtility::intExplode(',', $exclude))
+            );
+        }
+
+        if (count($constraints) > 0) {
+            $query->matching(
+                $query->logicalAnd($constraints)
+            );
+        }
+
+        $posts = $query->execute();
+
+        return $posts;
+    }
+
+    /**
      * Finds a list of blog posts based on a root page
      *
      * @param int|array $rootPages
