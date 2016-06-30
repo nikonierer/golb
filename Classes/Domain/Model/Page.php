@@ -209,7 +209,7 @@ class Page extends AbstractModel
     /**
      * Contains referenced media assets for this page
      *
-     * @var string $media
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $media
      */
     protected $media;
 
@@ -766,5 +766,37 @@ class Page extends AbstractModel
     public function removeContentElement(\Blog\Golb\Domain\Model\ContentElement $contentElement)
     {
         $this->contentElements->detach($contentElement);
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     */
+    public function getMedia()
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $media
+     */
+    public function setMedia($media)
+    {
+        $this->media = $media;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $media
+     */
+    public function addMedia($media)
+    {
+        $this->media->attach($media);
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $media
+     */
+    public function removeMedia($media)
+    {
+        $this->media->detach($media);
     }
 }
