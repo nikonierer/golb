@@ -90,6 +90,8 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
         $constraints = [];
 
+        $constraints[] = $query->equals('doktype', 41);
+
         if ($categories) {
             $subConstraints = [];
             foreach($categories as $category) {
