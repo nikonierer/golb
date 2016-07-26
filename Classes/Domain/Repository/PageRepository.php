@@ -316,7 +316,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         $query = $this->createQuery();
         $query->getQuerySettings()->setRespectStoragePage(FALSE);
 
-        $query->matching($query->in('uid', $ids));
+        $query->matching($query->in('uid', array_keys($ids)));
 
         return $query->execute();
     }
