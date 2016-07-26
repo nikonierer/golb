@@ -153,9 +153,32 @@ $boot = function ($packageKey) {
         ),
     );
 
+
+    $GLOBALS['TCA']['tt_content']['columns']['tx_golb_selected_pages'] = array(
+        'exclude' => 1,
+        'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.tx_golb_selected_pages',
+        'config' => array(
+            'type' => 'group',
+            'internal_type' => 'db',
+            'allowed' => 'pages',
+            'foreign_table' => 'pages',
+            'foreign_table_where' => 'AND doktype = 41 ORDER BY crdate ASC',
+            'default' => 0,
+            'size' => 10,
+            'minitems' => 0,
+            'maxitems' => 9999,
+            'MM' => 'tx_golb_ttcontent_pages_mm',
+            'wizards' => array(
+                'suggest' => array(
+                    'type' => 'suggest'
+                )
+            )
+        )
+    );
+
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(array('Blog', 'golb'), 'CType');
     $GLOBALS['TCA']['tt_content']['types']['golb']['showitem'] =
-        'CType;;4;button;1-1-1, tx_golb_action, tx_golb_sorting, tx_golb_sorting_direction, tx_golb_limit, tx_golb_offset, tx_golb_related, pages, tx_golb_exclude, categories,
+        'CType;;4;button;1-1-1, tx_golb_action, tx_golb_sorting, tx_golb_sorting_direction, tx_golb_limit, tx_golb_offset, pages, tx_golb_exclude, categories,
 		--div--;LLL:EXT:cms/locallang_tca.xml:pages.tabs.access,starttime, endtime, fe_group';
 
     //Set new page types

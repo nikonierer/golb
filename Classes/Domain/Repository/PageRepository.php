@@ -67,6 +67,8 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     ) {
         $query = $this->createQuery();
 
+        $query->getQuerySettings()->setRespectStoragePage(FALSE);
+
         if ($limit) {
             $query->setLimit($limit);
         }
@@ -292,5 +294,30 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
             $this->categories[] = $category;
         }
+    }
+
+    /**
+     * @param int $identifier
+     *
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findPostsByUids($identifier)
+    {
+        $ids = $GLOBALS['TYPO3_DB']->exec_SELECTgetRows(
+            'uid_foreign',
+            'tx_golb_ttcontent_pages_mm',
+            'uid_local =' . $identifier,
+            null,
+            'sorting',
+            null,
+            'uid_foreign'
+        );
+
+        $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(FALSE);
+
+        $query->matching($query->in('uid', $ids));
+
+        return $query->execute();
     }
 }

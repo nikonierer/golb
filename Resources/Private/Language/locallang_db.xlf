@@ -27,9 +27,13 @@
 			<trans-unit id="pages.authorImage">
 				<source>Author image</source>
 			</trans-unit>
-			<trans-unit id="pages.excluddPages">
-                <source>Exclude pages</source>
+			<trans-unit id="pages.excludedPages">
+                <source>Excluded pages</source>
             </trans-unit>
+
+			<trans-unit id="tt_content.tx_golb_selected_posts">
+				<source>Selected posts:</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

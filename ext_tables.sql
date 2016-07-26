@@ -25,5 +25,23 @@ CREATE TABLE tt_content (
   tx_golb_limit int(4) DEFAULT NULL,
   tx_golb_offset int(4) DEFAULT NULL,
   tx_golb_action varchar(40) DEFAULT '' NOT NULL,
-  tx_golb_exclude varchar(40) DEFAULT '' NOT NULL
+  tx_golb_exclude varchar(40) DEFAULT '' NOT NULL,
+  tx_golb_selected_pages int(11) DEFAULT '0' NOT NULL,
+
+);
+
+#
+# Table structure for table 'tx_gks_ttcontent_pages'
+#
+CREATE TABLE tx_golb_ttcontent_pages_mm (
+	uid int(11) NOT NULL auto_increment,
+	uid_local int(11) NOT NULL default '0',
+	uid_foreign int(11) NOT NULL default '0',
+	tablenames varchar(30) NOT NULL default '',
+	sorting int(11) NOT NULL default '0',
+	sorting_foreign int(11) NOT NULL default '0',
+
+	PRIMARY KEY  (uid),
+	KEY uid_local (uid_local),
+	KEY uid_foreign (uid_foreign)
 );
