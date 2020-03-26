@@ -1,23 +1,23 @@
 {
-    "name": "greenfieldr/golb",
-    "type": "typo3-cms-extension",
-    "description": "TYPO3 CMS extension - Blog The Page Way!",
-    "homepage": "https://github.com/nikonierer/golb.git",
-    "license": "GPL-3.0+",
-    "require": {
-        "typo3/cms": ">=6.2.0,<8.0"
-    },
-    "autoload": {
-        "psr-4": {
-            "Blog\\Golb\\": "Classes"
-        }
-    },
-    "authors": [
-        {
-            "name": "Marcel Wieser",
-            "email": "typo3dev@marcel-wieser.de",
-            "homepage": "http://marcel-wieser.de",
-            "role": "Developer"
-        }
-    ]
+  "name": "greenfieldr/golb",
+  "type": "typo3-cms-extension",
+  "description": "TYPO3 CMS extension - Blog The Page Way!",
+  "homepage": "https://github.com/nikonierer/golb.git",
+  "license": "GPL-3.0+",
+  "require": {
+    "typo3/cms": ">=6.2.0,<8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Blog\\Golb\\": "Classes"
+    }
+  },
+  "authors": [
+    {
+      "name": "Marcel Wieser",
+      "email": "typo3dev@marcel-wieser.de",
+      "homepage": "http://marcel-wieser.de",
+      "role": "Developer"
+    }
+  ]
 }

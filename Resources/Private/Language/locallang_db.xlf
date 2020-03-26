@@ -1,35 +1,35 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <xliff version="1.0">
-	<file source-language="en" datatype="plaintext" original="messages" date="2015-02-10T10:50:35Z" product-name="golb">
-		<header/>
-		<body>
-			<trans-unit id="contentElements.sorting">
-				<source>Sorting</source>
-			</trans-unit>
-			<trans-unit id="contentElements.sortingDirection">
-				<source>Sorting direction</source>
-			</trans-unit>
-			<trans-unit id="contentElements.limit">
-				<source>Limit</source>
-			</trans-unit>
-			<trans-unit id="contentElements.offset">
-				<source>Offset</source>
-			</trans-unit>
-			<trans-unit id="contentElements.action">
-				<source>View</source>
-			</trans-unit>
-			<trans-unit id="pages.related">
-				<source>Related posts</source>
-			</trans-unit>
-			<trans-unit id="pages.contentElements">
-				<source>TT Content</source>
-			</trans-unit>
-			<trans-unit id="pages.authorImage">
-				<source>Author image</source>
-			</trans-unit>
-			<trans-unit id="pages.excluddPages">
+    <file source-language="en" datatype="plaintext" original="messages" date="2015-02-10T10:50:35Z" product-name="golb">
+        <header/>
+        <body>
+            <trans-unit id="contentElements.sorting">
+                <source>Sorting</source>
+            </trans-unit>
+            <trans-unit id="contentElements.sortingDirection">
+                <source>Sorting direction</source>
+            </trans-unit>
+            <trans-unit id="contentElements.limit">
+                <source>Limit</source>
+            </trans-unit>
+            <trans-unit id="contentElements.offset">
+                <source>Offset</source>
+            </trans-unit>
+            <trans-unit id="contentElements.action">
+                <source>View</source>
+            </trans-unit>
+            <trans-unit id="pages.related">
+                <source>Related posts</source>
+            </trans-unit>
+            <trans-unit id="pages.contentElements">
+                <source>TT Content</source>
+            </trans-unit>
+            <trans-unit id="pages.authorImage">
+                <source>Author image</source>
+            </trans-unit>
+            <trans-unit id="pages.excluddPages">
                 <source>Exclude pages</source>
             </trans-unit>
-		</body>
-	</file>
+        </body>
+    </file>
 </xliff>
