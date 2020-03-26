@@ -37,12 +37,12 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
     /**
      * @var array
      */
-    protected $configuration = array(
+    protected $configuration = [
         'itemsPerPage' => 5,
         'insertAbove' => false,
         'insertBelow' => true,
         'maximumVisiblePages' => 7
-    );
+    ];
 
     /**
      * @var array
@@ -157,7 +157,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
     public function getVisibleObjects($objects)
     {
         $i = 0;
-        $modifiedObjects = array();
+        $modifiedObjects = [];
         $indexMin = $this->itemsPerPage * ($this->currentPage - 1);
         $indexMax = $this->itemsPerPage * $this->currentPage - 1;
 
@@ -184,9 +184,9 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
         $this->setNumberOfPages(intval(ceil(count($this->objects) / (integer)$this->itemsPerPage)));
         $this->setCurrentPage((integer)$currentPage);
 
-        $this->view->assign('contentArguments', array(
+        $this->view->assign('contentArguments', [
             $this->widgetConfiguration['as'] => $this->getVisibleObjects($this->objects)
-        ));
+        ]);
         $this->view->assign('configuration', $this->configuration);
         if ($this->numberOfPages >= 2) {
             $this->view->assign('pagination', $this->buildPagination());
@@ -207,15 +207,15 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
         $lastPage = min($firstPage + $sidePageCount * 2, $this->numberOfPages);
         $firstPage = max($lastPage - $sidePageCount * 2, 1);
 
-        $pages = array();
+        $pages = [];
         foreach (range($firstPage, $lastPage) as $index) {
-            $pages[] = array(
+            $pages[] = [
                 'number' => $index,
                 'isCurrent' => ($index === $this->currentPage)
-            );
+            ];
         }
 
-        $pagination = array(
+        $pagination = [
             'pages' => $pages,
             'current' => $this->currentPage,
             'numberOfPages' => $this->numberOfPages,
@@ -224,7 +224,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
             'lastPage' => $this->numberOfPages,
             'isFirstPage' => ($this->currentPage == 1),
             'isLastPage' => ($this->currentPage == $this->numberOfPages)
-        );
+        ];
 
         return $this->addPreviousAndNextPage($pagination);
     }

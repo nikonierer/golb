@@ -49,7 +49,7 @@ class ListPostsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewH
      */
     public function render($posts, $getFirst = false)
     {
-        $result = array();
+        $result = [];
 
         if (!empty($posts)) {
 

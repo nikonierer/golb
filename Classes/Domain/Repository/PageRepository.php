@@ -32,14 +32,14 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @var array $posts
      */
-    protected $posts = array();
+    protected $posts = [];
 
     /**
      * Property to collect categories
      *
      * @var array $categories
      */
-    protected $categories = array();
+    protected $categories = [];
 
     /**
      * Finds a list of blog posts based on a root page
@@ -51,7 +51,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
 
         if (is_array($rootPages)) {
-            $resultArray = array();
+            $resultArray = [];
 
             foreach ($rootPages as $rootPage) {
                 $result = $this->findByIdentifier($rootPage);
@@ -73,7 +73,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
         }
 
-        return array();
+        return [];
     }
 
     /**
@@ -89,13 +89,13 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $pages = $this->findSubPagesByPageIds($rootPages);
 
-        $this->posts = array();
+        $this->posts = [];
         $this->traversePages($pages);
 
         if ($exclude) {
             $excludedPages = explode(',', $exclude);
         } else {
-            $excludedPages = array();
+            $excludedPages = [];
         }
         /**
          * if sorting is provided as an argument the array is sorted based on the type of sorting
@@ -145,8 +145,8 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
          * @ToDo: Refactoring needed.
          */
         if (count($categories) > 0) {
-            $this->categories = array();
-            $categoryIds = array();
+            $this->categories = [];
+            $categoryIds = [];
             /** @var \Blog\Golb\Domain\Model\Category $category */
             $this->traverseCategories($categories);
 
@@ -155,7 +155,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             }
 
             $posts = $this->posts;
-            $this->posts = array();
+            $this->posts = [];
             foreach ($posts as $post) {
                 /**    @var \Blog\Golb\Domain\Model\Page $post */
                 foreach ($post->getCategories() as $cat) {
