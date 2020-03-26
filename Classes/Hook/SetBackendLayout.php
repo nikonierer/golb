@@ -1,6 +1,8 @@
 <?php
 namespace Blog\Golb\Hook;
 
+    use Blog\Golb\Constants;
+
     /***************************************************************
      *  Copyright notice
      *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -26,13 +28,6 @@ namespace Blog\Golb\Hook;
 class SetBackendLayout
 {
 
-    /**
-     * Defines doktype number for blog posts.
-     *
-     * @var int $blogPostDokType
-     */
-    protected static $blogPostDokType = 41;
-
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj)
     {
         /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
@@ -47,7 +42,7 @@ class SetBackendLayout
 
         if ($table == 'pages' &&
             ($status == 'new' || $status == 'update') &&
-            $fieldArray['doktype'] == self::$blogPostDokType
+            $fieldArray['doktype'] == Constants::BLOG_POST_DOKTYPE
         ) {
 
             $fieldArray['backend_layout'] = $settings['defaultBackendLayout'];

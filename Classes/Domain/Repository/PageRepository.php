@@ -26,14 +26,6 @@ namespace Blog\Golb\Domain\Repository;
  */
 class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-
-    /**
-     * Defines doktype number for blog posts.
-     *
-     * @var int $blogPostDokType
-     */
-    protected static $blogPostDokType = 41;
-
     /**
      * Property to collect posts
      *
@@ -201,7 +193,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 self::traversePages($page->getSubpages()->toArray());
             }
 
-            if ($page->getDoktype() == self::$blogPostDokType) {
+            if ($page->getDoktype() == Constants::BLOG_POST_DOKTYPE) {
                 $this->posts[] = $page;
             }
         }

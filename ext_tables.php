@@ -76,7 +76,7 @@ $boot = function ($packageKey) {
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
             'foreign_table' => 'pages',
-            'foreign_table_where' => 'AND doktype = 41 ORDER BY crdate ASC',
+            'foreign_table_where' => 'AND doktype = ' . \Blog\Golb\Constants::BLOG_POST_DOKTYPE . ' ORDER BY crdate ASC',
             'size' => 5,
             'minitems' => 0,
             'maxitems' => 4,
@@ -145,7 +145,7 @@ $boot = function ($packageKey) {
             'type' => 'select',
             'renderType' => 'selectMultipleSideBySide',
             'foreign_table' => 'pages',
-            'foreign_table_where' => 'AND doktype = 41 ORDER BY crdate ASC',
+            'foreign_table_where' => 'AND doktype = ' . \Blog\Golb\Constants::BLOG_POST_DOKTYPE . ' ORDER BY crdate ASC',
             'size' => 5,
             'minitems' => 0,
             'maxitems' => 9999,
@@ -159,30 +159,30 @@ $boot = function ($packageKey) {
 		--div--;LLL:EXT:cms/locallang_tca.xml:pages.tabs.access,starttime, endtime, fe_group';
 
     //Set new page types
-    $GLOBALS['TCA']['pages']['types']['41'] = $GLOBALS['TCA']['pages']['types']['1'];
+    $GLOBALS['TCA']['pages']['types'][\Blog\Golb\Constants::BLOG_POST_DOKTYPE] = $GLOBALS['TCA']['pages']['types']['1'];
 
     $pageItems = &$GLOBALS['TCA']['pages']['columns']['doktype']['config']['items'];
     array_push($pageItems, array('Golb', '--div--'));
-    array_push($pageItems, array('Blog post', '41', 'EXT:golb/Resources/Public/Icons/doktype_blogpost.gif'));
+    array_push($pageItems, array('Blog post', \Blog\Golb\Constants::BLOG_POST_DOKTYPE, 'EXT:golb/Resources/Public/Icons/doktype_blogpost.gif'));
 
     $pageOverlayItems = &$GLOBALS['TCA']['pages_language_overlay']['columns']['doktype']['config']['items'];
     array_push($pageOverlayItems, array('Golb', '--div--'));
-    array_push($pageOverlayItems, array('Blog post', '41', 'EXT:golb/Resources/Public/Icons/doktype_blogpost.gif'));
+    array_push($pageOverlayItems, array('Blog post', \Blog\Golb\Constants::BLOG_POST_DOKTYPE, 'EXT:golb/Resources/Public/Icons/doktype_blogpost.gif'));
 
     $GLOBALS['TCA']['pages_language_overlay']['columns']['doktype']['config']['items'][] = array(
         'Blog post',
-        '41',
+        \Blog\Golb\Constants::BLOG_POST_DOKTYPE,
         'EXT:golb/Resources/Public/Icons/doktype_blogpost.gif'
     );
 
     \TYPO3\CMS\Backend\Sprite\SpriteManager::addTcaTypeIcon(
         'pages',
-        '41',
+        \Blog\Golb\Constants::BLOG_POST_DOKTYPE,
         $extPath . 'Resources/Public/Icons/doktype_blogpost.gif'
     );
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig(
-        'options.pageTree.doktypesToShowInNewPageDragArea := addToList(41)'
+        'options.pageTree.doktypesToShowInNewPageDragArea := addToList(' . \Blog\Golb\Constants::BLOG_POST_DOKTYPE . ')'
     );
 };
 
