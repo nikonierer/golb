@@ -2,6 +2,8 @@
 
 namespace Blog\Golb\Domain\Repository;
 
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -31,7 +33,7 @@ class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRe
      * @param $id
      * @param string $tableName
      * @param string $fieldName
-     * @return \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult
+     * @return QueryResultInterface
      */
     public function findByRelation($id, $tableName = 'tt_content', $fieldName = 'categories')
     {

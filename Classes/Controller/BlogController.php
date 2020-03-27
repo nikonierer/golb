@@ -59,6 +59,7 @@ class BlogController extends BaseController
      * Sets pages and categories properties
      *
      * @return void
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
      */
     public function initializeAction()
     {

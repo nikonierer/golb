@@ -28,7 +28,13 @@ use Blog\Golb\Constants;
  */
 class SetBackendLayout
 {
-
+    /**
+     * @param $status
+     * @param $table
+     * @param $id
+     * @param $fieldArray
+     * @param $pObj
+     */
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj)
     {
         /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */

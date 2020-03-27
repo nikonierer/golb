@@ -41,7 +41,7 @@ class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetView
     /**
      * Injection of widget controller
      *
-     * @param \TYPO3\Blog\Golb\\PaginateController $controller
+     * @param \Blog\Golb\Controller\PaginateController $controller
      * @return void
      */
     public function injectController(\Blog\Golb\Controller\PaginateController $controller)

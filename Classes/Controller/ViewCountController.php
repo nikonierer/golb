@@ -45,6 +45,7 @@ class ViewCountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionContro
      * Counts view
      *
      * @return string Empty string.
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
      */
     public function countViewAction()
     {

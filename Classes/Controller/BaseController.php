@@ -22,7 +22,7 @@ namespace Blog\Golb\Controller;
  ***************************************************************/
 
 /**
- * Class BAseController
+ * Class BaseController
  *
  * @package Blog\Golb\Domain\Controller
  */
