@@ -2,6 +2,10 @@
 
 namespace Blog\Golb\Domain\Repository;
 
+use Blog\Golb\Constants;
+use Blog\Golb\Domain\Model\Category;
+use Blog\Golb\Domain\Model\Page;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -55,8 +59,8 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 
             foreach ($rootPages as $rootPage) {
                 $result = $this->findByIdentifier($rootPage);
-                if ($result instanceof \Blog\Golb\Domain\Model\Page) {
-                    /** @var \Blog\Golb\Domain\Model\Page $result */
+                if ($result instanceof Page) {
+                    /** @var Page $result */
                     foreach ($result->getSubpages()->toArray() as $page) {
                         $resultArray[] = $page;
                     }
@@ -67,8 +71,8 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         } else {
             $result = $this->findByIdentifier((int)$rootPages);
 
-            if ($result instanceof \Blog\Golb\Domain\Model\Page) {
-                /** @var \Blog\Golb\Domain\Model\Page $result */
+            if ($result instanceof Page) {
+                /** @var Page $result */
                 return $result->getSubpages()->toArray();
             }
         }
@@ -147,7 +151,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
         if (count($categories) > 0) {
             $this->categories = [];
             $categoryIds = [];
-            /** @var \Blog\Golb\Domain\Model\Category $category */
+            /** @var Category $category */
             $this->traverseCategories($categories);
 
             foreach ($this->categories as $category) {
@@ -157,9 +161,9 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             $posts = $this->posts;
             $this->posts = [];
             foreach ($posts as $post) {
-                /**    @var \Blog\Golb\Domain\Model\Page $post */
+                /**    @var Page $post */
                 foreach ($post->getCategories() as $cat) {
-                    /** @var \Blog\Golb\Domain\Model\Category $cat */
+                    /** @var Category $cat */
                     if (in_array($cat->getUid(), $categoryIds)) {
                         $this->posts[] = $post;
                     }
@@ -187,7 +191,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     protected function traversePages($pages)
     {
-        /** @var \Blog\Golb\Domain\Model\Page $page */
+        /** @var Page $page */
 
         foreach ($pages as $page) {
             if ($page->getSubpages() > 0) {
@@ -208,7 +212,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      */
     protected function traverseCategories($categories)
     {
-        /** @var \Blog\Golb\Domain\Model\Category $category */
+        /** @var Category $category */
         foreach ($categories as $category) {
             if ($category->getSubCategories() > 0) {
                 self::traverseCategories($category->getSubCategories()->toArray());

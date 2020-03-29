@@ -2,6 +2,10 @@
 
 namespace Blog\Golb\Controller;
 
+use Blog\Golb\Domain\Repository\CategoryRepository;
+use Blog\Golb\Domain\Repository\PageRepository;
+use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -30,13 +34,13 @@ class BlogController extends BaseController
 {
 
     /**
-     * @var \Blog\Golb\Domain\Repository\PageRepository
+     * @var PageRepository
      * @inject
      */
     protected $pageRepository;
 
     /**
-     * @var \Blog\Golb\Domain\Repository\CategoryRepository
+     * @var CategoryRepository
      * @inject
      */
     protected $categoryRepository;
@@ -59,7 +63,7 @@ class BlogController extends BaseController
      * Sets pages and categories properties
      *
      * @return void
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\StopActionException
+     * @throws StopActionException
      */
     public function initializeAction()
     {

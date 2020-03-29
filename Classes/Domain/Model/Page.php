@@ -2,6 +2,8 @@
 
 namespace Blog\Golb\Domain\Model;
 
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -101,7 +103,7 @@ class Page extends AbstractModel
     /**
      * Contains relations to selected categories for this page
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Category> $categories
+     * @var ObjectStorage<\Blog\Golb\Domain\Model\Category> $categories
      */
     protected $categories;
 
@@ -268,7 +270,7 @@ class Page extends AbstractModel
      * Contains related pages
      *
      * @lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
+     * @var ObjectStorage<\Blog\Golb\Domain\Model\Page>
      */
     protected $relatedPages;
 
@@ -311,7 +313,7 @@ class Page extends AbstractModel
      * List of subpages
      *
      * @lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
+     * @var ObjectStorage<\Blog\Golb\Domain\Model\Page>
      */
     protected $subpages;
 
@@ -382,7 +384,7 @@ class Page extends AbstractModel
      * List of content elements
      *
      * @lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\ContentElement>
+     * @var ObjectStorage<\Blog\Golb\Domain\Model\ContentElement>
      */
     protected $contentElements;
 
@@ -391,10 +393,10 @@ class Page extends AbstractModel
      */
     public function __construct()
     {
-        $this->categories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->relatedPages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->subpages = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-        $this->contentElements = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->categories = new ObjectStorage();
+        $this->relatedPages = new ObjectStorage();
+        $this->subpages = new ObjectStorage();
+        $this->contentElements = new ObjectStorage();
     }
 
     /**

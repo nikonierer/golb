@@ -2,6 +2,8 @@
 
 namespace Blog\Golb\Controller;
 
+use TYPO3\CMS\Core\Utility\ArrayUtility;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2013 Paul Beck <pb@teamgeist-medien.de>, Armin Ruediger Vieweg <info@professorweb.de>
@@ -72,7 +74,7 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
     public function initializeAction()
     {
         $this->objects = $this->widgetConfiguration['objects'];
-        \TYPO3\CMS\Core\Utility\ArrayUtility::mergeRecursiveWithOverrule($this->configuration,
+        ArrayUtility::mergeRecursiveWithOverrule($this->configuration,
             $this->widgetConfiguration['configuration'], false);
     }
 

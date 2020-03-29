@@ -3,6 +3,10 @@
 namespace Blog\Golb\Hook;
 
 use Blog\Golb\Constants;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
+use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /***************************************************************
  *  Copyright notice
@@ -37,13 +41,13 @@ class SetBackendLayout
      */
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj)
     {
-        /** @var \TYPO3\CMS\Extbase\Object\ObjectManager $objectManager */
+        /** @var ObjectManager $objectManager */
         $objectManager =
-            \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
+            \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ObjectManager::class);
         $configurationManager =
-            $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManagerInterface');
+            $objectManager->get(ConfigurationManagerInterface::class);
         $settings = $configurationManager->getConfiguration(
-            \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             'golb'
         );
 
