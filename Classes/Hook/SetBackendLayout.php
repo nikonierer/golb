@@ -28,7 +28,7 @@ use TYPO3\CMS\Extbase\Object\ObjectManager;
  ***************************************************************/
 
 /**
- * Sets correct backend layout for new pages of doktype 41
+ * Sets correct backend layout for new blog posts
  */
 class SetBackendLayout
 {
@@ -55,9 +55,21 @@ class SetBackendLayout
             ($status == 'new' || $status == 'update') &&
             $fieldArray['doktype'] == Constants::BLOG_POST_DOKTYPE
         ) {
+            $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
+                ->getQueryBuilderForTable('backend_layout');
 
             $fieldArray['backend_layout'] = $settings['defaultBackendLayout'];
             $fieldArray['backend_layout_next_level'] = $settings['defaultBackendLayout'];
+
+            $backendLayouts = $queryBuilder->count('uid')->from('backend_layout')->where(
+                $queryBuilder->expr()->eq(
+                    'uid',
+                    $queryBuilder->createNamedParameter($settings['defaultBackendLayout'], \PDO::PARAM_INT))
+            )->execute()->fetchColumn(0);
+
+            if ($backendLayouts === 0) {
+                $fieldArray['backend_layout'] = $fieldArray['backend_layout_next_level'] = '';
+            }
         }
     }
 }
