@@ -32,7 +32,7 @@ $boot = function () {
         ]
     );
 
-    $temporaryColumns = [
+    $tempColumns = [
         'tx_golb_related' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.related',
@@ -81,10 +81,10 @@ $boot = function () {
         ]
     ];
 
-
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumns);
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',
-        '--div--;Golb, 
+        '--div--;LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.golbTab, 
         tx_golb_related'
     );
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(

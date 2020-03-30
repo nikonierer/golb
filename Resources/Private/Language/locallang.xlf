@@ -6,6 +6,9 @@
             <trans-unit id="tx_golb_domain_model_page">
                 <source>Page</source>
             </trans-unit>
+            <trans-unit id="plugin.blogposts">
+                <source>Blogposts</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
