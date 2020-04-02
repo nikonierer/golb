@@ -39,6 +39,9 @@
             <trans-unit id="pages.subpages">
                 <source>Sub pages</source>
             </trans-unit>
+            <trans-unit id="pages.categories">
+                <source>Categories</source>
+            </trans-unit>
             <trans-unit id="tt_content.excludedPages">
                 <source>Exclude pages</source>
             </trans-unit>

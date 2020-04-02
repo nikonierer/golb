@@ -5,6 +5,23 @@ if (!defined('TYPO3_MODE')) {
 }
 
 $boot = function () {
+    // Add an extra categories selection field to the pages table
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::makeCategorizable(
+        'examples',
+        'pages',
+        'tx_golb_categories',
+        [
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.categories',
+            'exclude' => false,
+            'fieldConfiguration' => [
+                'foreign_table_where' => ' AND sys_category.sys_language_uid IN (-1, 0) ORDER BY sys_category.title ASC',
+            ],
+            'l10n_mode' => 'exclude',
+            'l10n_display' => 'hideDiff',
+        ]
+    );
+
+
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
         'pages',
         'doktype',
@@ -85,8 +102,8 @@ $boot = function () {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumns);
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',
-        '--div--;LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.golbTab, 
-        tx_golb_related'
+        '--div--;LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.golbTab, ' .
+            'tx_golb_categories,tx_golb_related'
     );
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',

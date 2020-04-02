@@ -17,6 +17,7 @@ config.tx_extbase {
                         lastUpdated.mapOnProperty = lastUpdated
                         newUntil.mapOnProperty = newUntil
 
+                        tx_golb_categories.mapOnProperty = categories
                         tx_golb_author_image.mapOnProperty = authorImage
                         tx_golb_view_count.mapOnProperty = viewCount
                         tx_golb_related.mapOnProperty = relatedPosts
