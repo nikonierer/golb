@@ -72,11 +72,15 @@ $boot = function () {
         ],
         'tx_golb_subpages' => [
             'exclude' => 0,
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.subpages',
             'config' => [
-                'type' => 'inline',
-                'foreign_table' => 'pages',
-                'foreign_field' => 'pid',
+                'type' => 'group',
+                'internal_type' => 'db',
+                'allowed' => 'pages',
                 'maxitems' => 9999,
+                'minitems' => 0,
+                'size' => 5,
+                'default' => 0
             ]
         ]
     ];

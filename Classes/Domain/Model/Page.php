@@ -103,7 +103,8 @@ class Page extends AbstractModel
     /**
      * Contains relations to selected categories for this page
      *
-     * @var ObjectStorage<\Blog\Golb\Domain\Model\Category> $categories
+     * @lazy
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Category>
      */
     protected $categories;
 
@@ -270,7 +271,7 @@ class Page extends AbstractModel
      * Contains related pages
      *
      * @lazy
-     * @var ObjectStorage<\Blog\Golb\Domain\Model\Page>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model/Page>
      */
     protected $relatedPages;
 
@@ -313,7 +314,7 @@ class Page extends AbstractModel
      * List of subpages
      *
      * @lazy
-     * @var ObjectStorage<\Blog\Golb\Domain\Model\Page>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
      */
     protected $subpages;
 
@@ -384,7 +385,7 @@ class Page extends AbstractModel
      * List of content elements
      *
      * @lazy
-     * @var ObjectStorage<\Blog\Golb\Domain\Model\ContentElement>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\ContentElement>
      */
     protected $contentElements;
 
@@ -694,6 +695,22 @@ class Page extends AbstractModel
     public function removeSubpage(\Blog\Golb\Domain\Model\Page $subpage)
     {
         $this->subpages->detach($subpage);
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     */
+    public function getSubpages()
+    {
+        return $this->subpages;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $subpages
+     */
+    public function setSubpages($subpages)
+    {
+        $this->subpages = $subpages;
     }
 
     /**
