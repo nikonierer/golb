@@ -2,6 +2,8 @@
 
 namespace Blog\Golb\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -30,7 +32,7 @@ namespace Blog\Golb\Domain\Model;
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  * @package Blog\Golb\Domain\Model
  */
-class ContentElement extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class ContentElement extends AbstractEntity
 {
 
     /**

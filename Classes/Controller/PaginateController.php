@@ -3,6 +3,7 @@
 namespace Blog\Golb\Controller;
 
 use TYPO3\CMS\Core\Utility\ArrayUtility;
+use TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController;
 
 /***************************************************************
  *  Copyright notice
@@ -33,7 +34,7 @@ use TYPO3\CMS\Core\Utility\ArrayUtility;
  * @author     Marcel Wieser <typo3dev@marcel-wieser.de>
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController
+class PaginateController extends AbstractWidgetController
 {
 
     /**
@@ -252,4 +253,3 @@ class PaginateController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetCont
     }
 }
 
-?>

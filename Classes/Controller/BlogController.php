@@ -38,7 +38,7 @@ class BlogController extends BaseController
     protected $pageRepository;
 
     /**
-     * @var Blog\Golb\Domain\Repository\CategoryRepository
+     * @var \Blog\Golb\Domain\Repository\CategoryRepository
      * @inject
      */
     protected $categoryRepository;

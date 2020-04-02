@@ -2,6 +2,8 @@
 
 namespace Blog\Golb\ViewHelpers;
 
+use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2015  Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -29,7 +31,7 @@ namespace Blog\Golb\ViewHelpers;
  * @copyright  2015 Copyright belongs to the respective authors
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
-class ListPostsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
+class ListPostsViewHelper extends AbstractViewHelper
 {
 
     /**

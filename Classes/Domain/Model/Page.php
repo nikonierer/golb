@@ -271,7 +271,7 @@ class Page extends AbstractModel
      * Contains related pages
      *
      * @lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model/Page>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
      */
     protected $relatedPages;
 

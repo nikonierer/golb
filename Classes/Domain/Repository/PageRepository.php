@@ -5,6 +5,7 @@ namespace Blog\Golb\Domain\Repository;
 use Blog\Golb\Constants;
 use Blog\Golb\Domain\Model\Category;
 use Blog\Golb\Domain\Model\Page;
+use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /***************************************************************
  *  Copyright notice
@@ -29,7 +30,7 @@ use Blog\Golb\Domain\Model\Page;
 /**
  * The repository for pages
  */
-class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class PageRepository extends Repository
 {
     /**
      * Property to collect posts
@@ -87,6 +88,8 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param int $limit
      * @param int $offset
      * @param array $categories
+     * @param bool $exclude
+     * @param null $sorting
      * @return array
      */
     public function findPosts($rootPages, $limit, $offset = 0, $categories = null, $exclude = false, $sorting = null)

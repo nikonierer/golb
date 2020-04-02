@@ -43,7 +43,7 @@ class SetBackendLayout
     {
         /** @var ObjectManager $objectManager */
         $objectManager =
-            \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ObjectManager::class);
+            GeneralUtility::makeInstance(ObjectManager::class);
         $configurationManager =
             $objectManager->get(ConfigurationManagerInterface::class);
         $settings = $configurationManager->getConfiguration(

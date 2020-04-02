@@ -2,6 +2,8 @@
 
 namespace Blog\Golb\Controller;
 
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -26,7 +28,7 @@ namespace Blog\Golb\Controller;
  *
  * @package Blog\Golb\Domain\Controller
  */
-class ViewCountController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class ViewCountController extends ActionController
 {
 
     /**

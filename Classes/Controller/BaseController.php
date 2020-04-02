@@ -2,6 +2,7 @@
 
 namespace Blog\Golb\Controller;
 
+use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /***************************************************************
@@ -28,7 +29,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  *
  * @package Blog\Golb\Domain\Controller
  */
-class BaseController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
+class BaseController extends ActionController
 {
 
     /**

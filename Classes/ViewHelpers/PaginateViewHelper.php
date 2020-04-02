@@ -2,6 +2,8 @@
 
 namespace Blog\Golb\ViewHelpers;
 
+use TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2013 Paul Beck <pb@teamgeist-medien.de>, Armin Ruediger Vieweg <info@professorweb.de>
@@ -30,7 +32,7 @@ namespace Blog\Golb\ViewHelpers;
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
  */
 
-class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper
+class PaginateViewHelper extends AbstractWidgetViewHelper
 {
 
     /**
@@ -67,5 +69,3 @@ class PaginateViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetView
         return $this->initiateSubRequest();
     }
 }
-
-?>
