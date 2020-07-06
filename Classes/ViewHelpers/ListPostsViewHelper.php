@@ -2,7 +2,9 @@
 
 namespace Blog\Golb\ViewHelpers;
 
-use TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper;
+use Blog\Golb\Domain\Model\Page;
+use Blog\Golb\Domain\Repository\PageRepository;
+use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /***************************************************************
  *  Copyright notice
@@ -37,17 +39,24 @@ class ListPostsViewHelper extends AbstractViewHelper
     /**
      * Injects PageRepository
      *
-     * @var \Blog\Golb\Domain\Repository\PageRepository
-     * @inject
+     * @var PageRepository
      */
     protected $pageRepository;
+
+    /**
+     * @param PageRepository $pageRepository
+     */
+    public function injectPageRepository(PageRepository $pageRepository)
+    {
+        $this->pageRepository = $pageRepository;
+    }
 
     /**
      * This view helper return the golb page model of the related posts.
      *
      * @param string|array $posts The uids of a related post.
      * @param boolean $getFirst If true it will return first page object.
-     * @return array|\Blog\Golb\Domain\Model\Page This view helper returns the golb page model of the related posts.
+     * @return array|Page This view helper returns the golb page model of the related posts.
      */
     public function render($posts, $getFirst = false)
     {

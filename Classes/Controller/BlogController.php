@@ -2,6 +2,8 @@
 
 namespace Blog\Golb\Controller;
 
+use Blog\Golb\Domain\Repository\CategoryRepository;
+use Blog\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 
 /***************************************************************
@@ -32,14 +34,12 @@ class BlogController extends BaseController
 {
 
     /**
-     * @var \Blog\Golb\Domain\Repository\PageRepository
-     * @inject
+     * @var PageRepository
      */
     protected $pageRepository;
 
     /**
-     * @var \Blog\Golb\Domain\Repository\CategoryRepository
-     * @inject
+     * @var CategoryRepository
      */
     protected $categoryRepository;
 
@@ -56,6 +56,18 @@ class BlogController extends BaseController
      * @var array $categories
      */
     protected $categories;
+
+    /**
+     * BlogController constructor.
+     *
+     * @param PageRepository $pageRepository
+     * @param CategoryRepository $categoryRepository
+     */
+    public function __construct(PageRepository $pageRepository, CategoryRepository $categoryRepository)
+    {
+        $this->pageRepository = $pageRepository;
+        $this->categoryRepository = $categoryRepository;
+    }
 
     /**
      * Sets pages and categories properties

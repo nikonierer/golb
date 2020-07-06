@@ -2,7 +2,11 @@
 
 namespace Blog\Golb\Controller;
 
+use Blog\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
+use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
+use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 
 /***************************************************************
  *  Copyright notice
@@ -32,22 +36,32 @@ class ViewCountController extends ActionController
 {
 
     /**
-     * @var \Blog\Golb\Domain\Repository\PageRepository
-     * @inject
+     * @var PageRepository
      */
     protected $pageRepository;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager
-     * @inject
+     * @var PersistenceManager
      */
     protected $persistenceManager;
+
+    /**
+     * ViewCountController constructor.
+     *
+     * @param PageRepository $pageRepository
+     * @param PersistenceManagerInterface $persistenceManager
+     */
+    public function __construct(PageRepository $pageRepository, PersistenceManagerInterface $persistenceManager)
+    {
+        $this->pageRepository = $pageRepository;
+        $this->persistenceManager = $persistenceManager;
+    }
 
     /**
      * Counts view
      *
      * @return string Empty string.
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException
+     * @throws UnknownObjectException
      */
     public function countViewAction()
     {
