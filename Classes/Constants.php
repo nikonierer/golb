@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Golb;
+namespace Greenfieldr\Golb;
 
 /***************************************************************
  *  Copyright notice

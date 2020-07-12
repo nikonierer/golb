@@ -35,6 +35,5 @@ $boot = function ($packageKey) {
     ];
 };
 
-/** @var string $_EXTKEY */
-$boot($_EXTKEY);
+$boot('golb');
 unset($boot);
