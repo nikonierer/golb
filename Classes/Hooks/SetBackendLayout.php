@@ -1,12 +1,11 @@
 <?php
 
-namespace Greenfieldr\Golb\Hook;
+namespace Greenfieldr\Golb\Hooks;
 
 use Greenfieldr\Golb\Constants;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
-use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 
 /***************************************************************
  *  Copyright notice
@@ -32,6 +31,7 @@ use TYPO3\CMS\Extbase\Configuration\Exception\InvalidConfigurationTypeException;
  */
 class SetBackendLayout
 {
+
     /**
      * @param $status
      * @param $table
@@ -41,11 +41,7 @@ class SetBackendLayout
      */
     public function processDatamap_postProcessFieldArray($status, $table, $id, &$fieldArray, &$pObj)
     {
-        /** @var ObjectManager $objectManager */
-        $objectManager =
-            GeneralUtility::makeInstance(ObjectManager::class);
-        $configurationManager =
-            $objectManager->get(ConfigurationManagerInterface::class);
+        $configurationManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(ConfigurationManagerInterface::class);
         $settings = $configurationManager->getConfiguration(
             ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
             'golb'

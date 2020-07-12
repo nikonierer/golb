@@ -27,8 +27,8 @@ $boot = function ($packageKey) {
         ]
     );
 
-    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][] =
-        'EXT:golb/Classes/Hook/SetBackendLayout.php:Greenfieldr\Golb\Hook\SetBackendLayout';
+    $GLOBALS['TYPO3_CONF_VARS']['SC_OPTIONS']['t3lib/class.t3lib_tcemain.php']['processDatamapClass'][\Greenfieldr\Golb\Hooks\SetBackendLayout::class]
+        = \Greenfieldr\Golb\Hooks\SetBackendLayout::class;
 
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['Objects']['TYPO3\\CMS\\Extbase\\Domain\\Model\\Category'] = [
         'className' => 'Greenfieldr\\Golb\\Domain\\Model\\Category',
