@@ -4,6 +4,8 @@ if (!defined('TYPO3_MODE')) {
 }
 
 $boot = function ($packageKey) {
+    $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['golb'][] = 'Greenfieldr\\Golb\\ViewHelpers';
+
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
         'Blog.' . $packageKey,
         'Blog',
