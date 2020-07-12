@@ -23,12 +23,12 @@ $boot = function ($packageKey) {
 
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-        'Blog.' . $packageKey,
+        $packageKey,
         'Blog',
         'Blog'
     );
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-        'Blog.' . $packageKey,
+        $packageKey,
         'ViewCount',
         'ViewCount'
     );
@@ -40,6 +40,5 @@ $boot = function ($packageKey) {
     );
 };
 
-/** @var string $_EXTKEY */
-$boot($_EXTKEY);
+$boot('golb');
 unset($boot);

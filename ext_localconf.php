@@ -7,23 +7,23 @@ $boot = function ($packageKey) {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['golb'][] = 'Greenfieldr\\Golb\\ViewHelpers';
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'Blog.' . $packageKey,
+        $packageKey,
         'Blog',
         [
-            'Blog' => 'latest, list'
+            \Greenfieldr\Golb\Controller\BlogController::class => 'latest, list'
         ],
         [
-            'Blog' => 'list'
+            \Greenfieldr\Golb\Controller\BlogController::class => 'list'
         ]
     );
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        'Blog.' . $packageKey,
+        $packageKey,
         'ViewCount',
         [
-            'ViewCount' => 'countView'
+            \Greenfieldr\Golb\Controller\ViewCountController::class => 'countView'
         ],
         [
-            'ViewCount' => 'countView'
+            \Greenfieldr\Golb\Controller\ViewCountController::class => 'countView'
         ]
     );
 
