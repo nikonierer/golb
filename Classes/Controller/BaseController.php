@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Golb\Controller;
+namespace Greenfieldr\Golb\Controller;
 
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -27,7 +27,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 /**
  * Class BaseController
  *
- * @package Blog\Golb\Domain\Controller
+ * @package Greenfieldr\Golb\Domain\Controller
  */
 class BaseController extends ActionController
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Golb\Domain\Model;
+namespace Greenfieldr\Golb\Domain\Model;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
@@ -27,7 +27,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 /**
  * Maps on table 'pages'
  *
- * @package Blog\Golb\Domain\Model
+ * @package Greenfieldr\Golb\Domain\Model
  */
 class Page extends AbstractModel
 {
@@ -104,7 +104,7 @@ class Page extends AbstractModel
      * Contains relations to selected categories for this page
      *
      * @lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Category>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Category>
      */
     protected $categories;
 
@@ -271,7 +271,7 @@ class Page extends AbstractModel
      * Contains related pages
      *
      * @lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Page>
      */
     protected $relatedPages;
 
@@ -314,7 +314,7 @@ class Page extends AbstractModel
      * List of subpages
      *
      * @lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Page>
      */
     protected $subpages;
 
@@ -385,7 +385,7 @@ class Page extends AbstractModel
      * List of content elements
      *
      * @lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\ContentElement>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\ContentElement>
      */
     protected $contentElements;
 
@@ -424,10 +424,10 @@ class Page extends AbstractModel
     /**
      * Adds a category
      *
-     * @param \Blog\Golb\Domain\Model\Category $category
+     * @param \Greenfieldr\Golb\Domain\Model\Category $category
      * @return void
      */
-    public function addCategory(\Blog\Golb\Domain\Model\Category $category)
+    public function addCategory(\Greenfieldr\Golb\Domain\Model\Category $category)
     {
         $this->categories->attach($category);
     }
@@ -435,10 +435,10 @@ class Page extends AbstractModel
     /**
      * Removes a category
      *
-     * @param \Blog\Golb\Domain\Model\Category $category
+     * @param \Greenfieldr\Golb\Domain\Model\Category $category
      * @return void
      */
-    public function removeCategory(\Blog\Golb\Domain\Model\Category $category)
+    public function removeCategory(\Greenfieldr\Golb\Domain\Model\Category $category)
     {
         $this->categories->detach($category);
     }
@@ -614,10 +614,10 @@ class Page extends AbstractModel
     /**
      * Adds a related page
      *
-     * @param \Blog\Golb\Domain\Model\Page $relatedPage
+     * @param \Greenfieldr\Golb\Domain\Model\Page $relatedPage
      * @return void
      */
-    public function addRelatedPage(\Blog\Golb\Domain\Model\Page $relatedPage)
+    public function addRelatedPage(\Greenfieldr\Golb\Domain\Model\Page $relatedPage)
     {
         $this->relatedPages->attach($relatedPage);
     }
@@ -625,10 +625,10 @@ class Page extends AbstractModel
     /**
      * Removes a related page
      *
-     * @param \Blog\Golb\Domain\Model\Page $relatedPage
+     * @param \Greenfieldr\Golb\Domain\Model\Page $relatedPage
      * @return void
      */
-    public function removeRelatedPage(\Blog\Golb\Domain\Model\Page $relatedPage)
+    public function removeRelatedPage(\Greenfieldr\Golb\Domain\Model\Page $relatedPage)
     {
         $this->relatedPages->detach($relatedPage);
     }
@@ -678,10 +678,10 @@ class Page extends AbstractModel
     /**
      * Adds a subpage
      *
-     * @param \Blog\Golb\Domain\Model\Page $subpage
+     * @param \Greenfieldr\Golb\Domain\Model\Page $subpage
      * @return void
      */
-    public function addSubpage(\Blog\Golb\Domain\Model\Page $subpage)
+    public function addSubpage(\Greenfieldr\Golb\Domain\Model\Page $subpage)
     {
         $this->subpages->attach($subpage);
     }
@@ -689,10 +689,10 @@ class Page extends AbstractModel
     /**
      * Removes a subpage
      *
-     * @param \Blog\Golb\Domain\Model\Page $subpage
+     * @param \Greenfieldr\Golb\Domain\Model\Page $subpage
      * @return void
      */
-    public function removeSubpage(\Blog\Golb\Domain\Model\Page $subpage)
+    public function removeSubpage(\Greenfieldr\Golb\Domain\Model\Page $subpage)
     {
         $this->subpages->detach($subpage);
     }
@@ -769,10 +769,10 @@ class Page extends AbstractModel
     /**
      * Adds a content element
      *
-     * @param \Blog\Golb\Domain\Model\ContentElement $contentElement
+     * @param \Greenfieldr\Golb\Domain\Model\ContentElement $contentElement
      * @return void
      */
-    public function addContentElement(\Blog\Golb\Domain\Model\ContentElement $contentElement)
+    public function addContentElement(\Greenfieldr\Golb\Domain\Model\ContentElement $contentElement)
     {
         $this->contentElements->attach($contentElement);
     }
@@ -780,10 +780,10 @@ class Page extends AbstractModel
     /**
      * Removes a content element
      *
-     * @param \Blog\Golb\Domain\Model\ContentElement $contentElement
+     * @param \Greenfieldr\Golb\Domain\Model\ContentElement $contentElement
      * @return void
      */
-    public function removeContentElement(\Blog\Golb\Domain\Model\ContentElement $contentElement)
+    public function removeContentElement(\Greenfieldr\Golb\Domain\Model\ContentElement $contentElement)
     {
         $this->contentElements->detach($contentElement);
     }

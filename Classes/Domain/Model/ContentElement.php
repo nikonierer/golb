@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Golb\Domain\Model;
+namespace Greenfieldr\Golb\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
@@ -30,7 +30,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  * @author     Sascha Zander <sascha.zander@denkwerk.com>
  * @copyright  2015 Copyright belongs to the respective authors
  * @license    http://www.gnu.org/licenses/gpl.html GNU General Public License, version 3 or later
- * @package Blog\Golb\Domain\Model
+ * @package Greenfieldr\Golb\Domain\Model
  */
 class ContentElement extends AbstractEntity
 {

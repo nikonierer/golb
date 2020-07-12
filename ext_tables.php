@@ -16,7 +16,7 @@ $boot = function ($packageKey) {
         );
     }
 
-    $GLOBALS['PAGES_TYPES'][\Blog\Golb\Constants::BLOG_POST_DOKTYPE] = [
+    $GLOBALS['PAGES_TYPES'][\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE] = [
         'type' => 'web',
         'allowedTables' => '*',
     ];
@@ -36,7 +36,7 @@ $boot = function ($packageKey) {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addStaticFile($packageKey, 'Configuration/TypoScript', 'Golb');
     
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig(
-        'options.pageTree.doktypesToShowInNewPageDragArea := addToList(' . \Blog\Golb\Constants::BLOG_POST_DOKTYPE . ')'
+        'options.pageTree.doktypesToShowInNewPageDragArea := addToList(' . \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE . ')'
     );
 };
 

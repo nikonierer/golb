@@ -9,7 +9,7 @@
   },
   "autoload": {
     "psr-4": {
-      "Blog\\Golb\\": "Classes"
+      "Greenfieldr\\Golb\\": "Classes"
     }
   },
   "authors": [

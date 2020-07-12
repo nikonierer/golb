@@ -1,10 +1,10 @@
 <?php
 
-namespace Blog\Golb\Domain\Repository;
+namespace Greenfieldr\Golb\Domain\Repository;
 
-use Blog\Golb\Constants;
-use Blog\Golb\Domain\Model\Category;
-use Blog\Golb\Domain\Model\Page;
+use Greenfieldr\Golb\Constants;
+use Greenfieldr\Golb\Domain\Model\Category;
+use Greenfieldr\Golb\Domain\Model\Page;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /***************************************************************

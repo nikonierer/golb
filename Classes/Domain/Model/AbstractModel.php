@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Golb\Domain\Model;
+namespace Greenfieldr\Golb\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
@@ -25,7 +25,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  * AbstractModel
  *
- * @package Blog\Golb\Domain\Model
+ * @package Greenfieldr\Golb\Domain\Model
  */
 class AbstractModel extends AbstractEntity
 {

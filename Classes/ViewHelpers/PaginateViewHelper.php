@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Golb\ViewHelpers;
+namespace Greenfieldr\Golb\ViewHelpers;
 
 use TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewHelper;
 
@@ -36,17 +36,17 @@ class PaginateViewHelper extends AbstractWidgetViewHelper
 {
 
     /**
-     * @var \Blog\Golb\Controller\PaginateController
+     * @var \Greenfieldr\Golb\Controller\PaginateController
      */
     protected $controller;
 
     /**
      * Injection of widget controller
      *
-     * @param \Blog\Golb\Controller\PaginateController $controller
+     * @param \Greenfieldr\Golb\Controller\PaginateController $controller
      * @return void
      */
-    public function injectController(\Blog\Golb\Controller\PaginateController $controller)
+    public function injectController(\Greenfieldr\Golb\Controller\PaginateController $controller)
     {
         $this->controller = $controller;
     }

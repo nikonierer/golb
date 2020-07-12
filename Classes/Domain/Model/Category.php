@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Golb\Domain\Model;
+namespace Greenfieldr\Golb\Domain\Model;
 
 /***************************************************************
  *  Copyright notice
@@ -24,7 +24,7 @@ namespace Blog\Golb\Domain\Model;
 /**
  * Maps on table 'sys_category'
  *
- * @package Blog\Golb\Domain\Model
+ * @package Greenfieldr\Golb\Domain\Model
  */
 class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
 {
@@ -33,17 +33,17 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
      * List of sub categories
      *
      * @lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Category>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Category>
      */
     protected $subCategories;
 
     /**
      * Adds a category
      *
-     * @param \Blog\Golb\Domain\Model\Category $category
+     * @param \Greenfieldr\Golb\Domain\Model\Category $category
      * @return void
      */
-    public function addSubCategory(\Blog\Golb\Domain\Model\Category $category)
+    public function addSubCategory(\Greenfieldr\Golb\Domain\Model\Category $category)
     {
         $this->subCategories->attach($category);
     }
@@ -51,10 +51,10 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * Removes a category
      *
-     * @param \Blog\Golb\Domain\Model\Category $category
+     * @param \Greenfieldr\Golb\Domain\Model\Category $category
      * @return void
      */
-    public function removeSubCategory(\Blog\Golb\Domain\Model\Category $category)
+    public function removeSubCategory(\Greenfieldr\Golb\Domain\Model\Category $category)
     {
         $this->subCategories->detach($category);
     }

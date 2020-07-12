@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Golb\Domain\Repository;
+namespace Greenfieldr\Golb\Domain\Repository;
 
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 

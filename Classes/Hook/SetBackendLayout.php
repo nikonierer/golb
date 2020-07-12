@@ -1,8 +1,8 @@
 <?php
 
-namespace Blog\Golb\Hook;
+namespace Greenfieldr\Golb\Hook;
 
-use Blog\Golb\Constants;
+use Greenfieldr\Golb\Constants;
 use TYPO3\CMS\Core\Database\ConnectionPool;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;

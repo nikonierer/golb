@@ -1,6 +1,6 @@
 <?php
 
-namespace Blog\Golb\Controller;
+namespace Greenfieldr\Golb\Controller;
 
 use TYPO3\CMS\Core\Utility\ArrayUtility;
 use TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController;

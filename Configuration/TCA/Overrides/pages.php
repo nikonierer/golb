@@ -27,7 +27,7 @@ $boot = function () {
         'doktype',
         [
             'LLL:EXT:golb/Resources/Private/Language/locallang_tca.xlf:doktype.post',
-            \Blog\Golb\Constants::BLOG_POST_DOKTYPE,
+            \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
             'apps-pagetree-post',
         ],
         '1',
@@ -39,11 +39,11 @@ $boot = function () {
         [
             'ctrl' => [
                 'typeicon_classes' => [
-                    \Blog\Golb\Constants::BLOG_POST_DOKTYPE => 'apps-pagetree-post',
+                    \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE => 'apps-pagetree-post',
                 ],
             ],
             'types' => [
-                (string) \Blog\Golb\Constants::BLOG_POST_DOKTYPE =>
+                (string) \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE =>
                     $GLOBALS['TCA']['pages']['types'][\TYPO3\CMS\Frontend\Page\PageRepository::DOKTYPE_DEFAULT]
             ]
         ]
@@ -57,7 +57,7 @@ $boot = function () {
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
                 'foreign_table' => 'pages',
-                'foreign_table_where' => 'AND doktype = ' . \Blog\Golb\Constants::BLOG_POST_DOKTYPE . ' ORDER BY crdate ASC',
+                'foreign_table_where' => 'AND doktype = ' . \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE . ' ORDER BY crdate ASC',
                 'size' => 5,
                 'minitems' => 0,
                 'maxitems' => 4,
@@ -112,7 +112,7 @@ $boot = function () {
         'after:author_email'
     );
 
-    $GLOBALS['TCA']['pages']['types'][\Blog\Golb\Constants::BLOG_POST_DOKTYPE]['columnsOverrides'] = [
+    $GLOBALS['TCA']['pages']['types'][\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE]['columnsOverrides'] = [
         'categories' => [
             'config' => [
                 'foreign_table_where' => ' AND sys_category.pid = ###PAGE_TSCONFIG_ID### ' .

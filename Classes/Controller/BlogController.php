@@ -1,9 +1,9 @@
 <?php
 
-namespace Blog\Golb\Controller;
+namespace Greenfieldr\Golb\Controller;
 
-use Blog\Golb\Domain\Repository\CategoryRepository;
-use Blog\Golb\Domain\Repository\PageRepository;
+use Greenfieldr\Golb\Domain\Repository\CategoryRepository;
+use Greenfieldr\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 
 /***************************************************************
@@ -28,7 +28,7 @@ use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 /**
  * Class TestController
  *
- * @package Blog\Golb\Domain\Controller
+ * @package Greenfieldr\Golb\Domain\Controller
  */
 class BlogController extends BaseController
 {

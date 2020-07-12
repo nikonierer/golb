@@ -1,9 +1,9 @@
 <?php
 
-namespace Blog\Golb\ViewHelpers;
+namespace Greenfieldr\Golb\ViewHelpers;
 
-use Blog\Golb\Domain\Model\Page;
-use Blog\Golb\Domain\Repository\PageRepository;
+use Greenfieldr\Golb\Domain\Model\Page;
+use Greenfieldr\Golb\Domain\Repository\PageRepository;
 use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 
 /***************************************************************

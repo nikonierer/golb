@@ -9,7 +9,7 @@ module.tx_golb < plugin.tx_golb
 config.tx_extbase {
     persistence {
         classes {
-            Blog\Golb\Domain\Model\Page {
+            Greenfieldr\Golb\Domain\Model\Page {
                 mapping {
                     tableName = pages
                     columns {
@@ -35,13 +35,13 @@ config.tx_extbase {
                 }
             }
 
-            Blog\Golb\Domain\Model\Category {
+            Greenfieldr\Golb\Domain\Model\Category {
                 mapping {
                     tableName = sys_category
                 }
             }
 
-            Blog\Golb\Domain\Model\ContentElement {
+            Greenfieldr\Golb\Domain\Model\ContentElement {
                 mapping {
                     tableName = tt_content
                 }

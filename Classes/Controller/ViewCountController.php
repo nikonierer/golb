@@ -1,8 +1,8 @@
 <?php
 
-namespace Blog\Golb\Controller;
+namespace Greenfieldr\Golb\Controller;
 
-use Blog\Golb\Domain\Repository\PageRepository;
+use Greenfieldr\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
 use TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager;
@@ -30,7 +30,7 @@ use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 /**
  * Class TestController
  *
- * @package Blog\Golb\Domain\Controller
+ * @package Greenfieldr\Golb\Domain\Controller
  */
 class ViewCountController extends ActionController
 {
