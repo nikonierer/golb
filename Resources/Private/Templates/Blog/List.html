@@ -6,7 +6,7 @@
 <f:section name="Main">
     <h1>Listview</h1>
     <ul>
-        <g:paginate objects="{posts}"
+        <f:widget.paginate objects="{posts}"
                     as="paginatedPosts"
                     configuration="{itemsPerPage: 2, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 10}">
             <f:for each="{paginatedPosts}" as="post">
@@ -19,7 +19,7 @@
                     </ul>
                 </li>
             </f:for>
-        </g:paginate>
+        </f:widget.paginate>
     </ul>
 </f:section>
 </html>
