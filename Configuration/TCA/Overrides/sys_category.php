@@ -18,7 +18,11 @@ $boot = function () {
         ],
     ];
 
-
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('sys_category', $tempColoumns);
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+        'sys_category',
+        'tx_golb_sub_categories'
+    );
 
 };
 $boot();
