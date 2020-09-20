@@ -149,13 +149,6 @@ class ContentElement extends AbstractEntity
     protected $media;
 
     /**
-     * Identifier of parent page
-     *
-     * @var int $pid
-     */
-    protected $pid;
-
-    /**
      * Sorting field
      *
      * @var int $sorting
@@ -506,27 +499,6 @@ class ContentElement extends AbstractEntity
     public function setMedia($media)
     {
         $this->media = $media;
-    }
-
-    /**
-     * Returns page identifier of parent page
-     *
-     * @return int
-     */
-    public function getPid()
-    {
-        return $this->pid;
-    }
-
-    /**
-     * Sets page identifier of parent page
-     *
-     * @param int $pid
-     * @return void
-     */
-    public function setPid($pid)
-    {
-        $this->pid = $pid;
     }
 
     /**
