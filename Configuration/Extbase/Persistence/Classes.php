@@ -38,6 +38,9 @@ return [
             'subCategories' => [
                 'fieldName' => 'tx_golb_sub_categories'
             ],
+            'publishDate' => [
+                'fieldName' => 'tx_golb_publish_date'
+            ],
         ],
     ],
     \Greenfieldr\Golb\Domain\Model\ContentElement::class => [
