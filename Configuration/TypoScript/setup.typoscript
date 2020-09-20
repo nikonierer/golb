@@ -2,6 +2,23 @@ plugin.tx_golb {
     settings {
         defaultBackendLayout = 4
     }
+
+    view {
+        templateRootPaths {
+            10 = {$plugin.tx_golb.view.templateRootPath}
+        }
+        partialRootPaths {
+            10 = {$plugin.tx_golb.view.partialRootPath}
+        }
+        layoutRootPaths {
+            10 = {$plugin.tx_golb.view.layoutRootPath}
+        }
+        widget {
+            TYPO3\CMS\Fluid\ViewHelpers\Widget\PaginateViewHelper {
+                templateRootPath = {$plugin.tx_golb.view.templateRootPath}
+            }
+        }
+    }
 }
 
 module.tx_golb < plugin.tx_golb
