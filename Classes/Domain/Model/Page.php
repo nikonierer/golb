@@ -3,6 +3,7 @@
 namespace Greenfieldr\Golb\Domain\Model;
 
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
 
 /***************************************************************
  *  Copyright notice
@@ -58,7 +59,7 @@ class Page extends AbstractModel
     /**
      * Contains author image
      *
-     * @lazy
+     * @Extbase\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
      */
     protected $authorImage;
@@ -103,7 +104,7 @@ class Page extends AbstractModel
     /**
      * Contains relations to selected categories for this page
      *
-     * @lazy
+     * @Extbase\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Category>
      */
     protected $categories;
@@ -270,7 +271,7 @@ class Page extends AbstractModel
     /**
      * Contains related pages
      *
-     * @lazy
+     * @Extbase\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Page>
      */
     protected $relatedPages;
@@ -313,7 +314,7 @@ class Page extends AbstractModel
     /**
      * List of subpages
      *
-     * @lazy
+     * @Extbase\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Page>
      */
     protected $subpages;
@@ -384,7 +385,7 @@ class Page extends AbstractModel
     /**
      * List of content elements
      *
-     * @lazy
+     * @Extbase\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\ContentElement>
      */
     protected $contentElements;

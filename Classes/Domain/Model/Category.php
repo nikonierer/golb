@@ -2,6 +2,8 @@
 
 namespace Greenfieldr\Golb\Domain\Model;
 
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -32,7 +34,7 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * List of sub categories
      *
-     * @lazy
+     * @Extbase\ORM\Lazy
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Category>
      */
     protected $subCategories;
