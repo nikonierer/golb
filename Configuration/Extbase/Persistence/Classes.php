@@ -44,7 +44,7 @@ return [
         ],
     ],
     \Greenfieldr\Golb\Domain\Model\ContentElement::class => [
-        'tableName' => 'pages',
+        'tableName' => 'tt_content',
     ],
     \Greenfieldr\Golb\Domain\Model\Category::class => [
         'tableName' => 'sys_category',
