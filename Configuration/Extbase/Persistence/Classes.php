@@ -5,6 +5,9 @@ return [
     \Greenfieldr\Golb\Domain\Model\Page::class => [
         'tableName' => 'pages',
         'properties' => [
+            'CreationDate' => [
+                'fieldName' => 'crdate'
+            ],
             'authorImage' => [
                 'fieldName' => 'tx_golb_author_image'
             ],
