@@ -5,7 +5,7 @@ return [
     \Greenfieldr\Golb\Domain\Model\Page::class => [
         'tableName' => 'pages',
         'properties' => [
-            'CreationDate' => [
+            'creationDate' => [
                 'fieldName' => 'crdate'
             ],
             'authorImage' => [

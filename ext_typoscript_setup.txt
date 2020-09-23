@@ -5,6 +5,7 @@ config.tx_extbase {
                 mapping {
                     tableName = pages
                     columns {
+                        crdate.mapOnProperty = creationDate
                         extendToSubpages.mapOnProperty = extendToSubpages
                         lastUpdated.mapOnProperty = lastUpdated
                         newUntil.mapOnProperty = newUntil
