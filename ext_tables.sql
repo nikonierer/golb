@@ -2,7 +2,6 @@
 # Table structure for table 'pages'
 #
 CREATE TABLE pages (
-    tx_golb_categories int(11) DEFAULT '0' NOT NULL,
     tx_golb_subpages int(11) DEFAULT '0' NOT NULL,
     tx_golb_view_count int(11) DEFAULT '0' NOT NULL,
     tx_golb_related varchar(255) DEFAULT NULL,

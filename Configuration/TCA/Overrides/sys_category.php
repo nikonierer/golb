@@ -5,7 +5,7 @@ if (!defined('TYPO3_MODE')) {
 }
 
 $boot = function () {
-    $tempColoumns = [
+    $tempColumns = [
         'tx_golb_sub_categories' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.tx_golb_sub_categories',
@@ -18,7 +18,11 @@ $boot = function () {
         ],
     ];
 
-
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('sys_category', $tempColumns);
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+        'sys_category',
+        'tx_golb_sub_categories'
+    );
 
 };
 $boot();

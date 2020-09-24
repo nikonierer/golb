@@ -444,6 +444,22 @@ class Page extends AbstractModel
     }
 
     /**
+     * @return ObjectStorage
+     */
+    public function getCategories(): ObjectStorage
+    {
+        return $this->categories;
+    }
+
+    /**
+     * @param ObjectStorage $categories
+     */
+    public function setCategories(ObjectStorage $categories): void
+    {
+        $this->categories = $categories;
+    }
+
+    /**
      * Returns create date timestamp
      *
      * @return int
