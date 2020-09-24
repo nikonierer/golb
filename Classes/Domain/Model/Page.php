@@ -803,4 +803,381 @@ class Page extends AbstractModel
     {
         $this->contentElements->detach($contentElement);
     }
+
+    /**
+     * @return string
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * @param string $title
+     */
+    public function setTitle(string $title): void
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAbstract(): string
+    {
+        return $this->abstract;
+    }
+
+    /**
+     * @param string $abstract
+     */
+    public function setAbstract(string $abstract): void
+    {
+        $this->abstract = $abstract;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAlias(): string
+    {
+        return $this->alias;
+    }
+
+    /**
+     * @param string $alias
+     */
+    public function setAlias(string $alias): void
+    {
+        $this->alias = $alias;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthorEmail(): string
+    {
+        return $this->authorEmail;
+    }
+
+    /**
+     * @param string $authorEmail
+     */
+    public function setAuthorEmail(string $authorEmail): void
+    {
+        $this->authorEmail = $authorEmail;
+    }
+
+    /**
+     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     */
+    public function getAuthorImage(): \TYPO3\CMS\Extbase\Domain\Model\FileReference
+    {
+        return $this->authorImage;
+    }
+
+    /**
+     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
+     */
+    public function setAuthorImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage): void
+    {
+        $this->authorImage = $authorImage;
+    }
+
+    /**
+     * @return string
+     */
+    public function getAuthor(): string
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param string $author
+     */
+    public function setAuthor(string $author): void
+    {
+        $this->author = $author;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCrdate(): int
+    {
+        return $this->crdate;
+    }
+
+    /**
+     * @param int $crdate
+     */
+    public function setCrdate(int $crdate): void
+    {
+        $this->crdate = $crdate;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * @param string $description
+     */
+    public function setDescription(string $description): void
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * @return string
+     */
+    public function getKeywords(): string
+    {
+        return $this->keywords;
+    }
+
+    /**
+     * @param string $keywords
+     */
+    public function setKeywords(string $keywords): void
+    {
+        $this->keywords = $keywords;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLastUpdated(): int
+    {
+        return $this->lastUpdated;
+    }
+
+    /**
+     * @param int $lastUpdated
+     */
+    public function setLastUpdated(int $lastUpdated): void
+    {
+        $this->lastUpdated = $lastUpdated;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLayout(): int
+    {
+        return $this->layout;
+    }
+
+    /**
+     * @param int $layout
+     */
+    public function setLayout(int $layout): void
+    {
+        $this->layout = $layout;
+    }
+
+    /**
+     * @return string
+     */
+    public function getMedia(): string
+    {
+        return $this->media;
+    }
+
+    /**
+     * @param string $media
+     */
+    public function setMedia(string $media): void
+    {
+        $this->media = $media;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNavTitle(): string
+    {
+        return $this->navTitle;
+    }
+
+    /**
+     * @param string $navTitle
+     */
+    public function setNavTitle(string $navTitle): void
+    {
+        $this->navTitle = $navTitle;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNewUntil(): int
+    {
+        return $this->newUntil;
+    }
+
+    /**
+     * @param int $newUntil
+     */
+    public function setNewUntil(int $newUntil): void
+    {
+        $this->newUntil = $newUntil;
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getRelatedPages(): ObjectStorage
+    {
+        return $this->relatedPages;
+    }
+
+    /**
+     * @param ObjectStorage $relatedPages
+     */
+    public function setRelatedPages(ObjectStorage $relatedPages): void
+    {
+        $this->relatedPages = $relatedPages;
+    }
+
+    /**
+     * @return int
+     */
+    public function getSorting(): int
+    {
+        return $this->sorting;
+    }
+
+    /**
+     * @param int $sorting
+     */
+    public function setSorting(int $sorting): void
+    {
+        $this->sorting = $sorting;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSubtitle(): string
+    {
+        return $this->subtitle;
+    }
+
+    /**
+     * @param string $subtitle
+     */
+    public function setSubtitle(string $subtitle): void
+    {
+        $this->subtitle = $subtitle;
+    }
+
+    /**
+     * @return string
+     */
+    public function getTarget(): string
+    {
+        return $this->target;
+    }
+
+    /**
+     * @param string $target
+     */
+    public function setTarget(string $target): void
+    {
+        $this->target = $target;
+    }
+
+    /**
+     * @return int
+     */
+    public function getTstamp(): int
+    {
+        return $this->tstamp;
+    }
+
+    /**
+     * @param int $tstamp
+     */
+    public function setTstamp(int $tstamp): void
+    {
+        $this->tstamp = $tstamp;
+    }
+
+    /**
+     * @param int $uid
+     */
+    public function setUid(int $uid): void
+    {
+        $this->uid = $uid;
+    }
+
+    /**
+     * @return string
+     */
+    public function getUrl(): string
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl(string $url): void
+    {
+        $this->url = $url;
+    }
+
+    /**
+     * @return int
+     */
+    public function getUrlScheme(): int
+    {
+        return $this->urlScheme;
+    }
+
+    /**
+     * @param int $urlScheme
+     */
+    public function setUrlScheme(int $urlScheme): void
+    {
+        $this->urlScheme = $urlScheme;
+    }
+
+    /**
+     * @return int
+     */
+    public function getViewCount(): int
+    {
+        return $this->viewCount;
+    }
+
+    /**
+     * @param int $viewCount
+     */
+    public function setViewCount(int $viewCount): void
+    {
+        $this->viewCount = $viewCount;
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getContentElements(): ObjectStorage
+    {
+        return $this->contentElements;
+    }
+
+    /**
+     * @param ObjectStorage $contentElements
+     */
+    public function setContentElements(ObjectStorage $contentElements): void
+    {
+        $this->contentElements = $contentElements;
+    }
+
 }
