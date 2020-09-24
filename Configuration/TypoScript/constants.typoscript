@@ -1,0 +1,15 @@
+plugin.tx_golb {
+    view {
+        # cat=plugin.tx_golb/file; type=string; label=Path to template files
+        templateRootPath = EXT:golb/Resources/Private/Templates/
+        # cat=plugin.tx_golb/file; type=string; label=Path to partial files
+        partialRootPath = EXT:golb/Resources/Private/Partials/
+        # cat=plugin.tx_golb/file; type=string; label=Path to layout files
+        layoutRootPath = EXT:golb/Resources/Private/Layouts/
+    }
+
+    settings {
+        # cat=plugin.tx_golb/backend; type=string; label= Name of default backend layout
+        defaultBackendLayout = 4
+    }
+}
