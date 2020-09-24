@@ -111,18 +111,19 @@ class PageRepository extends Repository
             switch ($sorting) {
                 case "date":
                     usort($this->posts, function ($a, $b) {
-
+                        /** @var Page $a */
+                        /** @var Page $b */
                         //If publish date is set use this else create date
-                        if ($a->getStartTime()) {
-                            $a = $a->getStartTime();
+                        if ($a->getPublishDate()) {
+                            $a = $a->getPublishDate();
                         } else {
-                            $a = $a->getCrdate();
+                            $a = $a->getCreationDate();
                         }
 
-                        if ($b->getStartTime()) {
-                            $b = $b->getStartTime();
+                        if ($b->getPublishDate()) {
+                            $b = $b->getPublishDate();
                         } else {
-                            $b = $b->getCrdate();
+                            $b = $b->getCreationDate();
                         }
 
                         return $a < $b;
