@@ -47,6 +47,7 @@ class SetBackendLayout
             GeneralUtility::makeInstance(ObjectManager::class);
         $configurationManager =
             $objectManager->get(ConfigurationManager::class);
+        /* TODO: This configuration does not respect static template includes, make sure to get the get the typoscript configuration from the template include */
         $settings = $configurationManager->getConfiguration(
             ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
             'golb'
