@@ -118,9 +118,9 @@ class Page extends AbstractModel
     /**
      * Create date timestamp
      *
-     * @var int $crdate
+     * @var int $creationDate
      */
-    protected $crdate;
+    protected $creationDate;
 
     /**
      * Create user identifier
@@ -469,9 +469,9 @@ class Page extends AbstractModel
      *
      * @return int
      */
-    public function getCreationDate()
+    public function getCreationDate(): int
     {
-        return $this->crdate;
+        return $this->creationDate;
     }
 
     /**
@@ -482,7 +482,7 @@ class Page extends AbstractModel
      */
     public function setCreationDate($creationDate)
     {
-        $this->crdate = $creationDate;
+        $this->creationDate = $creationDate;
     }
 
     /**
@@ -903,22 +903,6 @@ class Page extends AbstractModel
     public function setAuthor(string $author): void
     {
         $this->author = $author;
-    }
-
-    /**
-     * @return int
-     */
-    public function getCrdate(): int
-    {
-        return $this->crdate;
-    }
-
-    /**
-     * @param int $crdate
-     */
-    public function setCrdate(int $crdate): void
-    {
-        $this->crdate = $crdate;
     }
 
     /**
