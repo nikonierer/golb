@@ -211,9 +211,8 @@ class Page extends AbstractModel
     protected $layout;
 
     /**
-     * Contains referenced media assets for this page
-     *
-     * @var string $media
+     * @lazy
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
      */
     protected $media;
 
@@ -403,6 +402,7 @@ class Page extends AbstractModel
         $this->relatedPages = new ObjectStorage();
         $this->subpages = new ObjectStorage();
         $this->contentElements = new ObjectStorage();
+        $this->media = new ObjectStorage();
     }
 
     /**
@@ -970,17 +970,17 @@ class Page extends AbstractModel
     }
 
     /**
-     * @return string
+     * @return ObjectStorage
      */
-    public function getMedia(): string
+    public function getMedia(): ObjectStorage
     {
         return $this->media;
     }
 
     /**
-     * @param string $media
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $media
      */
-    public function setMedia(string $media): void
+    public function setMedia(ObjectStorage $media): void
     {
         $this->media = $media;
     }
