@@ -3,15 +3,16 @@
 namespace Blog\Golb\Hook;
 
 use Blog\Golb\Constants;
-use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Backend\Utility\BackendUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Configuration\ConfigurationManager;
 use TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface;
 use TYPO3\CMS\Extbase\Object\ObjectManager;
 
 /***************************************************************
  *  Copyright notice
- *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
- *           Philipp Thiele <philipp.thiele@phth.de>
+ *  (c) 2020 Marcel Wieser <typo3dev@marcel-wieser.de>
+ *  (c) 2015 Philipp Thiele <philipp.thiele@phth.de>
  *  All rights reserved
  *  This script is part of the TYPO3 project. The TYPO3 project is
  *  free software; you can redistribute it and/or modify
@@ -45,29 +46,30 @@ class SetBackendLayout
         $objectManager =
             GeneralUtility::makeInstance(ObjectManager::class);
         $configurationManager =
-            $objectManager->get(ConfigurationManagerInterface::class);
+            $objectManager->get(ConfigurationManager::class);
         $settings = $configurationManager->getConfiguration(
-            ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS,
+            ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
             'golb'
         );
+        $settings = $settings['plugin.']['tx_golb.']['settings.'];
 
         if ($table == 'pages' &&
             ($status == 'new' || $status == 'update') &&
             $fieldArray['doktype'] == Constants::BLOG_POST_DOKTYPE
         ) {
-            $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)
-                ->getQueryBuilderForTable('backend_layout');
+            $fieldArray['backend_layout'] = 'pagets__' . $settings['defaultBackendLayout'];
+            $fieldArray['backend_layout_next_level'] = 'pagets__' . $settings['defaultBackendLayout'];
 
-            $fieldArray['backend_layout'] = $settings['defaultBackendLayout'];
-            $fieldArray['backend_layout_next_level'] = $settings['defaultBackendLayout'];
+            $pageTs = BackendUtility::getPagesTSconfig($fieldArray['pid']);
+            $backendLayouts = array_keys($pageTs['mod.']['web_layout.']['BackendLayouts.']);
+            $backendLayouts = array_map(
+                function($item) {
+                    return rtrim($item, '.');
+                },
+                $backendLayouts
+            );
 
-            $backendLayouts = $queryBuilder->count('uid')->from('backend_layout')->where(
-                $queryBuilder->expr()->eq(
-                    'uid',
-                    $queryBuilder->createNamedParameter($settings['defaultBackendLayout'], \PDO::PARAM_INT))
-            )->execute()->fetchColumn(0);
-
-            if ($backendLayouts === 0) {
+            if (!in_array($settings['defaultBackendLayout'], $backendLayouts)) {
                 $fieldArray['backend_layout'] = $fieldArray['backend_layout_next_level'] = '';
             }
         }
