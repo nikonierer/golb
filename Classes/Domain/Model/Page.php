@@ -490,7 +490,7 @@ class Page extends AbstractModel
      *
      * @return int
      */
-    public function getCreateUserId()
+    public function getCreateUserId(): int
     {
         return $this->cruserId;
     }
@@ -812,7 +812,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getTitle(): string
+    public function getTitle(): ?string
     {
         return $this->title;
     }
@@ -828,7 +828,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getAbstract(): string
+    public function getAbstract(): ?string
     {
         return $this->abstract;
     }
@@ -844,7 +844,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getAlias(): string
+    public function getAlias(): ?string
     {
         return $this->alias;
     }
@@ -860,7 +860,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getAuthorEmail(): string
+    public function getAuthorEmail(): ?string
     {
         return $this->authorEmail;
     }
@@ -892,7 +892,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getAuthor(): string
+    public function getAuthor(): ?string
     {
         return $this->author;
     }
@@ -908,7 +908,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -924,7 +924,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getKeywords(): string
+    public function getKeywords(): ?string
     {
         return $this->keywords;
     }
@@ -956,7 +956,7 @@ class Page extends AbstractModel
     /**
      * @return int
      */
-    public function getLayout(): int
+    public function getLayout(): ?int
     {
         return $this->layout;
     }
@@ -988,7 +988,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getNavTitle(): string
+    public function getNavTitle(): ?string
     {
         return $this->navTitle;
     }
@@ -1004,7 +1004,7 @@ class Page extends AbstractModel
     /**
      * @return int
      */
-    public function getNewUntil(): int
+    public function getNewUntil(): ?int
     {
         return $this->newUntil;
     }
@@ -1036,7 +1036,7 @@ class Page extends AbstractModel
     /**
      * @return int
      */
-    public function getSorting(): int
+    public function getSorting(): ?int
     {
         return $this->sorting;
     }
@@ -1052,7 +1052,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getSubtitle(): string
+    public function getSubtitle(): ?string
     {
         return $this->subtitle;
     }
@@ -1068,7 +1068,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getTarget(): string
+    public function getTarget(): ?string
     {
         return $this->target;
     }
@@ -1108,7 +1108,7 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getUrl(): string
+    public function getUrl(): ?string
     {
         return $this->url;
     }
@@ -1124,7 +1124,7 @@ class Page extends AbstractModel
     /**
      * @return int
      */
-    public function getUrlScheme(): int
+    public function getUrlScheme(): ?int
     {
         return $this->urlScheme;
     }
@@ -1140,7 +1140,7 @@ class Page extends AbstractModel
     /**
      * @return int
      */
-    public function getViewCount(): int
+    public function getViewCount(): ?int
     {
         return $this->viewCount;
     }
@@ -1172,7 +1172,7 @@ class Page extends AbstractModel
     /**
      * @return int
      */
-    public function getPublishDate(): int
+    public function getPublishDate(): ?int
     {
         return $this->publishDate;
     }
