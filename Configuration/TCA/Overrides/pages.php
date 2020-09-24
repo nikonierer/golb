@@ -105,15 +105,6 @@ $boot = function () {
         'after:author_email'
     );
 
-    $GLOBALS['TCA']['pages']['types'][\Blog\Golb\Constants::BLOG_POST_DOKTYPE]['columnsOverrides'] = [
-        'categories' => [
-            'config' => [
-                'foreign_table_where' => ' AND sys_category.pid = ###PAGE_TSCONFIG_ID### ' .
-                    $GLOBALS['TCA']['pages']['columns']['categories']['config']['foreign_table_where']
-            ]
-        ]
-    ];
-
 };
 $boot();
 unset($boot);
