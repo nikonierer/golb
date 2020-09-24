@@ -45,6 +45,9 @@
             <trans-unit id="tt_content.excludedPages">
                 <source>Exclude pages</source>
             </trans-unit>
+            <trans-unit id="pages.publish_date">
+                <source>Publish date</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

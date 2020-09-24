@@ -47,6 +47,7 @@ config.tx_extbase {
                         tx_golb_subpages.mapOnProperty = subpages
                         tx_golb_exclude.mapOnProperty = excludedPages
                         tx_golb_sub_categories.mapOnProperty = subCategories
+                        tx_golb_publish_date.mapOnProperty = publishDate
 
                     }
                 }

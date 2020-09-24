@@ -79,6 +79,16 @@ $boot = function () {
                 'foreign_field' => 'pid',
                 'maxitems' => 9999,
             ]
+        ],
+        'tx_golb_publish_date' => [
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.publish_date',
+            'config' => [
+                'type' => 'input',
+                'renderType' => 'inputDateTime',
+                'size' => '13',
+                'eval' => 'datetime',
+                'default' => '0'
+            ]
         ]
     ];
 
@@ -86,7 +96,7 @@ $boot = function () {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',
         '--div--;LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.golbTab, ' .
-            'tx_golb_related'
+            'tx_golb_publish_date, tx_golb_related'
     );
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',

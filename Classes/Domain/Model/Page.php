@@ -382,6 +382,11 @@ class Page extends AbstractModel
     protected $viewCount;
 
     /**
+     * @var int $publishDate
+     */
+    protected $publishDate;
+
+    /**
      * List of content elements
      *
      * @lazy
@@ -1178,6 +1183,22 @@ class Page extends AbstractModel
     public function setContentElements(ObjectStorage $contentElements): void
     {
         $this->contentElements = $contentElements;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPublishDate(): int
+    {
+        return $this->publishDate;
+    }
+
+    /**
+     * @param int $publishDate
+     */
+    public function setPublishDate(int $publishDate): void
+    {
+        $this->publishDate = $publishDate;
     }
 
 }
