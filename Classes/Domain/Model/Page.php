@@ -98,9 +98,9 @@ class Page extends AbstractModel
     /**
      * Create user identifier
      *
-     * @var int $cruserId
+     * @var int $createUserId
      */
-    protected $cruserId;
+    protected $createUserId;
 
     /**
      * Deleted flag
@@ -452,7 +452,7 @@ class Page extends AbstractModel
      */
     public function getCreateUserId(): int
     {
-        return $this->cruserId;
+        return $this->createUserId;
     }
 
     /**
@@ -463,7 +463,7 @@ class Page extends AbstractModel
      */
     public function setCreateUserId($createUserId)
     {
-        $this->cruserId = $createUserId;
+        $this->createUserId = $createUserId;
     }
 
     /**
