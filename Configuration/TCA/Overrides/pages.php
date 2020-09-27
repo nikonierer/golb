@@ -58,18 +58,6 @@ $boot = function () {
                 'maxitems' => 9999,
             ]
         ],
-        'tx_golb_author_image' => [
-            'exclude' => 0,
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.authorImage',
-            'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('authorImage', [
-                    'appearance' => [
-                        'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
-                    ],
-                    'minitems' => 0,
-                    'maxitems' => 1,
-                ]
-            )
-        ],
         'tx_golb_subpages' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.subpages',
@@ -89,20 +77,33 @@ $boot = function () {
                 'eval' => 'datetime',
                 'default' => '0'
             ]
-        ]
+        ],
+        'tx_golb_authors' => [
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_authors',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'size' => 10,
+                'minitems' => 0,
+                'maxitems' => 9999,
+                'autoSizeMax' => 10,
+                'multiple' => 0,
+                'foreign_table' => 'tx_golb_domain_model_author',
+                'foreign_table_where' => 'AND tx_golb_domain_model_author.sys_language_uid IN (0,-1) ORDER BY tx_golb_domain_model_author.name ASC',
+                'MM' => 'tx_golb_pages_author_mm',
+                'enableMultiSelectFilterTextfield' => 1,
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true
+                ]
+            ],
+        ],
     ];
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumns);
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',
         '--div--;LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.golbTab, ' .
-            'tx_golb_publish_date, tx_golb_related'
-    );
-    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
-        'pages',
-        'tx_golb_author_image',
-        '',
-        'after:author_email'
+            'tx_golb_authors, tx_golb_publish_date, tx_golb_related'
     );
 };
 $boot();

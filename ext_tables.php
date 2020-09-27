@@ -4,6 +4,11 @@ if (!defined('TYPO3_MODE')) {
 }
 
 $boot = function ($packageKey) {
+    foreach (['author'] as $table) {
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages(
+            'tx_golb_domain_model_' . $table
+        );
+    }
     $icons = [
         'apps-pagetree-post' => 'EXT:golb/Resources/Public/Icons/apps-pagetree-post.svg',
     ];

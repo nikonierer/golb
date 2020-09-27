@@ -48,32 +48,6 @@ class Page extends AbstractModel
     protected $alias;
 
     /**
-     * Contains author email
-     * Use golb:author.email view helper to switch between this field and
-     * corresponding backend user based in plugin configuration
-     *
-     * @var string $authorEmail
-     */
-    protected $authorEmail;
-
-    /**
-     * Contains author image
-     *
-     * @Extbase\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    protected $authorImage;
-
-    /**
-     * Contains author name
-     * Use golb:author.name view helper to switch between this field and
-     * corresponding backend user based in plugin configuration
-     *
-     * @var string $authorName
-     */
-    protected $author;
-
-    /**
      * Contains selected backend layout
      *
      * @var string $backendLayout
@@ -385,6 +359,12 @@ class Page extends AbstractModel
     protected $publishDate;
 
     /**
+     * @Extbase\ORM\Lazy
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Author>
+     */
+    protected $authors;
+
+    /**
      * List of content elements
      *
      * @Extbase\ORM\Lazy
@@ -402,27 +382,7 @@ class Page extends AbstractModel
         $this->subpages = new ObjectStorage();
         $this->contentElements = new ObjectStorage();
         $this->media = new ObjectStorage();
-    }
-
-    /**
-     * Returns author name
-     *
-     * @return string
-     */
-    public function getAuthorName()
-    {
-        return $this->author;
-    }
-
-    /**
-     * Sets author name
-     *
-     * @param string $authorName
-     * @return void
-     */
-    public function setAuthorName($authorName)
-    {
-        $this->author = $authorName;
+        $this->authors = new ObjectStorage();
     }
 
     /**
@@ -860,54 +820,6 @@ class Page extends AbstractModel
     /**
      * @return string
      */
-    public function getAuthorEmail(): ?string
-    {
-        return $this->authorEmail;
-    }
-
-    /**
-     * @param string $authorEmail
-     */
-    public function setAuthorEmail(string $authorEmail): void
-    {
-        $this->authorEmail = $authorEmail;
-    }
-
-    /**
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
-     */
-    public function getAuthorImage(): \TYPO3\CMS\Extbase\Domain\Model\FileReference
-    {
-        return $this->authorImage;
-    }
-
-    /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
-     */
-    public function setAuthorImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage): void
-    {
-        $this->authorImage = $authorImage;
-    }
-
-    /**
-     * @return string
-     */
-    public function getAuthor(): ?string
-    {
-        return $this->author;
-    }
-
-    /**
-     * @param string $author
-     */
-    public function setAuthor(string $author): void
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * @return string
-     */
     public function getDescription(): ?string
     {
         return $this->description;
@@ -1183,6 +1095,38 @@ class Page extends AbstractModel
     public function setPublishDate(int $publishDate): void
     {
         $this->publishDate = $publishDate;
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getAuthors(): ObjectStorage
+    {
+        return $this->authors;
+    }
+
+    /**
+     * @param ObjectStorage $authors
+     */
+    public function setAuthors(ObjectStorage $authors): void
+    {
+        $this->authors = $authors;
+    }
+
+    /**
+     * @param Author $author
+     */
+    public function addAuthor(Author $author): void
+    {
+        $this->authors->attach($author);
+    }
+
+    /**
+     * @param Author $author
+     */
+    public function removeAuthor(Author $author): void
+    {
+        $this->authors->detach($author);
     }
 
 }
