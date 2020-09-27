@@ -2,6 +2,7 @@
 
 namespace Greenfieldr\Golb\Domain\Model;
 
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 
@@ -30,7 +31,7 @@ use TYPO3\CMS\Extbase\Annotation as Extbase;
  *
  * @package Greenfieldr\Golb\Domain\Model
  */
-class Page extends AbstractModel
+class Page extends AbstractEntity
 {
 
     /**
@@ -1119,6 +1120,22 @@ class Page extends AbstractModel
     public function setUrl(string $url): void
     {
         $this->url = $url;
+    }
+
+    /**
+     * @return int
+     */
+    public function getDoktype(): int
+    {
+        return $this->doktype;
+    }
+
+    /**
+     * @param int $doktype
+     */
+    public function setDoktype(int $doktype): void
+    {
+        $this->doktype = $doktype;
     }
 
     /**
