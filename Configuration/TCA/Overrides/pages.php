@@ -35,7 +35,7 @@ $boot = function () {
     $tempColumns = [
         'tx_golb_related' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.related',
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_related',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
@@ -49,7 +49,7 @@ $boot = function () {
         ],
         'tx_golb_content_elements' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.contentElements',
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_contentElements',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tt_content',
@@ -72,7 +72,7 @@ $boot = function () {
         ],
         'tx_golb_subpages' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.subpages',
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_subpages',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'pages',
@@ -81,7 +81,7 @@ $boot = function () {
             ]
         ],
         'tx_golb_publish_date' => [
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.publish_date',
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_publish_date',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',

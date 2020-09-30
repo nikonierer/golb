@@ -6,6 +6,26 @@
             <trans-unit id="pages.golbTab">
                 <source>Blog</source>
             </trans-unit>
+
+            <trans-unit id="pages.tx_golb_related">
+                <source>Related posts</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_golb_contentElements">
+                <source>TT Content</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_golb_subpages">
+                <source>Sub pages</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_golb_categories">
+                <source>Categories</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_golb_publish_date">
+                <source>Publish date</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_golb_authors">
+                <source>Authors</source>
+            </trans-unit>
+
             <trans-unit id="tt_content.golbTab">
                 <source>Blog</source>
             </trans-unit>
@@ -27,26 +47,27 @@
             <trans-unit id="tt_content.tx_golb_action">
                 <source>View</source>
             </trans-unit>
-            <trans-unit id="pages.related">
-                <source>Related posts</source>
-            </trans-unit>
-            <trans-unit id="pages.contentElements">
-                <source>TT Content</source>
-            </trans-unit>
-            <trans-unit id="pages.authorImage">
-                <source>Author image</source>
-            </trans-unit>
-            <trans-unit id="pages.subpages">
-                <source>Sub pages</source>
-            </trans-unit>
-            <trans-unit id="pages.categories">
-                <source>Categories</source>
-            </trans-unit>
             <trans-unit id="tt_content.excludedPages">
                 <source>Exclude pages</source>
             </trans-unit>
-            <trans-unit id="pages.publish_date">
-                <source>Publish date</source>
+
+            <trans-unit id="tx_golb_domain_model_author">
+                <source>Author</source>
+            </trans-unit>
+            <trans-unit id="tx_golb_domain_model_author.name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="tx_golb_domain_model_author.images">
+                <source>Images</source>
+            </trans-unit>
+            <trans-unit id="tx_golb_domain_model_author.website">
+                <source>Website</source>
+            </trans-unit>
+            <trans-unit id="tx_golb_domain_model_author.email">
+                <source>Email</source>
+            </trans-unit>
+            <trans-unit id="tt_content.excludedPages">
+                <source>Exclude pages</source>
             </trans-unit>
         </body>
     </file>
