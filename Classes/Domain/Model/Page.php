@@ -452,7 +452,7 @@ class Page extends AbstractEntity
     /**
      * @return ObjectStorage
      */
-    public function getCategories(): ObjectStorage
+    public function getCategories(): ?ObjectStorage
     {
         return $this->categories;
     }
