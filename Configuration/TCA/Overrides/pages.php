@@ -36,6 +36,7 @@ $boot = function () {
         'tx_golb_related' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.related',
+            'displayCond' => 'FIELD:doktype:=:' . \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE ,
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
@@ -70,6 +71,7 @@ $boot = function () {
         ],
         'tx_golb_publish_date' => [
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.publish_date',
+            'displayCond' => 'FIELD:doktype:=:' . \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE ,
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -80,6 +82,7 @@ $boot = function () {
         ],
         'tx_golb_authors' => [
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_authors',
+            'displayCond' => 'FIELD:doktype:=:' . \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE ,
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
