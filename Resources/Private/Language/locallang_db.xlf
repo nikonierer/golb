@@ -53,6 +53,9 @@
             <trans-unit id="pages.publish_date">
                 <source>Publish date</source>
             </trans-unit>
+            <trans-unit id="tx_golb_domain_model_author">
+                <source>Author</source>
+            </trans-unit>
             <trans-unit id="tx_golb_domain_model_author.frontend_user">
                 <source>Frontend user</source>
             </trans-unit>
