@@ -133,7 +133,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'required,email',
+                'eval' => 'email',
             ],
             'l10n_mode' => 'exclude',
         ],
