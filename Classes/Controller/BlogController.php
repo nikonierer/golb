@@ -84,7 +84,7 @@ class BlogController extends BaseController
 
         /** @ToDo: Find another solution?! */
         if ($this->contentObject->data['tx_golb_action'] !== '' &&
-            $this->reflectionService->hasMethod(get_class($this), $this->contentObject->data['tx_golb_action'] . 'Action')
+            $this->reflectionService->getClassSchema($this)->hasMethod($this->contentObject->data['tx_golb_action'] . 'Action')
         ) {
             /** @ToDo Find a better solution. */
             $action = $this->contentObject->data['tx_golb_action'];
