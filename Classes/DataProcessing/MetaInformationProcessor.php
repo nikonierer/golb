@@ -12,7 +12,7 @@ class MetaInformationProcessor implements DataProcessorInterface
 {
 
     /**
-     * Process CSV field data to split into a multi dimensional array
+     * Returns a Golb page object of the currently displayed blog post
      *
      * @param ContentObjectRenderer $cObj The data of the content element or page
      * @param array $contentObjectConfiguration The configuration of Content Object
