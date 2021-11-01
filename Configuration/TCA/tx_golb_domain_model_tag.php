@@ -80,8 +80,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_news_domain_model_link',
-                'foreign_table_where' => 'AND tx_news_domain_model_link.pid=###CURRENT_PID### AND tx_news_domain_model_link.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_golb_domain_model_tag',
+                'foreign_table_where' => 'AND tx_golb_domain_model_tag.pid=###CURRENT_PID### AND tx_golb_domain_model_tag.sys_language_uid IN (-1,0)',
                 'default' => 0,
             ]
         ],
