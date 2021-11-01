@@ -2,6 +2,9 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
-    public: true
+    public: false
   Greenfieldr\Golb\:
     resource: '../Classes/*'
+  Greenfieldr\Golb\DataProcessing\MetaInformationProcessor:
+    public: true
+

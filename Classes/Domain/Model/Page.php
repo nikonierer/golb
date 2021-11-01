@@ -394,6 +394,14 @@ class Page extends AbstractEntity
     protected $contentElements;
 
     /**
+     * Contains tags for this page
+     *
+     * @Extbase\ORM\Lazy
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Tag>
+     */
+    protected $tags;
+
+    /**
      * The construtor
      */
     public function __construct()
@@ -403,6 +411,7 @@ class Page extends AbstractEntity
         $this->subpages = new ObjectStorage();
         $this->contentElements = new ObjectStorage();
         $this->media = new ObjectStorage();
+        $this->tags = new ObjectStorage();
     }
 
     /**
@@ -1200,6 +1209,44 @@ class Page extends AbstractEntity
     public function setPublishDate(int $publishDate): void
     {
         $this->publishDate = $publishDate;
+    }
+
+    /**
+     * Adds a tag
+     *
+     * @param \Greenfieldr\Golb\Domain\Model\Tag $tag
+     * @return void
+     */
+    public function addTag(\Greenfieldr\Golb\Domain\Model\Tag $tag)
+    {
+        $this->tags->attach($tag);
+    }
+
+    /**
+     * Removes a tag
+     *
+     * @param \Greenfieldr\Golb\Domain\Model\Tag $tag
+     * @return void
+     */
+    public function removeTag(\Greenfieldr\Golb\Domain\Model\Tag $tag)
+    {
+        $this->tags->detach($tag);
+    }
+
+    /**
+     * @return ObjectStorage
+     */
+    public function getTags(): ?ObjectStorage
+    {
+        return $this->tags;
+    }
+
+    /**
+     * @param ObjectStorage $tags
+     */
+    public function setTags(ObjectStorage $tags): void
+    {
+        $this->tags = $tags;
     }
 
 }

@@ -44,6 +44,9 @@ return [
             'publishDate' => [
                 'fieldName' => 'tx_golb_publish_date'
             ],
+            'tags' => [
+                'fieldName' => 'tx_golb_tags'
+            ],
         ],
     ],
     \Greenfieldr\Golb\Domain\Model\ContentElement::class => [

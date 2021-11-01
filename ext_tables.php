@@ -6,6 +6,8 @@ if (!defined('TYPO3_MODE')) {
 $boot = function ($packageKey) {
     $icons = [
         'apps-pagetree-post' => 'EXT:golb/Resources/Public/Icons/apps-pagetree-post.svg',
+        'ext-golb-tag' => 'EXT:golb/Resources/Public/Icons/tx_golb_domain_model_tag.svg'
+
     ];
     $iconRegistry = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Imaging\IconRegistry::class);
     foreach ($icons as $identifier => $icon) {
@@ -38,6 +40,8 @@ $boot = function ($packageKey) {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig(
         'options.pageTree.doktypesToShowInNewPageDragArea := addToList(' . \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE . ')'
     );
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_golb_domain_model_tag');
 };
 
 $boot('golb');

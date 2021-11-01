@@ -25,6 +25,9 @@
             <trans-unit id="pages.tx_golb_authors">
                 <source>Authors</source>
             </trans-unit>
+            <trans-unit id="pages.tx_golb_tags">
+                <source>Tags</source>
+            </trans-unit>
 
             <trans-unit id="tt_content.golbTab">
                 <source>Blog</source>
@@ -68,6 +71,20 @@
             </trans-unit>
             <trans-unit id="tt_content.excludedPages">
                 <source>Exclude pages</source>
+            </trans-unit>
+
+
+            <trans-unit id="tx_golb_domain_model_tag">
+                <source>Tag</source>
+            </trans-unit>
+            <trans-unit id="tx_golb_domain_model_tag.title">
+                <source>Title</source>
+            </trans-unit>
+            <trans-unit id="tx_golb_domain_model_tag.description">
+                <source>Description</source>
+            </trans-unit>
+            <trans-unit id="tx_golb_domain_model_tag.slug">
+                <source>Slug</source>
             </trans-unit>
         </body>
     </file>
