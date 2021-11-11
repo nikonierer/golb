@@ -5,6 +5,8 @@ if (!defined('TYPO3_MODE')) {
 }
 
 $boot = function () {
+
+    $ll = 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:';
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItem(
         'pages',
         'doktype',
@@ -35,7 +37,7 @@ $boot = function () {
     $tempColumns = [
         'tx_golb_related' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_related',
+            'label' => $ll . 'pages.tx_golb_related',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
@@ -49,7 +51,7 @@ $boot = function () {
         ],
         'tx_golb_content_elements' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_contentElements',
+            'label' => $ll . 'pages.tx_golb_contentElements',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tt_content',
@@ -60,7 +62,7 @@ $boot = function () {
         ],
         'tx_golb_author_image' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.authorImage',
+            'label' => $ll . 'pages.authorImage',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('authorImage', [
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
@@ -72,7 +74,7 @@ $boot = function () {
         ],
         'tx_golb_subpages' => [
             'exclude' => 0,
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_subpages',
+            'label' => $ll . 'pages.tx_golb_subpages',
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'pages',
@@ -81,7 +83,7 @@ $boot = function () {
             ]
         ],
         'tx_golb_publish_date' => [
-            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.tx_golb_publish_date',
+            'label' => $ll . 'pages.tx_golb_publish_date',
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -89,14 +91,34 @@ $boot = function () {
                 'eval' => 'datetime',
                 'default' => '0'
             ]
-        ]
+        ],
+        'tx_golb_tags' => [
+            'exclude' => true,
+            'label' => $ll . 'pages.tx_golb_tags',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'MM' => 'tx_golb_page_tag_mm',
+                'foreign_table' => 'tx_golb_domain_model_tag',
+                'foreign_table_where' => ' AND (tx_golb_domain_model_tag.sys_language_uid IN (-1,0) OR tx_golb_domain_model_tag.l10n_parent = 0) ORDER BY tx_golb_domain_model_tag.title',
+                'size' => 10,
+                'minitems' => 0,
+                'maxitems' => 99,
+                'multiple' => false,
+                'enableMultiSelectFilterTextfield' => true,
+
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
     ];
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumns);
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',
         '--div--;LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.golbTab, ' .
-            'tx_golb_publish_date, tx_golb_related'
+            'tx_golb_publish_date, tx_golb_tags, tx_golb_related'
     );
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',
