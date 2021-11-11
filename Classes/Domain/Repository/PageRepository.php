@@ -5,6 +5,7 @@ namespace Blog\Golb\Domain\Repository;
 use Blog\Golb\Constants;
 use Blog\Golb\Domain\Model\Category;
 use Blog\Golb\Domain\Model\Page;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
 /***************************************************************
@@ -185,6 +186,53 @@ class PageRepository extends Repository
         $this->posts = array_map('unserialize', array_unique(array_map('serialize', $this->posts)));
 
         return array_slice($this->posts, $offset, ($limit > 0 ? $limit : null));
+    }
+
+    /**
+     * @param array $rootPages
+     * @param array $tags
+     * @param array $excludeList
+     * @param int $limit
+     * @return array
+     */
+    public function findByTags(array $rootPages, array $tags, $excludeList = [], int $limit = 3): array
+    {
+        $pages = $this->findSubPagesByPageIds($rootPages);
+
+        $this->posts = [];
+        $this->traversePages($pages);
+
+        // Remove duplicates
+        $this->posts = array_map('unserialize', array_unique(array_map('serialize', $this->posts)));
+
+        $posts = [];
+        /** @var Page $post */
+        foreach ($this->posts as $post) {
+            if(
+                $post->getTags()->count() === 0 ||
+                in_array($post->getUid(), $excludeList)
+            ) {
+                continue;
+            }
+            foreach ($post->getTags() as $tag) {
+                if(in_array($tag->getTitle(), $tags)) {
+                    $amount = (array_key_exists($post->getUid(), $posts)) ?
+                        $posts[$post->getUid()]['amount'] + 1 : 1;
+
+                    $posts[$post->getUid()] = [
+                        'amount' => $amount,
+                        'post' => $post
+                    ];
+                }
+            }
+        }
+
+        usort($posts, function($a, $b) {
+            return $b['amount'] <=> $a['amount'];
+        });
+
+        $this->posts = $posts;
+        return array_slice($this->posts, 0, ($limit > 0 ? $limit : null));
     }
 
     /**
