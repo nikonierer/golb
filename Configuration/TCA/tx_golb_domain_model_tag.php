@@ -138,10 +138,31 @@ return [
                 ],
             ]
         ],
+        'pages' => [
+            'exclude' => true,
+            'label' => $ll . 'tx_golb_domain_model_tag.pages',
+            'config' => [
+                'type' => 'select',
+                'renderType' => 'selectMultipleSideBySide',
+                'MM' => 'tx_golb_page_tag_mm',
+                'MM_opposite_field' => 'pages',
+                'foreign_table' => 'pages',
+                'foreign_table_where' => ' AND pages.doktype = 41 ORDER BY pages.title',
+                'size' => 10,
+                'minitems' => 0,
+                'maxitems' => 99,
+                'multiple' => false,
+                'enableMultiSelectFilterTextfield' => true,
+
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
+            ],
+        ],
     ],
     'types' => [
         0 => [
-            'showitem' => 'hidden, title, description, slug,'
+            'showitem' => 'hidden, title, description, slug, pages,'
         ]
     ]
 ];

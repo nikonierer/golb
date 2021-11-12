@@ -63,6 +63,7 @@ CREATE TABLE tx_golb_domain_model_tag (
 
     title varchar(255) DEFAULT '' NOT NULL,
     slug varchar(255) DEFAULT '' NOT NULL,
+    pages int(11) DEFAULT '0' NOT NULL,
     description mediumtext,
 
     PRIMARY KEY (uid),
@@ -77,6 +78,7 @@ CREATE TABLE tx_golb_page_tag_mm (
     uid_local int(11) DEFAULT '0' NOT NULL,
     uid_foreign int(11) DEFAULT '0' NOT NULL,
     sorting int(11) DEFAULT '0' NOT NULL,
+    sorting_foreign int(11) DEFAULT '0' NOT NULL,
     KEY uid_local (uid_local),
     KEY uid_foreign (uid_foreign)
 );

@@ -47,6 +47,20 @@ class Tag extends AbstractEntity
     protected $slug;
 
     /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Blog\Golb\Domain\Model\Page>
+     * @lazy
+     */
+    protected $pages;
+
+    /**
+     * Tag constructor.
+     */
+    public function __construct()
+    {
+        $this->pages = new ObjectStorage();
+    }
+
+    /**
      * @return string
      */
     public function getTitle(): string
@@ -94,4 +108,35 @@ class Tag extends AbstractEntity
         $this->slug = $slug;
     }
 
+    /**
+     * @return ObjectStorage
+     */
+    public function getPages(): ObjectStorage
+    {
+        return $this->pages;
+    }
+
+    /**
+     * @param ObjectStorage $pages
+     */
+    public function setPages(ObjectStorage $pages): void
+    {
+        $this->pages = $pages;
+    }
+
+    /**
+     * @param Page $page
+     */
+    public function addPage(Page $page): void
+    {
+        $this->pages->attach($page);
+    }
+
+    /**
+     * @param Page $page
+     */
+    public function removePage(Page $page): void
+    {
+        $this->removePage($page);
+    }
 }

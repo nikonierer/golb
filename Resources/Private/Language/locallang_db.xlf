@@ -66,6 +66,9 @@
             <trans-unit id="tx_golb_domain_model_tag.slug">
                 <source>Slug</source>
             </trans-unit>
+            <trans-unit id="tx_golb_domain_model_tag.pages">
+                <source>Pages</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
