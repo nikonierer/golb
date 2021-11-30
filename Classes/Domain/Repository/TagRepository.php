@@ -2,12 +2,10 @@
 
 namespace Blog\Golb\Domain\Repository;
 
-use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
-
 /***************************************************************
  *  Copyright notice
- *  (c) 2015 Marcel Wieser <typo3dev@marcel-wieser.de>
- *           Philipp Thiele <philipp.thiele@phth.de>
+ *  (c) 2021 Marcel Wieser <typo3dev@marcel-wieser.de>
+ *
  *  All rights reserved
  *  This script is part of the TYPO3 project. The TYPO3 project is
  *  free software; you can redistribute it and/or modify
@@ -24,28 +22,21 @@ use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
  ***************************************************************/
 
 /**
- * The repository for categories
+ * The repository for tags
  */
-class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
+class TagRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-
     /**
-     * @param $id
-     * @param string $tableName
-     * @param string $fieldName
-     * @return QueryResultInterface
+     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
      */
-    public function findByRelation($id, $tableName = 'tt_content', $fieldName = 'categories')
+    public function findAllWithAtLeastOneBlogPost()
     {
         $query = $this->createQuery();
-        $query->statement(
-            'SELECT * ' .
-            'FROM sys_category as cat, sys_category_record_mm as mm ' .
-            'WHERE mm.tablenames = "' . $tableName . '" ' .
-            'AND mm.uid_foreign = ' . (int)$id . ' ' .
-            'AND mm.fieldname = "' . $fieldName . '" ' .
-            'AND cat.uid = mm.uid_local'
+
+        $query->matching(
+            $query->greaterThan('blogPosts', 0)
         );
+        $query->setOrderings(['blogPosts' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING]);
 
         return $query->execute();
     }
