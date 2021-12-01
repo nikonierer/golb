@@ -2,6 +2,9 @@
 
 namespace Blog\Golb\Domain\Repository;
 
+use Blog\Golb\Domain\Model\Page;
+use Blog\Golb\Domain\Model\Tag;
+
 /***************************************************************
  *  Copyright notice
  *  (c) 2021 Marcel Wieser <typo3dev@marcel-wieser.de>
@@ -33,11 +36,19 @@ class TagRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     {
         $query = $this->createQuery();
 
-        $query->matching(
-            $query->greaterThan('blogPosts', 0)
-        );
-        $query->setOrderings(['blogPosts' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING]);
+        $querySettings = $query->getQuerySettings();
+        $querySettings->setRespectStoragePage(false);
+        $query->setQuerySettings($querySettings);
 
-        return $query->execute();
+        $result = $query->execute()->toArray();
+
+        /** @var Tag $tag */
+        foreach ($result as $key => $tag) {
+            if($tag->getPages()->count() === 0) {
+                unset($result[$key]);
+            }
+        }
+
+        return $result;
     }
 }
