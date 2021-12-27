@@ -1,0 +1,44 @@
+config.tx_extbase {
+    persistence {
+        classes {
+            Blog\Golb\Domain\Model\Page {
+                mapping {
+                    tableName = pages
+                    columns {
+                        extendToSubpages.mapOnProperty = extendToSubpages
+                        lastUpdated.mapOnProperty = lastUpdated
+                        newUntil.mapOnProperty = newUntil
+                        crdate.mapOnProperty = creationDate
+                        tx_golb_categories.mapOnProperty = categories
+                        tx_golb_author_image.mapOnProperty = authorImage
+                        tx_golb_view_count.mapOnProperty = viewCount
+                        tx_golb_related.mapOnProperty = relatedPosts
+                        tx_golb_sorting.mapOnProperty = postsSorting
+                        tx_golb_sorting_direction.mapOnProperty = postsSortingDirection
+                        tx_golb_limit.mapOnProperty = limit
+                        tx_golb_offset.mapOnProperty = offset
+                        tx_golb_action.mapOnProperty = action
+                        tx_golb_content_elements.mapOnProperty = contentElements
+                        tx_golb_subpages.mapOnProperty = subpages
+                        tx_golb_exclude.mapOnProperty = excludedPages
+                        tx_golb_sub_categories.mapOnProperty = subCategories
+                        tx_golb_publish_date.mapOnProperty = publishDate
+                        tx_golb_tags.mapOnProperty = tags
+                    }
+                }
+            }
+
+            Blog\Golb\Domain\Model\Category {
+                mapping {
+                    tableName = sys_category
+                }
+            }
+
+            Blog\Golb\Domain\Model\ContentElement {
+                mapping {
+                    tableName = tt_content
+                }
+            }
+        }
+    }
+}
