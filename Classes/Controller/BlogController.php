@@ -3,6 +3,7 @@
 namespace Blog\Golb\Controller;
 
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 /***************************************************************
  *  Copyright notice
@@ -79,6 +80,16 @@ class BlogController extends BaseController
             $this->contentObject->data['tx_golb_action'] = '';
             $this->forward($action);
         }
+    }
+
+    /**
+     * @param ViewInterface $view
+     */
+    protected function initializeView(ViewInterface $view)
+    {
+        parent::initializeView($view);
+
+        $view->assign('contentElementData', $this->contentObject->data);
     }
 
     /**
