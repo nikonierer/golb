@@ -402,6 +402,11 @@ class Page extends AbstractEntity
     protected $tags;
 
     /**
+     * @var bool
+     */
+    protected $archived;
+
+    /**
      * The construtor
      */
     public function __construct()
@@ -479,7 +484,7 @@ class Page extends AbstractEntity
      *
      * @return int
      */
-    public function getCreationDate(): int
+    public function getCreationDate(): ?int
     {
         return $this->creationDate;
     }
@@ -1247,6 +1252,22 @@ class Page extends AbstractEntity
     public function setTags(ObjectStorage $tags): void
     {
         $this->tags = $tags;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isArchived(): bool
+    {
+        return $this->archived === true;
+    }
+
+    /**
+     * @param bool $archived
+     */
+    public function setArchived(bool $archived): void
+    {
+        $this->archived = $archived;
     }
 
 }

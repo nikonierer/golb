@@ -4,6 +4,7 @@ namespace Greenfieldr\Golb\Domain\Repository;
 
 use Greenfieldr\Golb\Constants;
 use Greenfieldr\Golb\Domain\Model\Category;
+use Greenfieldr\Golb\Domain\Model\Dto\PostsDemand;
 use Greenfieldr\Golb\Domain\Model\Page;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -85,30 +86,24 @@ class PageRepository extends Repository
      * Finds latest blog posts recursively
      *
      * @param array $rootPages
-     * @param int $limit
-     * @param int $offset
-     * @param array $categories
-     * @param bool $exclude
-     * @param null $sorting
+     * @param PostsDemand $demand
      * @return array
      */
-    public function findPosts($rootPages, $limit, $offset = 0, $categories = null, $exclude = false, $sorting = null)
+    public function findPosts($rootPages, PostsDemand $demand)
     {
         $pages = $this->findSubPagesByPageIds($rootPages);
 
         $this->posts = [];
         $this->traversePages($pages);
 
-        if ($exclude) {
-            $excludedPages = explode(',', $exclude);
-        } else {
-            $excludedPages = [];
-        }
         /**
          * if sorting is provided as an argument the array is sorted based on the type of sorting
          */
-        if ($sorting != null) {
-            switch ($sorting) {
+        if ($demand->hasOrder()) {
+            /**
+             * @TODO: Respect order direction from demand object
+             */
+            switch ($demand->getOrder()) {
                 case "date":
                     usort($this->posts, function ($a, $b) {
                         /** @var Page $a */
@@ -152,11 +147,11 @@ class PageRepository extends Repository
         /**
          * @ToDo: Refactoring needed.
          */
-        if (count($categories) > 0) {
+        if ($demand->hasCategories()) {
             $this->categories = [];
             $categoryIds = [];
             /** @var Category $category */
-            $this->traverseCategories($categories);
+            $this->traverseCategories($demand->getCategories());
 
             foreach ($this->categories as $category) {
                 $categoryIds[] = $category->getUid();
@@ -176,15 +171,74 @@ class PageRepository extends Repository
         }
 
         foreach ($this->posts as $key => $post) {
-            if (in_array($post->getUid(), $excludedPages)) {
+            if (in_array($post->getUid(), $demand->getExcluded())) {
                 unset($this->posts[$key]);
+            } else if ($demand->isArchived() && !$post->isArchived()) {
+                unset($this->posts[$key]);
+            } else if ($demand->hasTags()) {
+                $includeInResult = false;
+                foreach ($post->getTags() as $tag) {
+                    if(in_array($tag->getUid(), $demand->getTags())) {
+                        $includeInResult = true;
+                        break;
+                    }
+                }
+
+                if(!$includeInResult) {
+                    unset($this->posts[$key]);
+                }
             }
         }
 
-        // Remove duplicates
-//        $this->posts = array_map('unserialize', array_unique(array_map('serialize', $this->posts)));
+        return array_slice(
+            $this->posts,
+            $demand->getOffset(),
+            ($demand->getLimit() > 0 ? $demand->getLimit() : null)
+        );
+    }
 
-        return array_slice($this->posts, $offset, ($limit > 0 ? $limit : null));
+    /**
+     * @param array $rootPages
+     * @param array $tags
+     * @param array $excludeList
+     * @param int $limit
+     * @return array
+     */
+    public function findByTags(array $rootPages, array $tags, $excludeList = [], int $limit = 3): array
+    {
+        $pages = $this->findSubPagesByPageIds($rootPages);
+
+        $this->posts = [];
+        $this->traversePages($pages);
+
+        $posts = [];
+        /** @var Page $post */
+        foreach ($this->posts as $post) {
+            if(
+                $post->getTags()->count() === 0 ||
+                in_array($post->getUid(), $excludeList)
+            ) {
+                continue;
+            }
+            foreach ($post->getTags() as $tag) {
+                if(in_array($tag->getTitle(), $tags)) {
+                    $amount = (array_key_exists($post->getUid(), $posts)) ?
+                        $posts[$post->getUid()]['amount'] + 1 : 1;
+
+                    $posts[$post->getUid()] = [
+                        'amount' => $amount,
+                        'post' => $post
+                    ];
+                }
+            }
+        }
+
+        usort($posts, function($a, $b) {
+            return $b['amount'] <=> $a['amount'];
+        });
+
+        $this->posts = $posts;
+        return array_slice($this->posts, 0, ($limit > 0 ? $limit : null));
     }
 
     /**

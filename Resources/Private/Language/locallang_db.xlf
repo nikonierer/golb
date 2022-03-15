@@ -53,6 +53,13 @@
             <trans-unit id="tt_content.excludedPages">
                 <source>Exclude pages</source>
             </trans-unit>
+            <trans-unit id="tt_content.tx_golb_archived">
+                <source>Archived only</source>
+            </trans-unit>
+
+            <trans-unit id="tt_content.tx_golb_allow_demand_overwrite">
+                <source>Allow demand overwrite</source>
+            </trans-unit>
 
             <trans-unit id="tx_golb_domain_model_author">
                 <source>Author</source>

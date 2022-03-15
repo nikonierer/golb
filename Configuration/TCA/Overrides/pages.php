@@ -111,13 +111,22 @@ $boot = function () {
                 ],
             ],
         ],
+        'tx_golb_archived' => [
+            'exclude' => true,
+            'label' => $ll . 'pages.tx_golb_archived',
+            'displayCond' => 'FIELD:doktype:=:'.\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
+            'config' => [
+                'type' => 'check',
+                'default' => 0
+            ]
+        ],
     ];
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('pages', $tempColumns);
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',
         '--div--;LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.golbTab, ' .
-            'tx_golb_publish_date, tx_golb_tags, tx_golb_related'
+            'tx_golb_publish_date, tx_golb_archived, tx_golb_tags, tx_golb_related'
     );
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',

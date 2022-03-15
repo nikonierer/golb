@@ -47,6 +47,9 @@ return [
             'tags' => [
                 'fieldName' => 'tx_golb_tags'
             ],
+            'archived' => [
+                'fieldName' => 'tx_golb_archived'
+            ],
         ],
     ],
     \Greenfieldr\Golb\Domain\Model\ContentElement::class => [

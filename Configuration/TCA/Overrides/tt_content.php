@@ -68,7 +68,26 @@ $boot = function () {
                 'maxitems' => 9999,
                 'enableMultiSelectFilterTextfield' => true,
             ]
-        ]
+        ],
+        'tx_golb_archived' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.tx_golb_archived',
+            'displayCond' => 'FIELD:CType:=:golb',
+            'config' => [
+                'type' => 'check',
+                'default' => 0
+            ]
+        ],
+        'tx_golb_allow_demand_overwrite' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.tx_golb_allow_demand_overwrite',
+            'displayCond' => 'FIELD:CType:=:golb',
+            'config' => [
+                'type' => 'check',
+                'default' => 1
+            ]
+        ],
+
     ];
 
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
@@ -81,7 +100,7 @@ $boot = function () {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'tt_content',
         '---div--;LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.golbTab,' .
-        'tx_golb_action, tx_golb_sorting, tx_golb_sorting_direction, tx_golb_limit, tx_golb_offset, tx_golb_related, pages, tx_golb_exclude, categories,'
+        'tx_golb_action, tx_golb_sorting, tx_golb_sorting_direction, tx_golb_limit, tx_golb_offset, tx_golb_related, pages, tx_golb_exclude, categories, tx_golb_archived,'
     );
 
     $defaultPalettes['start'] =
@@ -99,7 +118,7 @@ $boot = function () {
     $GLOBALS['TCA']['tt_content']['types']['golb']['showitem'] =
         $defaultPalettes['start'] .
         'tx_golb_action, tx_golb_sorting, tx_golb_sorting_direction, tx_golb_limit, tx_golb_offset, tx_golb_related, ' .
-        'pages, tx_golb_exclude, categories,' .
+        'pages, tx_golb_exclude, categories, tx_golb_archived, tx_golb_allow_demand_overwrite,' .
         $defaultPalettes['end'];
 
 };

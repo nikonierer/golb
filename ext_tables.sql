@@ -8,7 +8,8 @@ CREATE TABLE pages (
     tx_golb_content_elements int(11) DEFAULT '0' NOT NULL,
     tx_golb_author_image int(11) unsigned DEFAULT '0',
     tx_golb_publish_date int(11) DEFAULT '0' NOT NULL,
-    tx_golb_tags int(11) DEFAULT '0' NOT NULL
+    tx_golb_tags int(11) DEFAULT '0' NOT NULL,
+    tx_golb_archived tinyint(4) DEFAULT '0' NOT NULL
 );
 
 #
@@ -27,7 +28,9 @@ CREATE TABLE tt_content (
     tx_golb_limit int(4) DEFAULT NULL,
     tx_golb_offset int(4) DEFAULT NULL,
     tx_golb_action varchar(40) DEFAULT '' NOT NULL,
-    tx_golb_exclude varchar(40) DEFAULT '' NOT NULL
+    tx_golb_exclude varchar(40) DEFAULT '' NOT NULL,
+    tx_golb_archived tinyint(4) DEFAULT '0' NOT NULL,
+    tx_golb_allow_demand_overwrite tinyint(4) DEFAULT '1' NOT NULL
 );
 
 #

@@ -3,6 +3,8 @@
 namespace Greenfieldr\Golb\Domain\Model;
 
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /***************************************************************
  *  Copyright notice
@@ -25,7 +27,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 /**
  * Tag
  *
- * @package Blog\Golb\Domain\Model
+ * @package Greenfieldr\Golb\Domain\Model
  */
 class Tag extends AbstractEntity
 {
@@ -44,6 +46,19 @@ class Tag extends AbstractEntity
      * @var string
      */
     protected $slug;
+
+    /**
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Page>
+     */
+    protected $pages;
+
+    /**
+     * Tag constructor.
+     */
+    public function __construct()
+    {
+        $this->setPages(new ObjectStorage());
+    }
 
     /**
      * @return string
@@ -92,5 +107,35 @@ class Tag extends AbstractEntity
     {
         $this->slug = $slug;
     }
+    /**
+     * @return ObjectStorage
+     */
+    public function getPages(): ?ObjectStorage
+    {
+        return $this->pages;
+    }
 
+    /**
+     * @param ObjectStorage $pages
+     */
+    public function setPages(ObjectStorage $pages): void
+    {
+        $this->pages = $pages;
+    }
+
+    /**
+     * @param Page $page
+     */
+    public function addPage(Page $page): void
+    {
+        $this->pages->attach($page);
+    }
+
+    /**
+     * @param Page $page
+     */
+    public function removePage(Page $page): void
+    {
+        $this->removePage($page);
+    }
 }

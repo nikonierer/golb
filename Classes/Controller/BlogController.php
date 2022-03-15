@@ -2,9 +2,12 @@
 
 namespace Greenfieldr\Golb\Controller;
 
+use Greenfieldr\Golb\Domain\Model\Dto\PostsDemand;
 use Greenfieldr\Golb\Domain\Repository\CategoryRepository;
 use Greenfieldr\Golb\Domain\Repository\PageRepository;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 /***************************************************************
  *  Copyright notice
@@ -74,6 +77,7 @@ class BlogController extends BaseController
      *
      * @return void
      * @throws StopActionException
+     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
      */
     public function initializeAction()
     {
@@ -91,22 +95,34 @@ class BlogController extends BaseController
             $this->contentObject->data['tx_golb_action'] = '';
             $this->forward($action);
         }
+
+        if($this->arguments->hasArgument('demand')) {
+            $this->arguments->getArgument('demand')->getPropertyMappingConfiguration()
+                ->allowAllProperties();
+        }
+    }
+
+    /**
+     * @param ViewInterface $view
+     */
+    protected function initializeView(ViewInterface $view)
+    {
+        parent::initializeView($view);
+
+        $view->assign('contentElementData', $this->contentObject->data);
     }
 
     /**
      * Lists latest blog posts
      *
+     * @param PostsDemand|null $demand
      * @return void
      */
-    public function latestAction()
+    public function latestAction(PostsDemand $demand = null)
     {
         $posts = $this->pageRepository->findPosts(
             $this->pages,
-            $this->contentObject->data['tx_golb_limit'],
-            $this->contentObject->data['tx_golb_offset'],
-            $this->categories,
-            $this->contentObject->data['tx_golb_exclude'],
-            'date'
+            $this->prepareDemandObject($this->contentObject->data, $demand)
         );
 
         $this->view->assign('posts', $posts);
@@ -115,19 +131,52 @@ class BlogController extends BaseController
     /**
      * Lists blog posts
      *
+     * @param PostsDemand|null $demand
      * @return void
      */
-    public function listAction()
+    public function listAction(PostsDemand $demand = null)
     {
+
+
         $posts = $this->pageRepository->findPosts(
             $this->pages,
-            $this->contentObject->data['tx_golb_limit'],
-            $this->contentObject->data['tx_golb_offset'],
-            $this->categories,
-            $this->contentObject->data['tx_golb_exclude'],
-            'date'
+            $this->prepareDemandObject($this->contentObject->data, $demand)
         );
 
         $this->view->assign('posts', $posts);
+    }
+
+    /**
+     * @param array $contentObject
+     * @param PostsDemand|null $demand
+     * @return PostsDemand
+     */
+    protected function prepareDemandObject(array $contentObject, PostsDemand $demand = null): PostsDemand
+    {
+        if ($demand === null) {
+            $demand = new PostsDemand();
+        }
+
+        if($contentObject['tx_golb_allow_demand_overwrite']) {
+            if(!$demand->hasCategories()) {
+                $demand->setCategories($this->categories);
+            }
+            if(!$demand->hasExcluded()) {
+                $demand->setExcluded(
+                    GeneralUtility::trimExplode(',', $contentObject['tx_golb_exclude'])
+                );
+            }
+            if(!$demand->hasLimit()) {
+                $demand->setLimit($contentObject['tx_golb_limit']);
+            }
+            if(!$demand->hasOffset()) {
+                $demand->setOffset($contentObject['tx_golb_offset']);
+            }
+            if(!$demand->isArchivedSet()) {
+                $demand->setArchived($contentObject['tx_golb_archived']);
+            }
+        }
+
+        return $demand;
     }
 }
