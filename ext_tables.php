@@ -23,12 +23,6 @@ $boot = function ($packageKey) {
         'allowedTables' => '*',
     ];
 
-
-    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
-        $packageKey,
-        'Blog',
-        'Blog'
-    );
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
         $packageKey,
         'ViewCount',
