@@ -37,6 +37,7 @@ $boot = function () {
         'tx_golb_related' => [
             'exclude' => 0,
             'label' => $ll . 'pages.tx_golb_related',
+            'displayCond' => 'FIELD:doktype:=:'.\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
@@ -51,6 +52,7 @@ $boot = function () {
         'tx_golb_content_elements' => [
             'exclude' => 0,
             'label' => $ll . 'pages.tx_golb_contentElements',
+            'displayCond' => 'FIELD:doktype:=:'.\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tt_content',
@@ -62,6 +64,7 @@ $boot = function () {
         'tx_golb_author_image' => [
             'exclude' => 0,
             'label' => $ll . 'pages.tx_golb_author_image',
+            'displayCond' => 'FIELD:doktype:=:'.\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('authorImage', [
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'
@@ -74,6 +77,7 @@ $boot = function () {
         'tx_golb_subpages' => [
             'exclude' => 0,
             'label' => $ll . 'pages.tx_golb_subpages',
+            'displayCond' => 'FIELD:doktype:=:'.\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'pages',
@@ -83,6 +87,7 @@ $boot = function () {
         ],
         'tx_golb_publish_date' => [
             'label' => $ll . 'pages.tx_golb_publish_date',
+            'displayCond' => 'FIELD:doktype:=:'.\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
@@ -94,6 +99,7 @@ $boot = function () {
         'tx_golb_tags' => [
             'exclude' => true,
             'label' => $ll . 'pages.tx_golb_tags',
+            'displayCond' => 'FIELD:doktype:=:'.\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',

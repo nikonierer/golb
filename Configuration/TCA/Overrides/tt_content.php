@@ -10,6 +10,7 @@ $boot = function () {
         'tx_golb_sorting' => [
         'exclude' => 0,
         'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.tx_golb_sorting',
+        'displayCond' => 'FIELD:CType:=:golb',
         'config' => [
             'type' => 'input',
             'size' => 30,
@@ -19,6 +20,7 @@ $boot = function () {
         'tx_golb_sorting_direction' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.tx_golb_sorting_direction',
+            'displayCond' => 'FIELD:CType:=:golb',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -28,6 +30,7 @@ $boot = function () {
         'tx_golb_limit' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.tx_golb_limit',
+            'displayCond' => 'FIELD:CType:=:golb',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -37,6 +40,7 @@ $boot = function () {
         'tx_golb_offset' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.tx_golb_offset',
+            'displayCond' => 'FIELD:CType:=:golb',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -46,6 +50,7 @@ $boot = function () {
         'tx_golb_action' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.tx_golb_action',
+            'displayCond' => 'FIELD:CType:=:golb',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
@@ -58,6 +63,7 @@ $boot = function () {
         'tx_golb_exclude' => [
             'exclude' => 0,
             'label' => 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:tt_content.excludedPages',
+            'displayCond' => 'FIELD:CType:=:golb',
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
