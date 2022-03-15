@@ -61,7 +61,7 @@ $boot = function () {
         ],
         'tx_golb_author_image' => [
             'exclude' => 0,
-            'label' => $ll . 'pages.authorImage',
+            'label' => $ll . 'pages.tx_golb_author_image',
             'config' => \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::getFileFieldTCAConfig('authorImage', [
                     'appearance' => [
                         'createNewRelationLinkTitle' => 'LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:images.addFileReference'

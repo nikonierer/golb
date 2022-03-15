@@ -28,6 +28,12 @@
             <trans-unit id="pages.tx_golb_tags">
                 <source>Tags</source>
             </trans-unit>
+            <trans-unit id="pages.tx_golb_archived">
+                <source>Archived</source>
+            </trans-unit>
+            <trans-unit id="pages.tx_golb_author_image">
+                <source>Author image</source>
+            </trans-unit>
 
             <trans-unit id="tt_content.golbTab">
                 <source>Blog</source>
