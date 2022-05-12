@@ -175,6 +175,14 @@ class BlogController extends BaseController
             if(!$demand->isArchivedSet()) {
                 $demand->setArchived($contentObject['tx_golb_archived']);
             }
+
+            if(!$demand->hasOrder() && $contentObject['tx_golb_sorting']) {
+                $demand->setOrder($contentObject['tx_golb_sorting']);
+            }
+            if(!$demand->hasOrderDirection() && $contentObject['tx_golb_sorting_direction']) {
+                $demand->setOrderDirection($contentObject['tx_golb_sorting_direction']);
+            }
+
         }
 
         return $demand;
