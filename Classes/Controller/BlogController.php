@@ -136,12 +136,12 @@ class BlogController extends BaseController
      */
     public function listAction(PostsDemand $demand = null)
     {
+        $demand = $this->prepareDemandObject($this->contentObject->data, $demand);
 
+        // Reset limit to allow pagination of entries
+        $demand->setLimit(0);
 
-        $posts = $this->pageRepository->findPosts(
-            $this->pages,
-            $this->prepareDemandObject($this->contentObject->data, $demand)
-        );
+        $posts = $this->pageRepository->findPosts($this->pages, $demand);
 
         $this->view->assign('posts', $posts);
     }
@@ -153,9 +153,7 @@ class BlogController extends BaseController
      */
     protected function prepareDemandObject(array $contentObject, PostsDemand $demand = null): PostsDemand
     {
-        if ($demand === null) {
-            $demand = new PostsDemand();
-        }
+        $demand = $demand ?? new PostsDemand();
 
         if($contentObject['tx_golb_allow_demand_overwrite']) {
             if(!$demand->hasCategories()) {
