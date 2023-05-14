@@ -1,6 +1,14 @@
 <?php
 namespace Greenfieldr\Golb\DataProcessing;
 
+/*
+ * This file is part of TYPO3 CMS-based extension "golb".
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 3
+ * of the License, or any later version.
+ */
+
 use Greenfieldr\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 use TYPO3\CMS\Frontend\ContentObject\DataProcessorInterface;

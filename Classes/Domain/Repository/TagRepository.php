@@ -2,6 +2,14 @@
 
 namespace Greenfieldr\Golb\Domain\Repository;
 
+/*
+ * This file is part of TYPO3 CMS-based extension "golb".
+ *
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 3
+ * of the License, or any later version.
+ */
+
 use Greenfieldr\Golb\Domain\Model\Tag;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
