@@ -18,7 +18,7 @@ use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 /**
- * Class TestController
+ * Class BlogController
  *
  * @package Greenfieldr\Golb\Domain\Controller
  */
