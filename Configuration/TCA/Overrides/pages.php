@@ -1,8 +1,5 @@
 <?php
-
-if (!defined('TYPO3_MODE')) {
-    die('Access denied.');
-}
+defined('TYPO3') or die();
 
 $boot = function () {
     $ll = 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:';

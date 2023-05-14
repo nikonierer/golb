@@ -1,7 +1,5 @@
 <?php
-if (!defined('TYPO3_MODE')) {
-    die ('Access denied.');
-}
+defined('TYPO3') or die();
 
 $boot = function ($packageKey) {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['golb'][] = 'Greenfieldr\\Golb\\ViewHelpers';
