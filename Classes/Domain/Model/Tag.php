@@ -25,22 +25,22 @@ class Tag extends AbstractEntity
     /**
      * @var string
      */
-    protected $title;
+    protected string $title;
 
     /**
      * @var string
      */
-    protected $description;
+    protected string $description;
 
     /**
      * @var string
      */
-    protected $slug;
+    protected string $slug;
 
     /**
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Page>
+     * @var ?ObjectStorage<Page>
      */
-    protected $pages;
+    protected ?ObjectStorage $pages;
 
     /**
      * Tag constructor.
@@ -98,7 +98,7 @@ class Tag extends AbstractEntity
         $this->slug = $slug;
     }
     /**
-     * @return ObjectStorage
+     * @return ?ObjectStorage
      */
     public function getPages(): ?ObjectStorage
     {

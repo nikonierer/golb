@@ -29,7 +29,7 @@ class ListPostsViewHelper extends AbstractViewHelper
      *
      * @var PageRepository
      */
-    protected $pageRepository;
+    protected PageRepository $pageRepository;
 
     /**
      * @param PageRepository $pageRepository

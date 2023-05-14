@@ -22,13 +22,13 @@ use TYPO3Fluid\Fluid\Core\ViewHelper\AbstractViewHelper;
 class RelatedPostsViewHelper extends AbstractViewHelper
 {
     /**
-     * @var boolean
+     * @var bool
      */
     protected $escapeChildren = false;
     /**
      * Disable the output escaping interceptor so that the value is not htmlspecialchar'd twice
      *
-     * @var boolean
+     * @var bool
      */
     protected $escapeOutput = false;
 
@@ -37,7 +37,7 @@ class RelatedPostsViewHelper extends AbstractViewHelper
      *
      * @var PageRepository
      */
-    protected $pageRepository;
+    protected PageRepository $pageRepository;
 
     /**
      * Constructor.
@@ -62,7 +62,7 @@ class RelatedPostsViewHelper extends AbstractViewHelper
      *
      * @return string
      */
-    public function render()
+    public function render(): string
     {
         $tagArray = [];
         /** @var Tag $tag */

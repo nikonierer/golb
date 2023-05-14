@@ -11,30 +11,110 @@ namespace Greenfieldr\Golb\Domain\Model;
  */
 
 use TYPO3\CMS\Extbase\Annotation as Extbase;
+use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
  * Maps on table 'sys_category'
  *
  * @package Greenfieldr\Golb\Domain\Model
  */
-class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
+class Category extends AbstractEntity
 {
+    /**
+     * @var string
+     */
+    protected string $title = '';
+
+    /**
+     * @var string
+     */
+    protected string $description = '';
+
+    /**
+     * @var ?Category
+     */
+    #[Lazy]
+    protected ?Category $parent;
 
     /**
      * List of sub categories
      *
      * @Extbase\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Category>
+     * @var ?ObjectStorage<Category>
      */
-    protected $subCategories;
+    protected ?ObjectStorage $subCategories;
+
+    /**
+     * Gets the title.
+     *
+     * @return string the title, might be empty
+     */
+    public function getTitle(): string
+    {
+        return $this->title;
+    }
+
+    /**
+     * Sets the title.
+     *
+     * @param string $title the title to set, may be empty
+     */
+    public function setTitle(string $title)
+    {
+        $this->title = $title;
+    }
+
+    /**
+     * Gets the description.
+     *
+     * @return string the description, might be empty
+     */
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    /**
+     * Sets the description.
+     *
+     * @param string $description the description to set, may be empty
+     */
+    public function setDescription(string $description)
+    {
+        $this->description = $description;
+    }
+
+    /**
+     * Gets the parent category.
+     *
+     * @return ?Category the parent category
+     */
+    public function getParent(): ?Category
+    {
+        if ($this->parent instanceof LazyLoadingProxy) {
+            $this->parent->_loadRealInstance();
+        }
+        return $this->parent;
+    }
+
+    /**
+     * Sets the parent category.
+     *
+     * @param Category $parent the parent category
+     */
+    public function setParent(Category $parent)
+    {
+        $this->parent = $parent;
+    }
 
     /**
      * Adds a category
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Category $category
+     * @param Category $category
      * @return void
      */
-    public function addSubCategory(\Greenfieldr\Golb\Domain\Model\Category $category)
+    public function addSubCategory(Category $category)
     {
         $this->subCategories->attach($category);
     }
@@ -42,10 +122,10 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * Removes a category
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Category $category
+     * @param Category $category
      * @return void
      */
-    public function removeSubCategory(\Greenfieldr\Golb\Domain\Model\Category $category)
+    public function removeSubCategory(Category $category)
     {
         $this->subCategories->detach($category);
     }
@@ -53,9 +133,9 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * Returns categories
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @return ?ObjectStorage
      */
-    public function getSubCategories()
+    public function getSubCategories(): ?ObjectStorage
     {
         return $this->subCategories;
     }
@@ -63,10 +143,10 @@ class Category extends \TYPO3\CMS\Extbase\Domain\Model\Category
     /**
      * Sets categories
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories
+     * @param ObjectStorage $categories
      * @return void
      */
-    public function setSubCategories(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories)
+    public function setSubCategories(ObjectStorage $categories)
     {
         $this->subCategories = $categories;
     }

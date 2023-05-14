@@ -43,10 +43,7 @@ class TagRepository extends Repository
         $this->setDefaultQuerySettings($this->defaultQuerySettings);
     }
 
-    /**
-     * @throws \TYPO3\CMS\Extbase\Persistence\Exception\InvalidQueryException
-     */
-    public function findAllWithAtLeastOneBlogPost()
+    public function findAllWithAtLeastOneBlogPost(): array
     {
         $query = $this->createQuery();
 

@@ -26,14 +26,14 @@ class PageRepository extends Repository
      *
      * @var array $posts
      */
-    protected $posts = [];
+    protected array $posts = [];
 
     /**
      * Property to collect categories
      *
      * @var array $categories
      */
-    protected $categories = [];
+    protected array $categories = [];
 
     /**
      * Finds a list of blog posts based on a root page
@@ -41,7 +41,7 @@ class PageRepository extends Repository
      * @param int|array $rootPages
      * @return array
      */
-    public function findSubPagesByPageIds($rootPages)
+    public function findSubPagesByPageIds(mixed $rootPages): array
     {
 
         if (is_array($rootPages)) {
@@ -50,7 +50,6 @@ class PageRepository extends Repository
             foreach ($rootPages as $rootPage) {
                 $result = $this->findByIdentifier($rootPage);
                 if ($result instanceof Page) {
-                    /** @var Page $result */
                     foreach ($result->getSubpages()->toArray() as $page) {
                         $resultArray[] = $page;
                     }
@@ -62,7 +61,6 @@ class PageRepository extends Repository
             $result = $this->findByIdentifier((int)$rootPages);
 
             if ($result instanceof Page) {
-                /** @var Page $result */
                 return $result->getSubpages()->toArray();
             }
         }
@@ -77,7 +75,7 @@ class PageRepository extends Repository
      * @param PostsDemand $demand
      * @return array
      */
-    public function findPosts($rootPages, PostsDemand $demand)
+    public function findPosts(array $rootPages, PostsDemand $demand): array
     {
         $pages = $this->findSubPagesByPageIds($rootPages);
 
@@ -192,7 +190,7 @@ class PageRepository extends Repository
      * @param int $limit
      * @return array
      */
-    public function findByTags(array $rootPages, array $tags, $excludeList = [], int $limit = 3): array
+    public function findByTags(array $rootPages, array $tags, array $excludeList = [], int $limit = 3): array
     {
         $pages = $this->findSubPagesByPageIds($rootPages);
 
@@ -235,7 +233,7 @@ class PageRepository extends Repository
      * @param array $pages
      * @return void
      */
-    protected function traversePages($pages)
+    protected function traversePages(array $pages)
     {
         /** @var Page $page */
 
@@ -256,7 +254,7 @@ class PageRepository extends Repository
      * @param array $categories
      * @return void
      */
-    protected function traverseCategories($categories)
+    protected function traverseCategories(array $categories)
     {
         /** @var Category $category */
         foreach ($categories as $category) {

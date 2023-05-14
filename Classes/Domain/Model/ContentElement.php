@@ -29,7 +29,7 @@ class ContentElement extends AbstractEntity
      *
      * @var string $bodyText
      */
-    protected $bodyText;
+    protected string $bodyText = '';
 
     /**
      * Create date timestamp
@@ -37,7 +37,7 @@ class ContentElement extends AbstractEntity
      *
      * @var int $crdate
      */
-    protected $crDate;
+    protected int $crDate = 0;
 
     /**
      * Create user identifier
@@ -45,7 +45,7 @@ class ContentElement extends AbstractEntity
      *
      * @var int $crUserId
      */
-    protected $crUserId;
+    protected int $crUserId = 0;
 
     /**
      * Content Type
@@ -53,21 +53,21 @@ class ContentElement extends AbstractEntity
      *
      * @var string $cType
      */
-    protected $cType;
+    protected string $cType = '';
 
     /**
      * Contains body text
      *
      * @var int $date
      */
-    protected $date;
+    protected int $date = 0;
 
     /**
      * Deleted flag
      *
      * @var bool $deleted
      */
-    protected $deleted;
+    protected bool $deleted = false;
 
     /**
      * End time timestamp
@@ -75,7 +75,7 @@ class ContentElement extends AbstractEntity
      *
      * @var int $endTime
      */
-    protected $endTime;
+    protected int $endTime = 0;
 
     /**
      * Frontend user groups
@@ -83,14 +83,14 @@ class ContentElement extends AbstractEntity
      *
      * @var string $feGroup
      */
-    protected $feGroup;
+    protected string $feGroup = '';
 
     /**
      * Contains header text
      *
      * @var string $header
      */
-    protected $header;
+    protected string $header = '';
 
     /**
      * Contains header link
@@ -98,28 +98,28 @@ class ContentElement extends AbstractEntity
      *
      * @var string $headerLink
      */
-    protected $headerLink;
+    protected string $headerLink = '';
 
     /**
      * Hidden flag
      *
      * @var bool $hidden
      */
-    protected $hidden;
+    protected bool $hidden = false;
 
     /**
      * Contains referenced fal images for this page
      *
      * @var string $image
      */
-    protected $image;
+    protected string $image = '';
 
     /**
      * Selected page layout
      *
      * @var int $layout
      */
-    protected $layout;
+    protected int $layout = 0;
 
     /**
      * Selected list type
@@ -127,21 +127,21 @@ class ContentElement extends AbstractEntity
      *
      * @var string $listType
      */
-    protected $listType;
+    protected string $listType = '';
 
     /**
      * Contains referenced media assets for this page
      *
      * @var string $media
      */
-    protected $media;
+    protected string $media = '';
 
     /**
      * Sorting field
      *
      * @var int $sorting
      */
-    protected $sorting;
+    protected int $sorting = 0;
 
     /**
      * Contains body text
@@ -149,7 +149,7 @@ class ContentElement extends AbstractEntity
      *
      * @var string $subHeader
      */
-    protected $subHeader;
+    protected string $subHeader = '';
 
     /**
      * Start time timestamp
@@ -157,14 +157,14 @@ class ContentElement extends AbstractEntity
      *
      * @var int $startTime
      */
-    protected $startTime;
+    protected int $startTime = 0;
 
     /**
      * Contains anchor link target for links to this page
      *
      * @var string $target
      */
-    protected $target;
+    protected string $target = '';
 
     /**
      * Contains timestamp
@@ -172,14 +172,14 @@ class ContentElement extends AbstractEntity
      *
      * @var int $timestamp
      */
-    protected $timestamp;
+    protected int $timestamp = 0;
 
     /**
      * Returns body text
      *
      * @return string
      */
-    public function getBodyText()
+    public function getBodyText(): string
     {
         return $this->bodyText;
     }
@@ -190,7 +190,7 @@ class ContentElement extends AbstractEntity
      * @param string $bodyText
      * @return void
      */
-    public function setBodyText($bodyText)
+    public function setBodyText(string $bodyText)
     {
         $this->bodyText = $bodyText;
     }
@@ -200,7 +200,7 @@ class ContentElement extends AbstractEntity
      *
      * @return string
      */
-    public function getCType()
+    public function getCType(): string
     {
         return $this->cType;
     }
@@ -211,7 +211,7 @@ class ContentElement extends AbstractEntity
      * @param string $cType
      * @return void
      */
-    public function setCType($cType)
+    public function setCType(string $cType)
     {
         $this->cType = $cType;
     }
@@ -221,7 +221,7 @@ class ContentElement extends AbstractEntity
      *
      * @return int
      */
-    public function getCrDate()
+    public function getCrDate(): int
     {
         return $this->crDate;
     }
@@ -232,7 +232,7 @@ class ContentElement extends AbstractEntity
      * @param int $crDate
      * @return void
      */
-    public function setCrDate($crDate)
+    public function setCrDate(int $crDate)
     {
         $this->crDate = $crDate;
     }
@@ -242,7 +242,7 @@ class ContentElement extends AbstractEntity
      *
      * @return int
      */
-    public function getCrUserId()
+    public function getCrUserId(): int
     {
         return $this->crUserId;
     }
@@ -253,7 +253,7 @@ class ContentElement extends AbstractEntity
      * @param int $crUserId
      * @return void
      */
-    public function setCrUserId($crUserId)
+    public function setCrUserId(int $crUserId)
     {
         $this->crUserId = $crUserId;
     }
@@ -263,7 +263,7 @@ class ContentElement extends AbstractEntity
      *
      * @return int
      */
-    public function getDate()
+    public function getDate(): int
     {
         return $this->date;
     }
@@ -274,7 +274,7 @@ class ContentElement extends AbstractEntity
      * @param int $date
      * @return void
      */
-    public function setDate($date)
+    public function setDate(int $date)
     {
         $this->date = $date;
     }
@@ -284,20 +284,20 @@ class ContentElement extends AbstractEntity
      *
      * @return bool
      */
-    public function getDeleted()
+    public function getDeleted(): bool
     {
-        return (bool)$this->deleted;
+        return $this->deleted;
     }
 
     /**
      * Sets deleted flag
      *
-     * @param mixed $deleted
+     * @param bool $deleted
      * @return void
      */
-    public function setDeleted($deleted)
+    public function setDeleted(bool $deleted)
     {
-        $this->deleted = (bool)$deleted;
+        $this->deleted = $deleted;
     }
 
     /**
@@ -305,7 +305,7 @@ class ContentElement extends AbstractEntity
      *
      * @return int
      */
-    public function getEndTime()
+    public function getEndTime(): int
     {
         return $this->endTime;
     }
@@ -316,7 +316,7 @@ class ContentElement extends AbstractEntity
      * @param int $endTime
      * @return void
      */
-    public function setEndTime($endTime)
+    public function setEndTime(int $endTime)
     {
         $this->endTime = $endTime;
     }
@@ -326,7 +326,7 @@ class ContentElement extends AbstractEntity
      *
      * @return string
      */
-    public function getFeGroup()
+    public function getFeGroup(): string
     {
         return $this->feGroup;
     }
@@ -337,7 +337,7 @@ class ContentElement extends AbstractEntity
      * @param string $feGroup
      * @return void
      */
-    public function setFeGroup($feGroup)
+    public function setFeGroup(string $feGroup)
     {
         $this->feGroup = $feGroup;
     }
@@ -347,7 +347,7 @@ class ContentElement extends AbstractEntity
      *
      * @return string
      */
-    public function getHeader()
+    public function getHeader(): string
     {
         return $this->header;
     }
@@ -358,7 +358,7 @@ class ContentElement extends AbstractEntity
      * @param string $header
      * @return void
      */
-    public function setHeader($header)
+    public function setHeader(string $header)
     {
         $this->header = $header;
     }
@@ -368,7 +368,7 @@ class ContentElement extends AbstractEntity
      *
      * @return string
      */
-    public function getHeaderLink()
+    public function getHeaderLink(): string
     {
         return $this->headerLink;
     }
@@ -379,7 +379,7 @@ class ContentElement extends AbstractEntity
      * @param string $headerLink
      * @return void
      */
-    public function setHeaderLink($headerLink)
+    public function setHeaderLink(string $headerLink)
     {
         $this->headerLink = $headerLink;
     }
@@ -389,7 +389,7 @@ class ContentElement extends AbstractEntity
      *
      * @return bool
      */
-    public function isHidden()
+    public function isHidden(): bool
     {
         return $this->hidden;
     }
@@ -397,10 +397,10 @@ class ContentElement extends AbstractEntity
     /**
      * Sets hidden flag
      *
-     * @param int $hidden
+     * @param bool $hidden
      * @return void
      */
-    public function setHidden($hidden)
+    public function setHidden(bool $hidden)
     {
         $this->hidden = $hidden;
     }
@@ -410,7 +410,7 @@ class ContentElement extends AbstractEntity
      *
      * @return string
      */
-    public function getImage()
+    public function getImage(): string
     {
         return $this->image;
     }
@@ -421,7 +421,7 @@ class ContentElement extends AbstractEntity
      * @param string $image
      * @return void
      */
-    public function setImage($image)
+    public function setImage(string $image)
     {
         $this->image = $image;
     }
@@ -431,7 +431,7 @@ class ContentElement extends AbstractEntity
      *
      * @return int
      */
-    public function getLayout()
+    public function getLayout(): int
     {
         return $this->layout;
     }
@@ -442,7 +442,7 @@ class ContentElement extends AbstractEntity
      * @param int $layout
      * @return void
      */
-    public function setLayout($layout)
+    public function setLayout(int $layout)
     {
         $this->layout = $layout;
     }
@@ -452,7 +452,7 @@ class ContentElement extends AbstractEntity
      *
      * @return string
      */
-    public function getListType()
+    public function getListType(): string
     {
         return $this->listType;
     }
@@ -463,7 +463,7 @@ class ContentElement extends AbstractEntity
      * @param string $listType
      * @return void
      */
-    public function setListType($listType)
+    public function setListType(string $listType)
     {
         $this->listType = $listType;
     }
@@ -473,7 +473,7 @@ class ContentElement extends AbstractEntity
      *
      * @return string
      */
-    public function getMedia()
+    public function getMedia(): string
     {
         return $this->media;
     }
@@ -484,7 +484,7 @@ class ContentElement extends AbstractEntity
      * @param string $media
      * @return void
      */
-    public function setMedia($media)
+    public function setMedia(string $media)
     {
         $this->media = $media;
     }
@@ -494,7 +494,7 @@ class ContentElement extends AbstractEntity
      *
      * @return int
      */
-    public function getSorting()
+    public function getSorting(): int
     {
         return $this->sorting;
     }
@@ -505,7 +505,7 @@ class ContentElement extends AbstractEntity
      * @param int $sorting
      * @return void
      */
-    public function setSorting($sorting)
+    public function setSorting(int $sorting)
     {
         $this->sorting = $sorting;
     }
@@ -515,7 +515,7 @@ class ContentElement extends AbstractEntity
      *
      * @return int
      */
-    public function getStartTime()
+    public function getStartTime(): int
     {
         return $this->startTime;
     }
@@ -526,7 +526,7 @@ class ContentElement extends AbstractEntity
      * @param int $startTime
      * @return void
      */
-    public function setStartTime($startTime)
+    public function setStartTime(int $startTime)
     {
         $this->startTime = $startTime;
     }
@@ -536,7 +536,7 @@ class ContentElement extends AbstractEntity
      *
      * @return string
      */
-    public function getSubHeader()
+    public function getSubHeader(): string
     {
         return $this->subHeader;
     }
@@ -547,7 +547,7 @@ class ContentElement extends AbstractEntity
      * @param string $subHeader
      * @return void
      */
-    public function setSubHeader($subHeader)
+    public function setSubHeader(string $subHeader)
     {
         $this->subHeader = $subHeader;
     }
@@ -557,7 +557,7 @@ class ContentElement extends AbstractEntity
      *
      * @return string
      */
-    public function getTarget()
+    public function getTarget(): string
     {
         return $this->target;
     }
@@ -568,7 +568,7 @@ class ContentElement extends AbstractEntity
      * @param string $target
      * @return void
      */
-    public function setTarget($target)
+    public function setTarget(string $target)
     {
         $this->target = $target;
     }
@@ -578,7 +578,7 @@ class ContentElement extends AbstractEntity
      *
      * @return int
      */
-    public function getTimestamp()
+    public function getTimestamp(): int
     {
         return $this->timestamp;
     }
@@ -589,7 +589,7 @@ class ContentElement extends AbstractEntity
      * @param int $timestamp
      * @return void
      */
-    public function setTimestamp($timestamp)
+    public function setTimestamp(int $timestamp)
     {
         $this->timestamp = $timestamp;
     }

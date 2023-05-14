@@ -9,7 +9,8 @@ namespace Greenfieldr\Golb\Domain\Model;
  * the terms of the GNU General Public License, either version 3
  * of the License, or any later version.
  */
-
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
+use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
@@ -27,14 +28,14 @@ class Page extends AbstractEntity
      *
      * @var string $abstract
      */
-    protected $abstract;
+    protected string $abstract;
 
     /**
      * Contains URL alias
      *
      * @var string $alias
      */
-    protected $alias;
+    protected string $alias;
 
     /**
      * Contains author email
@@ -43,100 +44,100 @@ class Page extends AbstractEntity
      *
      * @var string $authorEmail
      */
-    protected $authorEmail;
+    protected string $authorEmail;
 
     /**
      * Contains author image
      *
-     * @Extbase\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @var FileReference
      */
-    protected $authorImage;
+    #[Lazy]
+    protected FileReference $authorImage;
 
     /**
      * Contains author name
      * Use golb:author.name view helper to switch between this field and
      * corresponding backend user based in plugin configuration
      *
-     * @var string $authorName
+     * @var string $author
      */
-    protected $author;
+    protected string $author;
 
     /**
      * Contains selected backend layout
      *
      * @var string $backendLayout
      */
-    protected $backendLayout;
+    protected string $backendLayout;
 
     /**
      * Contains backend layout for sub level
      *
      * @var string $backendLayoutNextLevel
      */
-    protected $backendLayoutNextLevel;
+    protected string $backendLayoutNextLevel;
 
     /**
      * Tags the cached page belongs to
      *
      * @var string $cacheTags
      */
-    protected $cacheTags;
+    protected string $cacheTags;
 
     /**
      * Timestamp for cache timeout
      *
      * @var int $cacheTimeout
      */
-    protected $cacheTimeout;
+    protected int $cacheTimeout;
 
     /**
      * Contains relations to selected categories for this page
      *
      * @Extbase\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Category>
+     * @var ?ObjectStorage<Category>
      */
-    protected $categories;
+    protected ?ObjectStorage $categories;
 
     /**
      * Contains page id to show content from instead of the current page content itself
      *
      * @var int $contentFromPid
      */
-    protected $contentFromPid;
+    protected int $contentFromPid;
 
     /**
      * @var int
      */
-    protected $creationDate;
+    protected int $creationDate;
 
     /**
      * Create user identifier
      *
      * @var int $cruserId
      */
-    protected $cruserId;
+    protected int $cruserId;
 
     /**
      * Deleted flag
      *
      * @var bool $deleted
      */
-    protected $deleted;
+    protected bool $deleted;
 
     /**
      * Meta description for this page
      *
      * @var string $description
      */
-    protected $description;
+    protected string $description;
 
     /**
      * Page type
      *
      * @var int $doktype
      */
-    protected $doktype;
+    protected int $doktype;
 
     /**
      * End time timestamp
@@ -144,7 +145,7 @@ class Page extends AbstractEntity
      *
      * @var int $endTime
      */
-    protected $endtime;
+    protected int $endtime;
 
     /**
      * Flag to extend publish dates and access rights to subpages
@@ -152,21 +153,21 @@ class Page extends AbstractEntity
      *
      * @var bool $extendToSubPages ;
      */
-    protected $extendToSubPages;
+    protected bool $extendToSubPages;
 
     /**
      * Frontend user groups
      *
      * @var string $feGroup
      */
-    protected $feGroup;
+    protected string $feGroup;
 
     /**
      * Hidden flag
      *
      * @var bool $hidden
      */
-    protected $hidden;
+    protected bool $hidden;
 
     /**
      * Flag to hide page in navigation
@@ -174,14 +175,14 @@ class Page extends AbstractEntity
      *
      * @var bool $hiddenInNavigation
      */
-    protected $navHide;
+    protected bool $navHide;
 
     /**
      * Keywords for this page
      *
      * @var string $keywords
      */
-    protected $keywords;
+    protected string $keywords;
 
     /**
      * Last updated timestamp
@@ -189,41 +190,41 @@ class Page extends AbstractEntity
      *
      * @var int $lastUpdated
      */
-    protected $lastUpdated;
+    protected int $lastUpdated;
 
     /**
      * Selected page layout
      *
      * @var int $layout
      */
-    protected $layout;
+    protected int $layout;
 
     /**
-     * @Extbase\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference>
+     * @var ?ObjectStorage
      */
-    protected $media;
+    #[Lazy]
+    protected ?ObjectStorage $media;
 
     /**
      * Contains page identifier from mount point if document type is set to mount point
      *
      * @var int $mountPid
      */
-    protected $mountPid;
+    protected int $mountPid;
 
     /**
      * Contains mount point overlay if needed
      *
      * @var int $mountPidOverlay
      */
-    protected $mountPidOl;
+    protected int $mountPidOl;
 
     /**
      * Contains navigation title
      *
      * @var string $navigationTitle
      */
-    protected $navTitle;
+    protected string $navTitle;
 
     /**
      * Timestamp how long the page is flagged as new
@@ -231,171 +232,157 @@ class Page extends AbstractEntity
      *
      * @var int $newUntil
      */
-    protected $newUntil;
+    protected int $newUntil;
 
     /**
      * Flag indicates if the page should be cached
      *
      * @var bool $noCache
      */
-    protected $noCache;
+    protected bool $noCache;
 
     /**
      * Flag to hide page from search results
      *
      * @var bool $noSearch
      */
-    protected $noSearch;
-
-    /**
-     * Identifier of parent page
-     *
-     * @var int $pid
-     */
-    protected $pid;
+    protected bool $noSearch;
 
     /**
      * Contains related pages
      *
-     * @Extbase\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Page>
+     * @var ?ObjectStorage
      */
-    protected $relatedPages;
+    #[Lazy]
+    protected ?ObjectStorage $relatedPages;
 
     /**
      * Shortcut target for document type shortcut depending on shortcut mode
      *
      * @var int $shortcut
      */
-    protected $shortcut;
+    protected int $shortcut;
 
     /**
      * Shortcut mode if document type shortcut is selected
      *
      * @var int $shortcutMode
      */
-    protected $shortcutMode;
+    protected int $shortcutMode;
 
     /**
      * Is site root flag
      *
      * @var bool $siteRoot
      */
-    protected $isSiteroot;
+    protected bool $isSiteroot;
 
     /**
      * Sorting field
      *
      * @var int $sorting
      */
-    protected $sorting;
+    protected int $sorting;
 
     /**
      * Start time timestamp
      *
      * @var int $startTime
      */
-    protected $starttime;
+    protected int $starttime;
 
     /**
      * List of subpages
      *
-     * @Extbase\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Page>
+     * @var ?ObjectStorage
      */
-    protected $subpages;
+    #[Lazy]
+    protected ?ObjectStorage $subpages;
 
     /**
      * Page subtitle
      *
      * @var string $subtitle
      */
-    protected $subtitle;
+    protected string $subtitle;
 
     /**
      * Contains anchor link target for links to this page
      *
      * @var string $target
      */
-    protected $target;
+    protected string $target;
 
     /**
      * Contains timestamp
      *
      * @var int $tstamp
      */
-    protected $tstamp;
+    protected int $tstamp;
 
     /**
      * Page title
      *
      * @var string $title
      */
-    protected $title;
-
-    /**
-     * Unique identifier
-     *
-     * @var int $uid
-     */
-    protected $uid;
+    protected string $title;
 
     /**
      * URL e.g. for document type external
      *
      * @var string $url
      */
-    protected $url;
+    protected string $url;
 
     /**
      * Selected URL scheme
      *
      * @var int $urlScheme
      */
-    protected $urlScheme;
+    protected int $urlScheme;
 
     /**
      * URL type
      *
      * @var int $urlType
      */
-    protected $urltype;
+    protected int $urltype;
 
     /**
      * Contains number of views
      *
      * @var int $viewCount
      */
-    protected $viewCount;
+    protected int $viewCount;
 
     /**
      * @var int $publishDate
      */
-    protected $publishDate;
+    protected int $publishDate;
 
     /**
      * List of content elements
      *
-     * @Extbase\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\ContentElement>
+     * @var ?ObjectStorage
      */
-    protected $contentElements;
+    #[Lazy]
+    protected ?ObjectStorage $contentElements;
 
     /**
      * Contains tags for this page
      *
-     * @Extbase\ORM\Lazy
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Greenfieldr\Golb\Domain\Model\Tag>
+     * @var ?ObjectStorage
      */
-    protected $tags;
+    #[Lazy]
+    protected ?ObjectStorage $tags;
 
     /**
      * @var bool
      */
-    protected $archived;
+    protected bool $archived;
 
     /**
-     * The construtor
+     * The constructor
      */
     public function __construct()
     {
@@ -412,7 +399,7 @@ class Page extends AbstractEntity
      *
      * @return string
      */
-    public function getAuthorName()
+    public function getAuthorName(): string
     {
         return $this->author;
     }
@@ -423,7 +410,7 @@ class Page extends AbstractEntity
      * @param string $authorName
      * @return void
      */
-    public function setAuthorName($authorName)
+    public function setAuthorName(string $authorName)
     {
         $this->author = $authorName;
     }
@@ -431,10 +418,10 @@ class Page extends AbstractEntity
     /**
      * Adds a category
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Category $category
+     * @param Category $category
      * @return void
      */
-    public function addCategory(\Greenfieldr\Golb\Domain\Model\Category $category)
+    public function addCategory(Category $category)
     {
         $this->categories->attach($category);
     }
@@ -442,18 +429,18 @@ class Page extends AbstractEntity
     /**
      * Removes a category
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Category $category
+     * @param Category $category
      * @return void
      */
-    public function removeCategory(\Greenfieldr\Golb\Domain\Model\Category $category)
+    public function removeCategory(Category $category)
     {
         $this->categories->detach($category);
     }
 
     /**
-     * @return ObjectStorage
+     * @return ?ObjectStorage
      */
-    public function getCategories(): ObjectStorage
+    public function getCategories(): ?ObjectStorage
     {
         return $this->categories;
     }
@@ -461,7 +448,7 @@ class Page extends AbstractEntity
     /**
      * @param ObjectStorage $categories
      */
-    public function setCategories(ObjectStorage $categories): void
+    public function setCategories(ObjectStorage $categories)
     {
         $this->categories = $categories;
     }
@@ -472,7 +459,7 @@ class Page extends AbstractEntity
      *
      * @return int
      */
-    public function getCreationDate(): ?int
+    public function getCreationDate(): int
     {
         return $this->creationDate;
     }
@@ -483,7 +470,7 @@ class Page extends AbstractEntity
      * @param int $creationDate
      * @return void
      */
-    public function setCreationDate($creationDate)
+    public function setCreationDate(int $creationDate)
     {
         $this->creationDate = $creationDate;
     }
@@ -504,7 +491,7 @@ class Page extends AbstractEntity
      * @param int $createUserId
      * @return void
      */
-    public function setCreateUserId($createUserId)
+    public function setCreateUserId(int $createUserId)
     {
         $this->cruserId = $createUserId;
     }
@@ -514,9 +501,9 @@ class Page extends AbstractEntity
      *
      * @return bool
      */
-    public function isDeleted()
+    public function isDeleted(): bool
     {
-        return (bool)$this->deleted;
+        return $this->deleted;
     }
 
     /**
@@ -524,7 +511,7 @@ class Page extends AbstractEntity
      *
      * @return int
      */
-    public function getDocumentType()
+    public function getDocumentType(): int
     {
         return $this->doktype;
     }
@@ -535,7 +522,7 @@ class Page extends AbstractEntity
      * @param int $documentType
      * @return void
      */
-    public function setDocumentType($documentType)
+    public function setDocumentType(int $documentType)
     {
         $this->doktype = $documentType;
     }
@@ -545,7 +532,7 @@ class Page extends AbstractEntity
      *
      * @return int
      */
-    public function getEndTime()
+    public function getEndTime(): int
     {
         return $this->endtime;
     }
@@ -556,7 +543,7 @@ class Page extends AbstractEntity
      * @param int $endTime
      * @return void
      */
-    public function setEndTime($endTime)
+    public function setEndTime(int $endTime)
     {
         $this->endtime = $endTime;
     }
@@ -566,7 +553,7 @@ class Page extends AbstractEntity
      *
      * @return bool
      */
-    public function isHidden()
+    public function isHidden(): bool
     {
         return $this->hidden;
     }
@@ -576,9 +563,9 @@ class Page extends AbstractEntity
      *
      * @return bool
      */
-    public function isHiddenInNavigation()
+    public function isHiddenInNavigation(): bool
     {
-        return (bool)$this->navHide;
+        return $this->navHide;
     }
 
     /**
@@ -587,9 +574,9 @@ class Page extends AbstractEntity
      * @param bool $hiddenInNavigation
      * @return void
      */
-    public function setHiddenInNavigation($hiddenInNavigation)
+    public function setHiddenInNavigation(bool $hiddenInNavigation)
     {
-        $this->navHide = (bool)$hiddenInNavigation;
+        $this->navHide = $hiddenInNavigation;
     }
 
     /**
@@ -597,7 +584,7 @@ class Page extends AbstractEntity
      *
      * @return int
      */
-    public function getMountPidOverlay()
+    public function getMountPidOverlay(): int
     {
         return $this->mountPidOl;
     }
@@ -608,7 +595,7 @@ class Page extends AbstractEntity
      * @param int $mountPidOverlay
      * @return void
      */
-    public function setMountPidOverlay($mountPidOverlay)
+    public function setMountPidOverlay(int $mountPidOverlay)
     {
         $this->mountPidOl = $mountPidOverlay;
     }
@@ -619,7 +606,7 @@ class Page extends AbstractEntity
      *
      * @return string
      */
-    public function getNavigationTitle()
+    public function getNavigationTitle(): string
     {
         return $this->navTitle;
     }
@@ -630,7 +617,7 @@ class Page extends AbstractEntity
      * @param string $navigationTitle
      * @return void
      */
-    public function setNavigationTitle($navigationTitle)
+    public function setNavigationTitle(string $navigationTitle)
     {
         $this->navTitle = $navigationTitle;
     }
@@ -638,10 +625,10 @@ class Page extends AbstractEntity
     /**
      * Adds a related page
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Page $relatedPage
+     * @param Page $relatedPage
      * @return void
      */
-    public function addRelatedPage(\Greenfieldr\Golb\Domain\Model\Page $relatedPage)
+    public function addRelatedPage(Page $relatedPage)
     {
         $this->relatedPages->attach($relatedPage);
     }
@@ -649,10 +636,10 @@ class Page extends AbstractEntity
     /**
      * Removes a related page
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Page $relatedPage
+     * @param Page $relatedPage
      * @return void
      */
-    public function removeRelatedPage(\Greenfieldr\Golb\Domain\Model\Page $relatedPage)
+    public function removeRelatedPage(Page $relatedPage)
     {
         $this->relatedPages->detach($relatedPage);
     }
@@ -662,7 +649,7 @@ class Page extends AbstractEntity
      *
      * @return bool
      */
-    public function isSiteRoot()
+    public function isSiteRoot(): bool
     {
         return (bool)$this->isSiteroot;
     }
@@ -670,12 +657,12 @@ class Page extends AbstractEntity
     /**
      * Sets flag for site root
      *
-     * @param mixed $siteRoot
+     * @param bool $siteRoot
      * @return void
      */
-    public function setSiteRoot($siteRoot)
+    public function setSiteRoot(bool $siteRoot)
     {
-        $this->isSiteroot = (bool)$siteRoot;
+        $this->isSiteroot = $siteRoot;
     }
 
     /**
@@ -683,7 +670,7 @@ class Page extends AbstractEntity
      *
      * @return int
      */
-    public function getStartTime()
+    public function getStartTime(): int
     {
         return $this->starttime;
     }
@@ -694,7 +681,7 @@ class Page extends AbstractEntity
      * @param int $startTime
      * @return void
      */
-    public function setStartTime($startTime)
+    public function setStartTime(int $startTime)
     {
         $this->starttime = $startTime;
     }
@@ -702,10 +689,10 @@ class Page extends AbstractEntity
     /**
      * Adds a subpage
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Page $subpage
+     * @param Page $subpage
      * @return void
      */
-    public function addSubpage(\Greenfieldr\Golb\Domain\Model\Page $subpage)
+    public function addSubpage(Page $subpage)
     {
         $this->subpages->attach($subpage);
     }
@@ -713,26 +700,26 @@ class Page extends AbstractEntity
     /**
      * Removes a subpage
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Page $subpage
+     * @param Page $subpage
      * @return void
      */
-    public function removeSubpage(\Greenfieldr\Golb\Domain\Model\Page $subpage)
+    public function removeSubpage(Page $subpage)
     {
         $this->subpages->detach($subpage);
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage
+     * @return ?ObjectStorage
      */
-    public function getSubpages()
+    public function getSubpages(): ?ObjectStorage
     {
         return $this->subpages;
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $subpages
+     * @param ObjectStorage $subpages
      */
-    public function setSubpages($subpages)
+    public function setSubpages(ObjectStorage $subpages)
     {
         $this->subpages = $subpages;
     }
@@ -742,7 +729,7 @@ class Page extends AbstractEntity
      *
      * @return int
      */
-    public function getModificationDate()
+    public function getModificationDate(): int
     {
         return $this->tstamp;
     }
@@ -753,7 +740,7 @@ class Page extends AbstractEntity
      * @param int $timestamp
      * @return void
      */
-    public function setModificationDate($timestamp)
+    public function setModificationDate(int $timestamp)
     {
         $this->tstamp = $timestamp;
     }
@@ -763,7 +750,7 @@ class Page extends AbstractEntity
      *
      * @return int
      */
-    public function getUrlType()
+    public function getUrlType(): int
     {
         return $this->urltype;
     }
@@ -774,7 +761,7 @@ class Page extends AbstractEntity
      * @param int $urlType
      * @return void
      */
-    public function setUrlType($urlType)
+    public function setUrlType(int $urlType)
     {
         $this->urltype = $urlType;
     }
@@ -785,18 +772,18 @@ class Page extends AbstractEntity
      * @param int $amount
      * @return void
      */
-    public function increaseViewCount($amount = 1)
+    public function increaseViewCount(int $amount = 1)
     {
-        $this->viewCount = (int)$this->viewCount + $amount;
+        $this->viewCount = $this->viewCount + $amount;
     }
 
     /**
      * Adds a content element
      *
-     * @param \Greenfieldr\Golb\Domain\Model\ContentElement $contentElement
+     * @param ContentElement $contentElement
      * @return void
      */
-    public function addContentElement(\Greenfieldr\Golb\Domain\Model\ContentElement $contentElement)
+    public function addContentElement(ContentElement $contentElement)
     {
         $this->contentElements->attach($contentElement);
     }
@@ -804,10 +791,10 @@ class Page extends AbstractEntity
     /**
      * Removes a content element
      *
-     * @param \Greenfieldr\Golb\Domain\Model\ContentElement $contentElement
+     * @param ContentElement $contentElement
      * @return void
      */
-    public function removeContentElement(\Greenfieldr\Golb\Domain\Model\ContentElement $contentElement)
+    public function removeContentElement(ContentElement $contentElement)
     {
         $this->contentElements->detach($contentElement);
     }
@@ -815,7 +802,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getTitle(): ?string
+    public function getTitle(): string
     {
         return $this->title;
     }
@@ -831,7 +818,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getAbstract(): ?string
+    public function getAbstract(): string
     {
         return $this->abstract;
     }
@@ -847,7 +834,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getAlias(): ?string
+    public function getAlias(): string
     {
         return $this->alias;
     }
@@ -863,7 +850,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getAuthorEmail(): ?string
+    public function getAuthorEmail(): string
     {
         return $this->authorEmail;
     }
@@ -877,17 +864,17 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return \TYPO3\CMS\Extbase\Domain\Model\FileReference
+     * @return FileReference
      */
-    public function getAuthorImage(): \TYPO3\CMS\Extbase\Domain\Model\FileReference
+    public function getAuthorImage(): FileReference
     {
         return $this->authorImage;
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage
+     * @param FileReference $authorImage
      */
-    public function setAuthorImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $authorImage): void
+    public function setAuthorImage(FileReference $authorImage): void
     {
         $this->authorImage = $authorImage;
     }
@@ -895,7 +882,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getAuthor(): ?string
+    public function getAuthor(): string
     {
         return $this->author;
     }
@@ -911,7 +898,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getDescription(): ?string
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -927,7 +914,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getKeywords(): ?string
+    public function getKeywords(): string
     {
         return $this->keywords;
     }
@@ -959,7 +946,7 @@ class Page extends AbstractEntity
     /**
      * @return int
      */
-    public function getLayout(): ?int
+    public function getLayout(): int
     {
         return $this->layout;
     }
@@ -973,15 +960,15 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return ObjectStorage
+     * @return ?ObjectStorage
      */
-    public function getMedia(): ObjectStorage
+    public function getMedia(): ?ObjectStorage
     {
         return $this->media;
     }
 
     /**
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $media
+     * @param ObjectStorage $media
      */
     public function setMedia(ObjectStorage $media): void
     {
@@ -991,7 +978,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getNavTitle(): ?string
+    public function getNavTitle(): string
     {
         return $this->navTitle;
     }
@@ -1007,7 +994,7 @@ class Page extends AbstractEntity
     /**
      * @return int
      */
-    public function getNewUntil(): ?int
+    public function getNewUntil(): int
     {
         return $this->newUntil;
     }
@@ -1015,15 +1002,15 @@ class Page extends AbstractEntity
     /**
      * @param int $newUntil
      */
-    public function setNewUntil(int $newUntil): void
+    public function setNewUntil(int $newUntil)
     {
         $this->newUntil = $newUntil;
     }
 
     /**
-     * @return ObjectStorage
+     * @return ?ObjectStorage
      */
-    public function getRelatedPages(): ObjectStorage
+    public function getRelatedPages(): ?ObjectStorage
     {
         return $this->relatedPages;
     }
@@ -1039,7 +1026,7 @@ class Page extends AbstractEntity
     /**
      * @return int
      */
-    public function getSorting(): ?int
+    public function getSorting(): int
     {
         return $this->sorting;
     }
@@ -1047,7 +1034,7 @@ class Page extends AbstractEntity
     /**
      * @param int $sorting
      */
-    public function setSorting(int $sorting): void
+    public function setSorting(int $sorting)
     {
         $this->sorting = $sorting;
     }
@@ -1055,7 +1042,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getSubtitle(): ?string
+    public function getSubtitle(): string
     {
         return $this->subtitle;
     }
@@ -1063,7 +1050,7 @@ class Page extends AbstractEntity
     /**
      * @param string $subtitle
      */
-    public function setSubtitle(string $subtitle): void
+    public function setSubtitle(string $subtitle)
     {
         $this->subtitle = $subtitle;
     }
@@ -1071,7 +1058,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getTarget(): ?string
+    public function getTarget(): string
     {
         return $this->target;
     }
@@ -1079,7 +1066,7 @@ class Page extends AbstractEntity
     /**
      * @param string $target
      */
-    public function setTarget(string $target): void
+    public function setTarget(string $target)
     {
         $this->target = $target;
     }
@@ -1095,7 +1082,7 @@ class Page extends AbstractEntity
     /**
      * @param int $tstamp
      */
-    public function setTstamp(int $tstamp): void
+    public function setTstamp(int $tstamp)
     {
         $this->tstamp = $tstamp;
     }
@@ -1103,7 +1090,7 @@ class Page extends AbstractEntity
     /**
      * @param int $uid
      */
-    public function setUid(int $uid): void
+    public function setUid(int $uid)
     {
         $this->uid = $uid;
     }
@@ -1111,7 +1098,7 @@ class Page extends AbstractEntity
     /**
      * @return string
      */
-    public function getUrl(): ?string
+    public function getUrl(): string
     {
         return $this->url;
     }
@@ -1119,7 +1106,7 @@ class Page extends AbstractEntity
     /**
      * @param string $url
      */
-    public function setUrl(string $url): void
+    public function setUrl(string $url)
     {
         $this->url = $url;
     }
@@ -1135,7 +1122,7 @@ class Page extends AbstractEntity
     /**
      * @param int $doktype
      */
-    public function setDoktype(int $doktype): void
+    public function setDoktype(int $doktype)
     {
         $this->doktype = $doktype;
     }
@@ -1143,7 +1130,7 @@ class Page extends AbstractEntity
     /**
      * @return int
      */
-    public function getUrlScheme(): ?int
+    public function getUrlScheme(): int
     {
         return $this->urlScheme;
     }
@@ -1151,7 +1138,7 @@ class Page extends AbstractEntity
     /**
      * @param int $urlScheme
      */
-    public function setUrlScheme(int $urlScheme): void
+    public function setUrlScheme(int $urlScheme)
     {
         $this->urlScheme = $urlScheme;
     }
@@ -1159,7 +1146,7 @@ class Page extends AbstractEntity
     /**
      * @return int
      */
-    public function getViewCount(): ?int
+    public function getViewCount(): int
     {
         return $this->viewCount;
     }
@@ -1167,15 +1154,15 @@ class Page extends AbstractEntity
     /**
      * @param int $viewCount
      */
-    public function setViewCount(int $viewCount): void
+    public function setViewCount(int $viewCount)
     {
         $this->viewCount = $viewCount;
     }
 
     /**
-     * @return ObjectStorage
+     * @return ?ObjectStorage
      */
-    public function getContentElements(): ObjectStorage
+    public function getContentElements(): ?ObjectStorage
     {
         return $this->contentElements;
     }
@@ -1183,7 +1170,7 @@ class Page extends AbstractEntity
     /**
      * @param ObjectStorage $contentElements
      */
-    public function setContentElements(ObjectStorage $contentElements): void
+    public function setContentElements(ObjectStorage $contentElements)
     {
         $this->contentElements = $contentElements;
     }
@@ -1191,7 +1178,7 @@ class Page extends AbstractEntity
     /**
      * @return int
      */
-    public function getPublishDate(): ?int
+    public function getPublishDate(): int
     {
         return $this->publishDate;
     }
@@ -1199,7 +1186,7 @@ class Page extends AbstractEntity
     /**
      * @param int $publishDate
      */
-    public function setPublishDate(int $publishDate): void
+    public function setPublishDate(int $publishDate)
     {
         $this->publishDate = $publishDate;
     }
@@ -1207,10 +1194,10 @@ class Page extends AbstractEntity
     /**
      * Adds a tag
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Tag $tag
+     * @param Tag $tag
      * @return void
      */
-    public function addTag(\Greenfieldr\Golb\Domain\Model\Tag $tag)
+    public function addTag(Tag $tag)
     {
         $this->tags->attach($tag);
     }
@@ -1218,16 +1205,16 @@ class Page extends AbstractEntity
     /**
      * Removes a tag
      *
-     * @param \Greenfieldr\Golb\Domain\Model\Tag $tag
+     * @param Tag $tag
      * @return void
      */
-    public function removeTag(\Greenfieldr\Golb\Domain\Model\Tag $tag)
+    public function removeTag(Tag $tag)
     {
         $this->tags->detach($tag);
     }
 
     /**
-     * @return ObjectStorage
+     * @return ?ObjectStorage
      */
     public function getTags(): ?ObjectStorage
     {
