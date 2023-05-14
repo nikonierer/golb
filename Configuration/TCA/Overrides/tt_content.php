@@ -92,6 +92,12 @@ $boot = function () {
 
     ];
 
+    \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+        'golb',
+        'ViewCount',
+        'ViewCount'
+    );
+
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPlugin(
         ['LLL:EXT:golb/Resources/Private/Language/locallang.xlf:plugin.blogposts', 'golb'],
         'CType',
