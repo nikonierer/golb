@@ -25,7 +25,7 @@ $boot = function () {
             ],
             'types' => [
                 (string) \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE =>
-                    $GLOBALS['TCA']['pages']['types'][\TYPO3\CMS\Frontend\Page\PageRepository::DOKTYPE_DEFAULT]
+                    $GLOBALS['TCA']['pages']['types'][\TYPO3\CMS\Core\Domain\Repository\PageRepository::DOKTYPE_DEFAULT]
             ]
         ]
     );
@@ -43,7 +43,6 @@ $boot = function () {
                 'size' => 5,
                 'minitems' => 0,
                 'maxitems' => 99,
-                'enableMultiSelectFilterTextfield' => true,
             ]
         ],
         'tx_golb_content_elements' => [
@@ -107,7 +106,6 @@ $boot = function () {
                 'minitems' => 0,
                 'maxitems' => 99,
                 'multiple' => false,
-                'enableMultiSelectFilterTextfield' => true,
 
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,

@@ -42,14 +42,13 @@ class ListPostsViewHelper extends AbstractViewHelper
     /**
      * This view helper return the golb page model of the related posts.
      *
-     * @param string|array $posts The uids of a related post.
-     * @param boolean $getFirst If true it will return first page object.
      * @return array|Page This view helper returns the golb page model of the related posts.
      */
-    public function render($posts, $getFirst = false)
+    public function render(): mixed
     {
+        $posts = $this->arguments['posts'];
+        $getFirst = $this->arguments['getFirst'];
         $result = [];
-
         if (!empty($posts)) {
 
             if (!is_array($posts)) {
@@ -63,7 +62,13 @@ class ListPostsViewHelper extends AbstractViewHelper
                 }
             }
         }
-
         return ($getFirst) ? $result[0] : $result;
+    }
+
+    public function initializeArguments(): void
+    {
+        parent::initializeArguments();
+        $this->registerArgument('posts', 'array', 'The uids of a related post.', true);
+        $this->registerArgument('getFirst', 'bool', 'If true it will return first page object.', false, false);
     }
 }

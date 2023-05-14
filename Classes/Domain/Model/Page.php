@@ -94,9 +94,9 @@ class Page extends AbstractEntity
     /**
      * Contains relations to selected categories for this page
      *
-     * @Extbase\ORM\Lazy
      * @var ?ObjectStorage<Category>
      */
+    #[Lazy]
     protected ?ObjectStorage $categories;
 
     /**

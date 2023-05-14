@@ -9,7 +9,7 @@ namespace Greenfieldr\Golb\Controller;
  * the terms of the GNU General Public License, either version 3
  * of the License, or any later version.
  */
-
+use Psr\Http\Message\ResponseInterface;
 use Greenfieldr\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 use TYPO3\CMS\Extbase\Persistence\Exception\UnknownObjectException;
@@ -52,12 +52,12 @@ class ViewCountController extends ActionController
      * @return string Empty string.
      * @throws UnknownObjectException
      */
-    public function countViewAction()
+    public function countViewAction(): ResponseInterface
     {
         $page = $this->pageRepository->findByIdentifier($GLOBALS['TSFE']->id);
         $page->increaseViewCount();
         $this->persistenceManager->update($page);
 
-        return '';
+        return $this->htmlResponse('');
     }
 }

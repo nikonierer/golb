@@ -9,9 +9,10 @@ namespace Greenfieldr\Golb\Domain\Model;
  * the terms of the GNU General Public License, either version 3
  * of the License, or any later version.
  */
-
+use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 
 /**
@@ -24,6 +25,7 @@ class Category extends AbstractEntity
     /**
      * @var string
      */
+    #[Extbase\Validate(['validator' => 'NotEmpty'])]
     protected string $title = '';
 
     /**
@@ -40,9 +42,9 @@ class Category extends AbstractEntity
     /**
      * List of sub categories
      *
-     * @Extbase\ORM\Lazy
      * @var ?ObjectStorage<Category>
      */
+    #[Lazy]
     protected ?ObjectStorage $subCategories;
 
     /**

@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 $ll = 'LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:';
 
@@ -9,7 +9,6 @@ return [
         'label' => 'title',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'cruser_id' => 'cruser_id',
         'languageField' => 'sys_language_uid',
         'transOrigPointerField' => 'l10n_parent',
         'transOrigDiffSourceField' => 'l10n_diffsource',
@@ -27,9 +26,9 @@ return [
         'typeicon_classes' => [
             'default' => 'ext-golb-tag'
         ],
-    ],
-    'interface' => [
-        'showRecordFieldList' => 'hidden,title,description,slug'
+        'security' => [
+            'ignorePageTypeRestriction' => true,
+        ]
     ],
     'columns' => [
         'pid' => [
@@ -57,19 +56,7 @@ return [
         'sys_language_uid' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
-            'config' => [
-                'type' => 'select',
-                'renderType' => 'selectSingle',
-                'special' => 'languages',
-                'items' => [
-                    [
-                        'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.allLanguages',
-                        -1,
-                        'flags-multiple'
-                    ],
-                ],
-                'default' => 0,
-            ]
+            'config' => ['type' => 'language']
         ],
         'l10n_parent' => [
             'displayCond' => 'FIELD:sys_language_uid:>:0',
@@ -152,7 +139,6 @@ return [
                 'minitems' => 0,
                 'maxitems' => 99,
                 'multiple' => false,
-                'enableMultiSelectFilterTextfield' => true,
 
                 'behaviour' => [
                     'allowLanguageSynchronization' => true,

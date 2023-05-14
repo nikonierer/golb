@@ -69,7 +69,6 @@ $boot = function () {
                 'size' => 5,
                 'minitems' => 0,
                 'maxitems' => 9999,
-                'enableMultiSelectFilterTextfield' => true,
             ]
         ],
         'tx_golb_archived' => [

@@ -9,7 +9,8 @@ namespace Greenfieldr\Golb\Controller;
  * the terms of the GNU General Public License, either version 3
  * of the License, or any later version.
  */
-
+use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
+use Psr\Http\Message\ResponseInterface;
 use Greenfieldr\Golb\Domain\Model\Dto\PostsDemand;
 use Greenfieldr\Golb\Domain\Repository\CategoryRepository;
 use Greenfieldr\Golb\Domain\Repository\PageRepository;
@@ -66,7 +67,7 @@ class BlogController extends BaseController
      *
      * @return void
      * @throws StopActionException
-     * @throws \TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException
+     * @throws NoSuchArgumentException
      */
     public function initializeAction()
     {
@@ -107,7 +108,7 @@ class BlogController extends BaseController
      * @param PostsDemand|null $demand
      * @return void
      */
-    public function latestAction(PostsDemand $demand = null)
+    public function latestAction(PostsDemand $demand = null): ResponseInterface
     {
         $posts = $this->pageRepository->findPosts(
             $this->pages,
@@ -115,6 +116,7 @@ class BlogController extends BaseController
         );
 
         $this->view->assign('posts', $posts);
+        return $this->htmlResponse();
     }
 
     /**
@@ -123,7 +125,7 @@ class BlogController extends BaseController
      * @param PostsDemand|null $demand
      * @return void
      */
-    public function listAction(PostsDemand $demand = null)
+    public function listAction(PostsDemand $demand = null): ResponseInterface
     {
         $demand = $this->prepareDemandObject($this->contentObject->data, $demand);
 
@@ -133,6 +135,7 @@ class BlogController extends BaseController
         $posts = $this->pageRepository->findPosts($this->pages, $demand);
 
         $this->view->assign('posts', $posts);
+        return $this->htmlResponse();
     }
 
     /**
