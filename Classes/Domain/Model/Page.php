@@ -386,6 +386,11 @@ class Page extends AbstractEntity
      */
     public function __construct()
     {
+        $this->initializeObject();
+    }
+
+    public function initializeObject(): void
+    {
         $this->categories = new ObjectStorage();
         $this->relatedPages = new ObjectStorage();
         $this->subpages = new ObjectStorage();
