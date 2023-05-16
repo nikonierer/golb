@@ -1,8 +1,4 @@
 plugin.tx_golb {
-    settings {
-        defaultBackendLayout = 4
-    }
-
     view {
         templateRootPaths {
             10 = {$plugin.tx_golb.view.templateRootPath}
