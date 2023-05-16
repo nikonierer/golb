@@ -14,7 +14,7 @@ return [
             'viewCount' => [
                 'fieldName' => 'tx_golb_view_count'
             ],
-            'relatedPosts' => [
+            'relatedPages' => [
                 'fieldName' => 'tx_golb_related'
             ],
             'postsSorting' => [

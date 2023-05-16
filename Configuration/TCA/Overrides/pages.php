@@ -38,11 +38,17 @@ $boot = function () {
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectMultipleSideBySide',
+                'MM' => 'tx_golb_page_related_page_mm',
                 'foreign_table' => 'pages',
-                'foreign_table_where' => 'AND doktype = ' . \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE . ' ORDER BY crdate ASC',
+                'foreign_table_where' => ' AND pages.doktype = ' . \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE . ' AND (pages.sys_language_uid IN (-1,0) OR pages.l10n_parent = 0) ORDER BY pages.title',
                 'size' => 5,
                 'minitems' => 0,
                 'maxitems' => 99,
+                'multiple' => false,
+
+                'behaviour' => [
+                    'allowLanguageSynchronization' => true,
+                ],
             ]
         ],
         'tx_golb_content_elements' => [
