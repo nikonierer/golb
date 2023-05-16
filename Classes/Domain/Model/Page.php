@@ -200,10 +200,10 @@ class Page extends AbstractEntity
     protected int $layout;
 
     /**
-     * @var ?ObjectStorage
+     * @var ObjectStorage<FileReference>
      */
     #[Lazy]
-    protected ?ObjectStorage $media;
+    protected ObjectStorage $media;
 
     /**
      * Contains page identifier from mount point if document type is set to mount point
@@ -251,10 +251,10 @@ class Page extends AbstractEntity
     /**
      * Contains related pages
      *
-     * @var ?ObjectStorage
+     * @var ObjectStorage<Page>
      */
     #[Lazy]
-    protected ?ObjectStorage $relatedPages;
+    protected ObjectStorage $relatedPages;
 
     /**
      * Shortcut target for document type shortcut depending on shortcut mode
@@ -294,10 +294,10 @@ class Page extends AbstractEntity
     /**
      * List of subpages
      *
-     * @var ?ObjectStorage
+     * @var ObjectStorage<Page>
      */
     #[Lazy]
-    protected ?ObjectStorage $subpages;
+    protected ObjectStorage $subpages;
 
     /**
      * Page subtitle
@@ -363,18 +363,18 @@ class Page extends AbstractEntity
     /**
      * List of content elements
      *
-     * @var ?ObjectStorage
+     * @var ObjectStorage<ContentElement>
      */
     #[Lazy]
-    protected ?ObjectStorage $contentElements;
+    protected ObjectStorage $contentElements;
 
     /**
      * Contains tags for this page
      *
-     * @var ?ObjectStorage
+     * @var ObjectStorage<Tag>
      */
     #[Lazy]
-    protected ?ObjectStorage $tags;
+    protected ObjectStorage $tags;
 
     /**
      * @var bool
@@ -438,9 +438,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return ?ObjectStorage
+     * @return ObjectStorage
      */
-    public function getCategories(): ?ObjectStorage
+    public function getCategories(): ObjectStorage
     {
         return $this->categories;
     }
@@ -709,9 +709,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return ?ObjectStorage
+     * @return ObjectStorage
      */
-    public function getSubpages(): ?ObjectStorage
+    public function getSubpages(): ObjectStorage
     {
         return $this->subpages;
     }
@@ -960,9 +960,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return ?ObjectStorage
+     * @return ObjectStorage
      */
-    public function getMedia(): ?ObjectStorage
+    public function getMedia(): ObjectStorage
     {
         return $this->media;
     }
@@ -1008,9 +1008,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return ?ObjectStorage
+     * @return ObjectStorage
      */
-    public function getRelatedPages(): ?ObjectStorage
+    public function getRelatedPages(): ObjectStorage
     {
         return $this->relatedPages;
     }
@@ -1160,9 +1160,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return ?ObjectStorage
+     * @return ObjectStorage
      */
-    public function getContentElements(): ?ObjectStorage
+    public function getContentElements(): ObjectStorage
     {
         return $this->contentElements;
     }
@@ -1214,9 +1214,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return ?ObjectStorage
+     * @return ObjectStorage
      */
-    public function getTags(): ?ObjectStorage
+    public function getTags(): ObjectStorage
     {
         return $this->tags;
     }
