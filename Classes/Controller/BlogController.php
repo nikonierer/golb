@@ -16,7 +16,7 @@ use Greenfieldr\Golb\Domain\Repository\CategoryRepository;
 use Greenfieldr\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
-use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
+use TYPO3Fluid\Fluid\View\ViewInterface;
 
 /**
  * Class BlogController
@@ -97,8 +97,6 @@ class BlogController extends BaseController
      */
     protected function initializeView(ViewInterface $view)
     {
-        parent::initializeView($view);
-
         $view->assign('contentElementData', $this->contentObject->data);
     }
 
@@ -157,13 +155,13 @@ class BlogController extends BaseController
                 );
             }
             if(!$demand->hasLimit()) {
-                $demand->setLimit($contentObject['tx_golb_limit']);
+                $demand->setLimit($contentObject['tx_golb_limit'] ?? 0);
             }
             if(!$demand->hasOffset()) {
-                $demand->setOffset($contentObject['tx_golb_offset']);
+                $demand->setOffset($contentObject['tx_golb_offset'] ?? 0);
             }
             if(!$demand->isArchivedSet()) {
-                $demand->setArchived($contentObject['tx_golb_archived']);
+                $demand->setArchived($contentObject['tx_golb_archived'] ?? false);
             }
 
             if(!$demand->hasOrder() && $contentObject['tx_golb_sorting']) {
