@@ -6,20 +6,16 @@
 <f:section name="Main">
     <h1>Listview</h1>
     <ul>
-        <f:widget.paginate objects="{posts}"
-                    as="paginatedPosts"
-                    configuration="{itemsPerPage: 2, insertAbove: 0, insertBelow: 1, maximumNumberOfLinks: 10}">
-            <f:for each="{paginatedPosts}" as="post">
-                <li>{post.title} -
-                    <ul>
+        <f:for each="{posts}" as="post">
+            <li>{post.title} -
+                <ul>
 
-                        <f:for each="{post.categories}" as="category">
-                            <li>{category.title}</li>
-                        </f:for>
-                    </ul>
-                </li>
-            </f:for>
-        </f:widget.paginate>
+                    <f:for each="{post.categories}" as="category">
+                        <li>{category.title}</li>
+                    </f:for>
+                </ul>
+            </li>
+        </f:for>
     </ul>
 </f:section>
 </html>
