@@ -16,7 +16,7 @@ use Greenfieldr\Golb\Domain\Repository\CategoryRepository;
 use Greenfieldr\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
-use TYPO3Fluid\Fluid\View\ViewInterface;
+use TYPO3\CMS\Extbase\Mvc\View\ViewInterface;
 
 /**
  * Class BlogController
