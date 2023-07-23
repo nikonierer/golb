@@ -5,25 +5,27 @@ $boot = function ($packageKey) {
     $GLOBALS['TYPO3_CONF_VARS']['SYS']['fluid']['namespaces']['golb'][] = 'Greenfieldr\\Golb\\ViewHelpers';
 
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        $packageKey,
-        'Blog',
-        [
-            \Greenfieldr\Golb\Controller\BlogController::class => 'latest, list'
-        ],
+        \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($packageKey),
+        'ListView',
         [
             \Greenfieldr\Golb\Controller\BlogController::class => 'list'
-        ]
+        ],
+        [],
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
     \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
-        $packageKey,
-        'ViewCount',
+        \TYPO3\CMS\Core\Utility\GeneralUtility::underscoredToUpperCamelCase($packageKey),
+        'LatestView',
         [
-            \Greenfieldr\Golb\Controller\ViewCountController::class => 'countView'
+            \Greenfieldr\Golb\Controller\BlogController::class => 'latest'
         ],
-        [
-            \Greenfieldr\Golb\Controller\ViewCountController::class => 'countView'
-        ]
+        [],
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT
     );
+
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig("
+        @import 'EXT:golb/Configuration/TSconfig/ContentElementWizard.tsconfig'
+    ");
 };
 
 $boot('golb');

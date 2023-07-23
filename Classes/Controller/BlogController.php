@@ -16,6 +16,7 @@ use Greenfieldr\Golb\Domain\Repository\CategoryRepository;
 use Greenfieldr\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3Fluid\Fluid\View\ViewInterface;
 
 /**
@@ -76,16 +77,6 @@ class BlogController extends BaseController
         $this->pages = array_map('trim', explode(',', $this->contentObject->data['pages']));
         $this->categories = $this->categoryRepository->findByRelation($this->contentObject->data['uid'])->toArray();
 
-        /** @ToDo: Find another solution?! */
-        if ($this->contentObject->data['tx_golb_action'] !== '' &&
-            $this->reflectionService->getClassSchema($this)->hasMethod($this->contentObject->data['tx_golb_action'] . 'Action')
-        ) {
-            /** @ToDo Find a better solution. */
-            $action = $this->contentObject->data['tx_golb_action'];
-            $this->contentObject->data['tx_golb_action'] = '';
-            $this->forward($action);
-        }
-
         if($this->arguments->hasArgument('demand')) {
             $this->arguments->getArgument('demand')->getPropertyMappingConfiguration()
                 ->allowAllProperties();
@@ -110,7 +101,7 @@ class BlogController extends BaseController
     {
         $posts = $this->pageRepository->findPosts(
             $this->pages,
-            $this->prepareDemandObject($this->contentObject->data, $demand)
+            $this->prepareDemandObject($demand)
         );
 
         $this->view->assign('posts', $posts);
@@ -125,7 +116,7 @@ class BlogController extends BaseController
      */
     public function listAction(PostsDemand $demand = null): ResponseInterface
     {
-        $demand = $this->prepareDemandObject($this->contentObject->data, $demand);
+        $demand = $this->prepareDemandObject($demand);
 
         // Reset limit to allow pagination of entries
         $demand->setLimit(0);
@@ -137,40 +128,39 @@ class BlogController extends BaseController
     }
 
     /**
-     * @param array $contentObject
      * @param PostsDemand|null $demand
      * @return PostsDemand
      */
-    protected function prepareDemandObject(array $contentObject, PostsDemand $demand = null): PostsDemand
+    protected function prepareDemandObject(PostsDemand $demand = null): PostsDemand
     {
         $demand = $demand ?? new PostsDemand();
 
-        if($contentObject['tx_golb_allow_demand_overwrite']) {
+
+        if($this->settings['allowDemandOverwrite']) {
             if(!$demand->hasCategories()) {
                 $demand->setCategories($this->categories);
             }
             if(!$demand->hasExcluded()) {
                 $demand->setExcluded(
-                    GeneralUtility::trimExplode(',', $contentObject['tx_golb_exclude'])
+                    GeneralUtility::trimExplode(',', $this->settings['exclude'])
                 );
             }
             if(!$demand->hasLimit()) {
-                $demand->setLimit($contentObject['tx_golb_limit'] ?? 0);
+                $demand->setLimit($this->settings['limit'] ?? 0);
             }
             if(!$demand->hasOffset()) {
-                $demand->setOffset($contentObject['tx_golb_offset'] ?? 0);
+                $demand->setOffset($this->settings['offset'] ?? 0);
             }
             if(!$demand->isArchivedSet()) {
-                $demand->setArchived($contentObject['tx_golb_archived'] ?? false);
+                $demand->setArchived($this->settings['archived'] ?? false);
             }
 
-            if(!$demand->hasOrder() && $contentObject['tx_golb_sorting']) {
-                $demand->setOrder($contentObject['tx_golb_sorting']);
+            if(!$demand->hasOrder() && $this->settings['sorting']) {
+                $demand->setOrder($this->settings['sorting']);
             }
-            if(!$demand->hasOrderDirection() && $contentObject['tx_golb_sorting_direction']) {
-                $demand->setOrderDirection($contentObject['tx_golb_sorting_direction']);
+            if(!$demand->hasOrderDirection() && $this->settings['sortingDirection']) {
+                $demand->setOrderDirection($this->settings['sortingDirection']);
             }
-
         }
 
         return $demand;

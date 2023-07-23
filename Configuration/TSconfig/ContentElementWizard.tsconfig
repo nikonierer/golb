@@ -1,0 +1,23 @@
+mod.wizards.newContentElement.wizardItems.ext-golb {
+    header = LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:wizard_group
+    after = common
+    elements {
+        golb_listview {
+            iconIdentifier = ext-golb-plugin-list-view
+            title = LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:tt_content.plugin.listView.title
+            description = LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:tt_content.plugin.listView.description
+            tt_content_defValues {
+                CType = golb_listview
+            }
+        }
+        golb_latestview {
+            iconIdentifier = ext-golb-plugin-latest-view
+            title = LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:tt_content.plugin.latestView.title
+            description = LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:tt_content.plugin.latestView.description
+            tt_content_defValues {
+                CType = golb_latestview
+            }
+        }
+    }
+    show = *
+}

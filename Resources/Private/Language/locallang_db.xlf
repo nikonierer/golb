@@ -53,9 +53,6 @@
             <trans-unit id="tt_content.tx_golb_sub_categories">
                 <source>Subcategories</source>
             </trans-unit>
-            <trans-unit id="tt_content.tx_golb_action">
-                <source>View</source>
-            </trans-unit>
             <trans-unit id="tt_content.excludedPages">
                 <source>Exclude pages</source>
             </trans-unit>

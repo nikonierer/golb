@@ -23,9 +23,6 @@ return [
             'offset' => [
                 'fieldName' => 'tx_golb_offset'
             ],
-            'action' => [
-                'fieldName' => 'tx_golb_action'
-            ],
             'contentElements' => [
                 'fieldName' => 'tx_golb_content_elements'
             ],
