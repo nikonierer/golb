@@ -110,11 +110,6 @@ class PageRepository extends Repository
                         return $a < $b;
                     });
                     break;
-                case "views":
-                    usort($this->posts, function ($a, $b) {
-                        return $a->getViewCount() < $b->getViewCount();
-                    });
-                    break;
                 case "author":
                     usort($this->posts, function ($a, $b) {
                         /* if no author value is present (''), it will be set as 'zz' to appear latest in array with objects */

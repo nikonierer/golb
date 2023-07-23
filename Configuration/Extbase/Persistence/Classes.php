@@ -11,9 +11,6 @@ return [
             'authorImage' => [
                 'fieldName' => 'tx_golb_author_image'
             ],
-            'viewCount' => [
-                'fieldName' => 'tx_golb_view_count'
-            ],
             'relatedPages' => [
                 'fieldName' => 'tx_golb_related'
             ],

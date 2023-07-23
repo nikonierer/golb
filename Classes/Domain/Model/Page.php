@@ -349,13 +349,6 @@ class Page extends AbstractEntity
     protected int $urltype;
 
     /**
-     * Contains number of views
-     *
-     * @var int $viewCount
-     */
-    protected int $viewCount;
-
-    /**
      * @var int $publishDate
      */
     protected int $publishDate;
@@ -772,17 +765,6 @@ class Page extends AbstractEntity
     }
 
     /**
-     * Increases view count by given amount
-     *
-     * @param int $amount
-     * @return void
-     */
-    public function increaseViewCount(int $amount = 1)
-    {
-        $this->viewCount = $this->viewCount + $amount;
-    }
-
-    /**
      * Adds a content element
      *
      * @param ContentElement $contentElement
@@ -1147,23 +1129,7 @@ class Page extends AbstractEntity
     {
         $this->urlScheme = $urlScheme;
     }
-
-    /**
-     * @return int
-     */
-    public function getViewCount(): int
-    {
-        return $this->viewCount;
-    }
-
-    /**
-     * @param int $viewCount
-     */
-    public function setViewCount(int $viewCount)
-    {
-        $this->viewCount = $viewCount;
-    }
-
+    
     /**
      * @return ?ObjectStorage
      */
