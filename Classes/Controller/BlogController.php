@@ -103,7 +103,8 @@ class BlogController extends BaseController
             $this->pages,
             $this->prepareDemandObject($demand)
         );
-
+        
+        $this->view->assign('demand', $demand);
         $this->view->assign('posts', $posts);
         return $this->htmlResponse();
     }
@@ -123,6 +124,7 @@ class BlogController extends BaseController
 
         $posts = $this->pageRepository->findPosts($this->pages, $demand);
 
+        $this->view->assign('demand', $demand);
         $this->view->assign('posts', $posts);
         return $this->htmlResponse();
     }
