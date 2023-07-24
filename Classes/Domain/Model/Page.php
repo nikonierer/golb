@@ -28,14 +28,14 @@ class Page extends AbstractEntity
      *
      * @var string $abstract
      */
-    protected string $abstract;
+    protected string $abstract = '';
 
     /**
      * Contains URL alias
      *
      * @var string $alias
      */
-    protected string $alias;
+    protected string $alias = '';
 
     /**
      * Contains author email
@@ -44,15 +44,15 @@ class Page extends AbstractEntity
      *
      * @var string $authorEmail
      */
-    protected string $authorEmail;
+    protected string $authorEmail = '';
 
     /**
      * Contains author image
      *
-     * @var FileReference
+     * @var ?FileReference
      */
     #[Lazy]
-    protected FileReference $authorImage;
+    protected ?FileReference $authorImage = null;
 
     /**
      * Contains author name
@@ -61,35 +61,35 @@ class Page extends AbstractEntity
      *
      * @var string $author
      */
-    protected string $author;
+    protected string $author = '';
 
     /**
      * Contains selected backend layout
      *
      * @var string $backendLayout
      */
-    protected string $backendLayout;
+    protected string $backendLayout = '';
 
     /**
      * Contains backend layout for sub level
      *
      * @var string $backendLayoutNextLevel
      */
-    protected string $backendLayoutNextLevel;
+    protected string $backendLayoutNextLevel = '';
 
     /**
      * Tags the cached page belongs to
      *
      * @var string $cacheTags
      */
-    protected string $cacheTags;
+    protected string $cacheTags = '';
 
     /**
      * Timestamp for cache timeout
      *
-     * @var int $cacheTimeout
+     * @var ?int $cacheTimeout
      */
-    protected int $cacheTimeout;
+    protected ?int $cacheTimeout = null;
 
     /**
      * Contains relations to selected categories for this page
@@ -97,14 +97,14 @@ class Page extends AbstractEntity
      * @var ?ObjectStorage<Category>
      */
     #[Lazy]
-    protected ?ObjectStorage $categories;
+    protected ?ObjectStorage $categories = null;
 
     /**
      * Contains page id to show content from instead of the current page content itself
      *
-     * @var int $contentFromPid
+     * @var ?int $contentFromPid
      */
-    protected int $contentFromPid;
+    protected ?int $contentFromPid = null;
 
     /**
      * @var ?int
@@ -114,9 +114,9 @@ class Page extends AbstractEntity
     /**
      * Create user identifier
      *
-     * @var int $cruserId
+     * @var ?int $cruserId
      */
-    protected int $cruserId;
+    protected ?int $cruserId = null ;
 
     /**
      * Deleted flag
@@ -130,28 +130,28 @@ class Page extends AbstractEntity
      *
      * @var string $description
      */
-    protected string $description;
+    protected string $description = '';
 
     /**
      * Page type
      *
-     * @var int $doktype
+     * @var ?int $doktype
      */
-    protected int $doktype;
+    protected ?int $doktype = null;
 
     /**
      * End time timestamp
      * Maps on field "endtime"
      *
-     * @var int $endTime
+     * @var ?int $endTime
      */
-    protected int $endtime;
+    protected ?int $endtime = null;
 
     /**
      * Flag to extend publish dates and access rights to subpages
      * Maps on field "extendToSubpages"
      *
-     * @var bool $extendToSubPages ;
+     * @var bool $extendToSubPages
      */
     protected bool $extendToSubPages;
 
@@ -160,7 +160,7 @@ class Page extends AbstractEntity
      *
      * @var string $feGroup
      */
-    protected string $feGroup;
+    protected string $feGroup = '';
 
     /**
      * Hidden flag
@@ -173,7 +173,7 @@ class Page extends AbstractEntity
      * Flag to hide page in navigation
      * Maps on field "nav_hide"
      *
-     * @var bool $hiddenInNavigation
+     * @var bool $navHide
      */
     protected bool $navHide;
 
@@ -182,57 +182,57 @@ class Page extends AbstractEntity
      *
      * @var string $keywords
      */
-    protected string $keywords;
+    protected string $keywords = '';
 
     /**
      * Last updated timestamp
      * Maps on field "lastUpdated" (Note: CamelCase instead of underscores)
      *
-     * @var int $lastUpdated
+     * @var ?int $lastUpdated
      */
-    protected int $lastUpdated;
+    protected ?int $lastUpdated = null;
 
     /**
      * Selected page layout
      *
-     * @var int $layout
+     * @var ?int $layout
      */
-    protected int $layout;
+    protected ?int $layout = null;
 
     /**
      * @var ?ObjectStorage<FileReference>
      */
     #[Lazy]
-    protected ?ObjectStorage $media;
+    protected ?ObjectStorage $media = null;
 
     /**
      * Contains page identifier from mount point if document type is set to mount point
      *
-     * @var int $mountPid
+     * @var ?int $mountPid
      */
-    protected int $mountPid;
+    protected ?int $mountPid = null;
 
     /**
      * Contains mount point overlay if needed
      *
-     * @var int $mountPidOverlay
+     * @var ?int $mountPidOl
      */
-    protected int $mountPidOl;
+    protected ?int $mountPidOl = null;
 
     /**
      * Contains navigation title
      *
-     * @var string $navigationTitle
+     * @var string $navTitle
      */
-    protected string $navTitle;
+    protected string $navTitle = '';
 
     /**
      * Timestamp how long the page is flagged as new
      * Maps on field "newUntil" (Note: CamelCase instead of underscores)
      *
-     * @var int $newUntil
+     * @var ?int $newUntil
      */
-    protected int $newUntil;
+    protected ?int $newUntil = null;
 
     /**
      * Flag indicates if the page should be cached
@@ -254,21 +254,21 @@ class Page extends AbstractEntity
      * @var ?ObjectStorage<Page>
      */
     #[Lazy]
-    protected ?ObjectStorage $relatedPages;
+    protected ?ObjectStorage $relatedPages = null;
 
     /**
      * Shortcut target for document type shortcut depending on shortcut mode
      *
-     * @var int $shortcut
+     * @var ?int $shortcut
      */
-    protected int $shortcut;
+    protected ?int $shortcut = null;
 
     /**
      * Shortcut mode if document type shortcut is selected
      *
-     * @var int $shortcutMode
+     * @var ?int $shortcutMode
      */
-    protected int $shortcutMode;
+    protected ?int $shortcutMode = null;
 
     /**
      * Is site root flag
@@ -280,16 +280,16 @@ class Page extends AbstractEntity
     /**
      * Sorting field
      *
-     * @var int $sorting
+     * @var ?int $sorting
      */
-    protected int $sorting;
+    protected ?int $sorting = null;
 
     /**
      * Start time timestamp
      *
-     * @var int $startTime
+     * @var ?int $startTime
      */
-    protected int $starttime;
+    protected ?int $starttime = null;
 
     /**
      * List of subpages
@@ -297,61 +297,61 @@ class Page extends AbstractEntity
      * @var ?ObjectStorage<Page>
      */
     #[Lazy]
-    protected ?ObjectStorage $subpages;
+    protected ?ObjectStorage $subpages = null;
 
     /**
      * Page subtitle
      *
      * @var string $subtitle
      */
-    protected string $subtitle;
+    protected string $subtitle = '';
 
     /**
      * Contains anchor link target for links to this page
      *
      * @var string $target
      */
-    protected string $target;
+    protected string $target = '';
 
     /**
      * Contains timestamp
      *
-     * @var int $tstamp
+     * @var ?int $tstamp
      */
-    protected int $tstamp;
+    protected ?int $tstamp = null;
 
     /**
      * Page title
      *
      * @var string $title
      */
-    protected string $title;
+    protected string $title = '';
 
     /**
      * URL e.g. for document type external
      *
      * @var string $url
      */
-    protected string $url;
+    protected string $url = '';
 
     /**
      * Selected URL scheme
      *
-     * @var int $urlScheme
+     * @var ?int $urlScheme
      */
-    protected int $urlScheme;
+    protected ?int $urlScheme = null;
 
     /**
      * URL type
      *
-     * @var int $urlType
+     * @var ?int $urlType
      */
-    protected int $urltype;
+    protected ?int $urltype = null;
 
     /**
-     * @var int $publishDate
+     * @var ?int $publishDate
      */
-    protected int $publishDate;
+    protected ?int $publishDate = null;
 
     /**
      * List of content elements
@@ -359,7 +359,7 @@ class Page extends AbstractEntity
      * @var ?ObjectStorage<ContentElement>
      */
     #[Lazy]
-    protected ?ObjectStorage $contentElements;
+    protected ?ObjectStorage $contentElements = null;
 
     /**
      * Contains tags for this page
@@ -367,7 +367,7 @@ class Page extends AbstractEntity
      * @var ?ObjectStorage<Tag>
      */
     #[Lazy]
-    protected ?ObjectStorage $tags;
+    protected ?ObjectStorage $tags = null;
 
     /**
      * @var bool
@@ -395,9 +395,9 @@ class Page extends AbstractEntity
     /**
      * Returns author name
      *
-     * @return string
+     * @return ?string
      */
-    public function getAuthorName(): string
+    public function getAuthorName(): ?string
     {
         return $this->author;
     }
@@ -476,9 +476,9 @@ class Page extends AbstractEntity
     /**
      * Returns create user identifier
      *
-     * @return int
+     * @return ?int
      */
-    public function getCreateUserId(): int
+    public function getCreateUserId(): ?int
     {
         return $this->cruserId;
     }
@@ -507,9 +507,9 @@ class Page extends AbstractEntity
     /**
      * Returns document type
      *
-     * @return int
+     * @return ?int
      */
-    public function getDocumentType(): int
+    public function getDocumentType(): ?int
     {
         return $this->doktype;
     }
@@ -528,9 +528,9 @@ class Page extends AbstractEntity
     /**
      * Returns end time
      *
-     * @return int
+     * @return ?int
      */
-    public function getEndTime(): int
+    public function getEndTime(): ?int
     {
         return $this->endtime;
     }
@@ -561,7 +561,7 @@ class Page extends AbstractEntity
      *
      * @return bool
      */
-    public function isHiddenInNavigation(): bool
+    public function isNavHide(): bool
     {
         return $this->navHide;
     }
@@ -569,20 +569,20 @@ class Page extends AbstractEntity
     /**
      * Sets flag to hide page in navigation
      *
-     * @param bool $hiddenInNavigation
+     * @param bool $navHide
      * @return void
      */
-    public function setHiddenInNavigation(bool $hiddenInNavigation)
+    public function setNavHide(bool $navHide): void
     {
-        $this->navHide = $hiddenInNavigation;
+        $this->navHide = $navHide;
     }
 
     /**
      * Returns overlay for mount point page identifier
      *
-     * @return int
+     * @return ?int
      */
-    public function getMountPidOverlay(): int
+    public function getMountPidOverlay(): ?int
     {
         return $this->mountPidOl;
     }
@@ -666,9 +666,9 @@ class Page extends AbstractEntity
     /**
      * Returns start time timestamp for publishing
      *
-     * @return int
+     * @return ?int
      */
-    public function getStartTime(): int
+    public function getStartTime(): ?int
     {
         return $this->starttime;
     }
@@ -725,9 +725,9 @@ class Page extends AbstractEntity
     /**
      * Returns timestamp of last system update of the page
      *
-     * @return int
+     * @return ?int
      */
-    public function getModificationDate(): int
+    public function getModificationDate(): ?int
     {
         return $this->tstamp;
     }
@@ -746,9 +746,9 @@ class Page extends AbstractEntity
     /**
      * Returns URL type
      *
-     * @return int
+     * @return ?int
      */
-    public function getUrlType(): int
+    public function getUrlType(): ?int
     {
         return $this->urltype;
     }
@@ -851,9 +851,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return FileReference
+     * @return ?FileReference
      */
-    public function getAuthorImage(): FileReference
+    public function getAuthorImage(): ?FileReference
     {
         return $this->authorImage;
     }
@@ -915,9 +915,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getLastUpdated(): int
+    public function getLastUpdated(): ?int
     {
         return $this->lastUpdated;
     }
@@ -931,9 +931,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getLayout(): int
+    public function getLayout(): ?int
     {
         return $this->layout;
     }
@@ -979,9 +979,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getNewUntil(): int
+    public function getNewUntil(): ?int
     {
         return $this->newUntil;
     }
@@ -1011,9 +1011,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getSorting(): int
+    public function getSorting(): ?int
     {
         return $this->sorting;
     }
@@ -1115,9 +1115,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getUrlScheme(): int
+    public function getUrlScheme(): ?int
     {
         return $this->urlScheme;
     }
@@ -1147,9 +1147,9 @@ class Page extends AbstractEntity
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getPublishDate(): int
+    public function getPublishDate(): ?int
     {
         return $this->publishDate;
     }

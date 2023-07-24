@@ -25,22 +25,22 @@ class Tag extends AbstractEntity
     /**
      * @var string
      */
-    protected string $title;
+    protected string $title = '';
 
     /**
      * @var string
      */
-    protected string $description;
+    protected string $description = '';
 
     /**
      * @var string
      */
-    protected string $slug;
+    protected string $slug = '';
 
     /**
      * @var ?ObjectStorage<Page>
      */
-    protected ?ObjectStorage $pages;
+    protected ?ObjectStorage $pages = null;
 
     /**
      * Tag constructor.

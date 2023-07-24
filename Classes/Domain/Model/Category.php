@@ -37,7 +37,7 @@ class Category extends AbstractEntity
      * @var ?Category
      */
     #[Lazy]
-    protected ?Category $parent;
+    protected ?Category $parent = null;
 
     /**
      * List of sub categories
