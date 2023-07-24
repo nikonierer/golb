@@ -10,6 +10,8 @@ namespace Greenfieldr\Golb\Domain\Model\Dto;
  * of the License, or any later version.
  */
 
+use Greenfieldr\Golb\Domain\Model\Category;
+
 class PostsDemand implements DemandInterface
 {
     const LIMIT_DEFAULT = 10;
@@ -33,6 +35,11 @@ class PostsDemand implements DemandInterface
      * @var array
      */
     protected $categories = [];
+
+    /**
+     * @var ?Category
+     */
+    protected $category = null;
 
     /**
      * @var array
@@ -134,6 +141,22 @@ class PostsDemand implements DemandInterface
     public function hasCategories(): bool
     {
         return count($this->categories) > 0;
+    }
+
+    /**
+     * @return ?Category
+     */
+    public function getCategory(): ?Category
+    {
+        return $this->category;
+    }
+
+    /**
+     * @param Category $category
+     */
+    public function setCategory(Category $category): void
+    {
+        $this->category = $category;
     }
 
     /**

@@ -116,11 +116,14 @@ class PageRepository extends Repository
         /**
          * @ToDo: Refactoring needed.
          */
-        if ($demand->hasCategories()) {
+        if ($demand->hasCategories() || $demand->getCategory()) {
             $this->categories = [];
             $categoryIds = [];
+
+            $allCategories = array_merge($demand->getCategories(), [$demand->getCategory()]);
+
             /** @var Category $category */
-            $this->traverseCategories($demand->getCategories());
+            $this->traverseCategories($allCategories);
 
             foreach ($this->categories as $category) {
                 $categoryIds[] = $category->getUid();
