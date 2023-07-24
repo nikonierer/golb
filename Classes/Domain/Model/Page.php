@@ -408,7 +408,7 @@ class Page extends AbstractEntity
      * @param string $authorName
      * @return void
      */
-    public function setAuthorName(string $authorName)
+    public function setAuthorName(string $authorName): void
     {
         $this->author = $authorName;
     }
@@ -419,7 +419,7 @@ class Page extends AbstractEntity
      * @param Category $category
      * @return void
      */
-    public function addCategory(Category $category)
+    public function addCategory(Category $category): void
     {
         $this->categories->attach($category);
     }
@@ -430,7 +430,7 @@ class Page extends AbstractEntity
      * @param Category $category
      * @return void
      */
-    public function removeCategory(Category $category)
+    public function removeCategory(Category $category): void
     {
         $this->categories->detach($category);
     }
@@ -446,7 +446,7 @@ class Page extends AbstractEntity
     /**
      * @param ObjectStorage $categories
      */
-    public function setCategories(ObjectStorage $categories)
+    public function setCategories(ObjectStorage $categories): void
     {
         $this->categories = $categories;
     }
@@ -468,7 +468,7 @@ class Page extends AbstractEntity
      * @param int $creationDate
      * @return void
      */
-    public function setCreationDate(int $creationDate)
+    public function setCreationDate(int $creationDate): void
     {
         $this->creationDate = $creationDate;
     }
@@ -489,7 +489,7 @@ class Page extends AbstractEntity
      * @param int $createUserId
      * @return void
      */
-    public function setCreateUserId(int $createUserId)
+    public function setCreateUserId(int $createUserId): void
     {
         $this->cruserId = $createUserId;
     }
@@ -520,7 +520,7 @@ class Page extends AbstractEntity
      * @param int $documentType
      * @return void
      */
-    public function setDocumentType(int $documentType)
+    public function setDocumentType(int $documentType): void
     {
         $this->doktype = $documentType;
     }
@@ -541,7 +541,7 @@ class Page extends AbstractEntity
      * @param int $endTime
      * @return void
      */
-    public function setEndTime(int $endTime)
+    public function setEndTime(int $endTime): void
     {
         $this->endtime = $endTime;
     }
@@ -593,7 +593,7 @@ class Page extends AbstractEntity
      * @param int $mountPidOverlay
      * @return void
      */
-    public function setMountPidOverlay(int $mountPidOverlay)
+    public function setMountPidOverlay(int $mountPidOverlay): void
     {
         $this->mountPidOl = $mountPidOverlay;
     }
@@ -615,7 +615,7 @@ class Page extends AbstractEntity
      * @param string $navigationTitle
      * @return void
      */
-    public function setNavigationTitle(string $navigationTitle)
+    public function setNavigationTitle(string $navigationTitle): void
     {
         $this->navTitle = $navigationTitle;
     }
@@ -626,7 +626,7 @@ class Page extends AbstractEntity
      * @param Page $relatedPage
      * @return void
      */
-    public function addRelatedPage(Page $relatedPage)
+    public function addRelatedPage(Page $relatedPage): void
     {
         $this->relatedPages->attach($relatedPage);
     }
@@ -637,7 +637,7 @@ class Page extends AbstractEntity
      * @param Page $relatedPage
      * @return void
      */
-    public function removeRelatedPage(Page $relatedPage)
+    public function removeRelatedPage(Page $relatedPage): void
     {
         $this->relatedPages->detach($relatedPage);
     }
@@ -658,7 +658,7 @@ class Page extends AbstractEntity
      * @param bool $siteRoot
      * @return void
      */
-    public function setSiteRoot(bool $siteRoot)
+    public function setSiteRoot(bool $siteRoot): void
     {
         $this->isSiteroot = $siteRoot;
     }
@@ -679,7 +679,7 @@ class Page extends AbstractEntity
      * @param int $startTime
      * @return void
      */
-    public function setStartTime(int $startTime)
+    public function setStartTime(int $startTime): void
     {
         $this->starttime = $startTime;
     }
@@ -690,7 +690,7 @@ class Page extends AbstractEntity
      * @param Page $subpage
      * @return void
      */
-    public function addSubpage(Page $subpage)
+    public function addSubpage(Page $subpage): void
     {
         $this->subpages->attach($subpage);
     }
@@ -701,7 +701,7 @@ class Page extends AbstractEntity
      * @param Page $subpage
      * @return void
      */
-    public function removeSubpage(Page $subpage)
+    public function removeSubpage(Page $subpage): void
     {
         $this->subpages->detach($subpage);
     }
@@ -717,7 +717,7 @@ class Page extends AbstractEntity
     /**
      * @param ObjectStorage $subpages
      */
-    public function setSubpages(ObjectStorage $subpages)
+    public function setSubpages(ObjectStorage $subpages): void
     {
         $this->subpages = $subpages;
     }
@@ -738,7 +738,7 @@ class Page extends AbstractEntity
      * @param int $timestamp
      * @return void
      */
-    public function setModificationDate(int $timestamp)
+    public function setModificationDate(int $timestamp): void
     {
         $this->tstamp = $timestamp;
     }
@@ -759,7 +759,7 @@ class Page extends AbstractEntity
      * @param int $urlType
      * @return void
      */
-    public function setUrlType(int $urlType)
+    public function setUrlType(int $urlType): void
     {
         $this->urltype = $urlType;
     }
@@ -770,7 +770,7 @@ class Page extends AbstractEntity
      * @param ContentElement $contentElement
      * @return void
      */
-    public function addContentElement(ContentElement $contentElement)
+    public function addContentElement(ContentElement $contentElement): void
     {
         $this->contentElements->attach($contentElement);
     }
@@ -781,7 +781,7 @@ class Page extends AbstractEntity
      * @param ContentElement $contentElement
      * @return void
      */
-    public function removeContentElement(ContentElement $contentElement)
+    public function removeContentElement(ContentElement $contentElement): void
     {
         $this->contentElements->detach($contentElement);
     }
@@ -989,7 +989,7 @@ class Page extends AbstractEntity
     /**
      * @param int $newUntil
      */
-    public function setNewUntil(int $newUntil)
+    public function setNewUntil(int $newUntil): void
     {
         $this->newUntil = $newUntil;
     }
@@ -1021,7 +1021,7 @@ class Page extends AbstractEntity
     /**
      * @param int $sorting
      */
-    public function setSorting(int $sorting)
+    public function setSorting(int $sorting): void
     {
         $this->sorting = $sorting;
     }
@@ -1037,7 +1037,7 @@ class Page extends AbstractEntity
     /**
      * @param string $subtitle
      */
-    public function setSubtitle(string $subtitle)
+    public function setSubtitle(string $subtitle): void
     {
         $this->subtitle = $subtitle;
     }
@@ -1053,15 +1053,15 @@ class Page extends AbstractEntity
     /**
      * @param string $target
      */
-    public function setTarget(string $target)
+    public function setTarget(string $target): void
     {
         $this->target = $target;
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getTstamp(): int
+    public function getTstamp(): ?int
     {
         return $this->tstamp;
     }
@@ -1069,7 +1069,7 @@ class Page extends AbstractEntity
     /**
      * @param int $tstamp
      */
-    public function setTstamp(int $tstamp)
+    public function setTstamp(int $tstamp): void
     {
         $this->tstamp = $tstamp;
     }
@@ -1077,7 +1077,7 @@ class Page extends AbstractEntity
     /**
      * @param int $uid
      */
-    public function setUid(int $uid)
+    public function setUid(int $uid): void
     {
         $this->uid = $uid;
     }
@@ -1093,15 +1093,15 @@ class Page extends AbstractEntity
     /**
      * @param string $url
      */
-    public function setUrl(string $url)
+    public function setUrl(string $url): void
     {
         $this->url = $url;
     }
 
     /**
-     * @return int
+     * @return ?int
      */
-    public function getDoktype(): int
+    public function getDoktype(): ?int
     {
         return $this->doktype;
     }
@@ -1109,7 +1109,7 @@ class Page extends AbstractEntity
     /**
      * @param int $doktype
      */
-    public function setDoktype(int $doktype)
+    public function setDoktype(int $doktype): void
     {
         $this->doktype = $doktype;
     }
@@ -1125,7 +1125,7 @@ class Page extends AbstractEntity
     /**
      * @param int $urlScheme
      */
-    public function setUrlScheme(int $urlScheme)
+    public function setUrlScheme(int $urlScheme): void
     {
         $this->urlScheme = $urlScheme;
     }
@@ -1157,7 +1157,7 @@ class Page extends AbstractEntity
     /**
      * @param int $publishDate
      */
-    public function setPublishDate(int $publishDate)
+    public function setPublishDate(int $publishDate): void
     {
         $this->publishDate = $publishDate;
     }
@@ -1168,7 +1168,7 @@ class Page extends AbstractEntity
      * @param Tag $tag
      * @return void
      */
-    public function addTag(Tag $tag)
+    public function addTag(Tag $tag): void
     {
         $this->tags->attach($tag);
     }
@@ -1179,7 +1179,7 @@ class Page extends AbstractEntity
      * @param Tag $tag
      * @return void
      */
-    public function removeTag(Tag $tag)
+    public function removeTag(Tag $tag): void
     {
         $this->tags->detach($tag);
     }

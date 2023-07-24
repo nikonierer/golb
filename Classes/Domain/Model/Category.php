@@ -62,7 +62,7 @@ class Category extends AbstractEntity
      *
      * @param string $title the title to set, may be empty
      */
-    public function setTitle(string $title)
+    public function setTitle(string $title): void
     {
         $this->title = $title;
     }
@@ -82,7 +82,7 @@ class Category extends AbstractEntity
      *
      * @param string $description the description to set, may be empty
      */
-    public function setDescription(string $description)
+    public function setDescription(string $description): void
     {
         $this->description = $description;
     }
@@ -105,7 +105,7 @@ class Category extends AbstractEntity
      *
      * @param Category $parent the parent category
      */
-    public function setParent(Category $parent)
+    public function setParent(Category $parent): void
     {
         $this->parent = $parent;
     }
@@ -116,7 +116,7 @@ class Category extends AbstractEntity
      * @param Category $category
      * @return void
      */
-    public function addSubCategory(Category $category)
+    public function addSubCategory(Category $category): void
     {
         $this->subCategories->attach($category);
     }
@@ -127,7 +127,7 @@ class Category extends AbstractEntity
      * @param Category $category
      * @return void
      */
-    public function removeSubCategory(Category $category)
+    public function removeSubCategory(Category $category): void
     {
         $this->subCategories->detach($category);
     }
@@ -148,7 +148,7 @@ class Category extends AbstractEntity
      * @param ObjectStorage $categories
      * @return void
      */
-    public function setSubCategories(ObjectStorage $categories)
+    public function setSubCategories(ObjectStorage $categories): void
     {
         $this->subCategories = $categories;
     }
