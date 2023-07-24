@@ -45,7 +45,7 @@ class Category extends AbstractEntity
      * @var ?ObjectStorage<Category>
      */
     #[Lazy]
-    protected ?ObjectStorage $subCategories;
+    protected ?ObjectStorage $subCategories = null;
 
     /**
      * Gets the title.

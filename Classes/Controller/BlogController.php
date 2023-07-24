@@ -133,34 +133,34 @@ class BlogController extends BaseController
      */
     protected function prepareDemandObject(PostsDemand $demand = null): PostsDemand
     {
-        $demand = $demand ?? new PostsDemand();
+        // Use submitted demand object only if availalbe and allowDemandOverwrite is set.
+        $demand = $demand && $this->settings['allowDemandOverwrite'] ? $demand : new PostsDemand();
 
-
-        if($this->settings['allowDemandOverwrite']) {
-            if(!$demand->hasCategories()) {
-                $demand->setCategories($this->categories);
-            }
-            if(!$demand->hasExcluded()) {
-                $demand->setExcluded(
-                    GeneralUtility::trimExplode(',', $this->settings['exclude'])
-                );
-            }
-            if(!$demand->hasLimit()) {
-                $demand->setLimit($this->settings['limit'] ?? 0);
-            }
-            if(!$demand->hasOffset()) {
-                $demand->setOffset($this->settings['offset'] ?? 0);
-            }
-            if(!$demand->isArchivedSet()) {
-                $demand->setArchived($this->settings['archived'] ?? false);
-            }
-
-            if(!$demand->hasOrder() && $this->settings['sorting']) {
-                $demand->setOrder($this->settings['sorting']);
-            }
-            if(!$demand->hasOrderDirection() && $this->settings['sortingDirection']) {
-                $demand->setOrderDirection($this->settings['sortingDirection']);
-            }
+        if(!$demand->hasCategories()) {
+            $demand->setCategories($this->categories);
+        }
+        if(!$demand->hasExcluded()) {
+            $demand->setExcluded(
+                GeneralUtility::trimExplode(',', $this->settings['exclude'])
+            );
+        }
+        if(!$demand->hasLimit()) {
+            $demand->setLimit($this->settings['limit'] ?? 0);
+        }
+        if(!$demand->hasOffset()) {
+            $demand->setOffset($this->settings['offset'] ?? 0);
+        }
+        if(!$demand->isArchivedSet() && $this->settings['archived'] === 'archived') {
+            $demand->setArchived(true);
+        }
+        if(!$demand->isNonArchivedSet() && $this->settings['archived'] === 'nonArchived') {
+            $demand->setNonArchived(true);
+        }
+        if(!$demand->hasOrder() && $this->settings['sorting']) {
+            $demand->setOrder($this->settings['sorting']);
+        }
+        if(!$demand->hasOrderDirection() && $this->settings['sortingDirection']) {
+            $demand->setOrderDirection($this->settings['sortingDirection']);
         }
 
         return $demand;

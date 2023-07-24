@@ -11,6 +11,7 @@ namespace Greenfieldr\Golb\Domain\Repository;
  */
 
 use Greenfieldr\Golb\Domain\Model\Tag;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -36,7 +37,7 @@ class TagRepository extends Repository
 
     public function initializeObject()
     {
-        $this->defaultQuerySettings = $this->objectManager->get(Typo3QuerySettings::class);
+        $this->defaultQuerySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
         $this->defaultQuerySettings->setRespectStoragePage(false);
         $this->defaultQuerySettings->setIgnoreEnableFields(false);
         $this->defaultQuerySettings->setRespectSysLanguage(true);

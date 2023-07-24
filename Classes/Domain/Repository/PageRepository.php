@@ -14,13 +14,26 @@ use Greenfieldr\Golb\Constants;
 use Greenfieldr\Golb\Domain\Model\Category;
 use Greenfieldr\Golb\Domain\Model\Dto\PostsDemand;
 use Greenfieldr\Golb\Domain\Model\Page;
+use TYPO3\CMS\Core\Database\Connection;
+use TYPO3\CMS\Core\Database\ConnectionPool;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+use TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings;
 use TYPO3\CMS\Extbase\Persistence\Repository;
+use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 
 /**
  * The repository for pages
  */
 class PageRepository extends Repository
 {
+
+    public function initializeObject()
+    {
+        $this->defaultQuerySettings = GeneralUtility::makeInstance(Typo3QuerySettings::class);
+        $this->defaultQuerySettings->setRespectStoragePage(false);
+        $this->setDefaultQuerySettings($this->defaultQuerySettings);
+    }
+
     /**
      * Property to collect posts
      *
@@ -36,39 +49,6 @@ class PageRepository extends Repository
     protected array $categories = [];
 
     /**
-     * Finds a list of blog posts based on a root page
-     *
-     * @param int|array $rootPages
-     * @return array
-     */
-    public function findSubPagesByPageIds(mixed $rootPages): array
-    {
-
-        if (is_array($rootPages)) {
-            $resultArray = [];
-
-            foreach ($rootPages as $rootPage) {
-                $result = $this->findByIdentifier($rootPage);
-                if ($result instanceof Page) {
-                    foreach ($result->getSubpages()->toArray() as $page) {
-                        $resultArray[] = $page;
-                    }
-                }
-            }
-
-            return $resultArray;
-        } else {
-            $result = $this->findByIdentifier((int)$rootPages);
-
-            if ($result instanceof Page) {
-                return $result->getSubpages()->toArray();
-            }
-        }
-
-        return [];
-    }
-
-    /**
      * Finds latest blog posts recursively
      *
      * @param array $rootPages
@@ -79,8 +59,13 @@ class PageRepository extends Repository
     {
         $pages = $this->findSubPagesByPageIds($rootPages);
 
-        $this->posts = [];
-        $this->traversePages($pages);
+        $query = $this->createQuery();
+        $this->posts = $query->matching(
+            $query->logicalAnd(
+                $query->in('uid', $pages),
+                $query->equals('doktype', Constants::BLOG_POST_DOKTYPE)
+            )
+        )->execute()->toArray();
 
         /**
          * if sorting is provided as an argument the array is sorted based on the type of sorting
@@ -107,7 +92,10 @@ class PageRepository extends Repository
                             $b = $b->getCreationDate();
                         }
 
-                        return $a < $b;
+                        if($a == $b)
+                            return 0;
+
+                        return ($a < $b) ? -1 : 1;
                     });
                     break;
                 case "author":
@@ -119,7 +107,7 @@ class PageRepository extends Repository
                             return 0;
                         }
 
-                        return ($al > $bl) ? +1 : -1;
+                        return ($al < $bl) ? -1 : 1;
                     });
                     break;
             }
@@ -139,6 +127,7 @@ class PageRepository extends Repository
             }
 
             $posts = $this->posts;
+
             $this->posts = [];
             foreach ($posts as $post) {
                 /**    @var Page $post */
@@ -153,8 +142,10 @@ class PageRepository extends Repository
 
         foreach ($this->posts as $key => $post) {
             if (in_array($post->getUid(), $demand->getExcluded())) {
-                unset($this->posts[$key]);
+                    unset($this->posts[$key]);
             } else if ($demand->isArchived() && !$post->isArchived()) {
+                unset($this->posts[$key]);
+            } else if ($demand->isNonArchived() && $post->isArchived()) {
                 unset($this->posts[$key]);
             } else if ($demand->hasTags()) {
                 $includeInResult = false;
@@ -189,8 +180,13 @@ class PageRepository extends Repository
     {
         $pages = $this->findSubPagesByPageIds($rootPages);
 
-        $this->posts = [];
-        $this->traversePages($pages);
+        $query = $this->createQuery();
+        $this->posts = $query->matching(
+            $query->logicalAnd(
+                $query->in('uid', $pages),
+                $query->equals('doktype', Constants::BLOG_POST_DOKTYPE)
+            )
+        )->execute()->toArray();
 
         $posts = [];
         /** @var Page $post */
@@ -223,24 +219,64 @@ class PageRepository extends Repository
     }
 
     /**
-     * Adds blog posts to $this->posts
-     *
-     * @param array $pages
-     * @return void
+     * @param array $rootPages
+     * @return array
      */
-    protected function traversePages(array $pages)
+    public function findSubPagesByPageIds(array $rootPages): array
     {
-        /** @var Page $page */
+        $pages = [];
 
-        foreach ($pages as $page) {
-            if ($page->getSubpages() > 0) {
-                self::traversePages($page->getSubpages()->toArray());
-            }
-
-            if ($page->getDoktype() == Constants::BLOG_POST_DOKTYPE) {
-                $this->posts[] = $page;
-            }
+        foreach ($rootPages as $rootPage) {
+            array_push($pages, ...$this->aggregateAllPageIdentifiers($rootPage));
         }
+
+        $language = ($this->defaultQuerySettings) ?
+            $this->defaultQuerySettings->getLanguageAspect()->getId() :
+            GeneralUtility::makeInstance(Typo3QuerySettings::class)->getLanguageAspect()->getId();
+
+        if($language > 0) {
+            $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
+            $queryBuilder->select('uid')
+                ->from('pages')
+                ->where(
+                    $queryBuilder->expr()->eq('sys_language_uid', $language),
+                    $queryBuilder->expr()->in('l10n_parent', $pages)
+                );
+
+            $pages = $queryBuilder->executeQuery()->fetchFirstColumn();
+        }
+
+        return array_unique($pages);
+    }
+
+    /**
+     * Recursively fetch all descendants of a given page
+     * Adapted from QueryGenerator::getTreeList in TYPO3 version 11
+     *
+     * @param int $id Uid of the page
+     * @param array $pageIdentifiers List of PageUids
+     * @return array
+     */
+    public function aggregateAllPageIdentifiers(int $id, array &$pageIdentifiers = []): array
+    {
+        if ($id < 0) {
+            $id = abs($id);
+        }
+
+        $queryBuilder = GeneralUtility::makeInstance(ConnectionPool::class)->getQueryBuilderForTable('pages');
+        $queryBuilder->select('uid')
+            ->from('pages')
+            ->where(
+                $queryBuilder->expr()->eq('pid', $queryBuilder->createNamedParameter($id, Connection::PARAM_INT)),
+                $queryBuilder->expr()->eq('sys_language_uid', 0)
+            );
+        $statement = $queryBuilder->execute();
+        while ($row = $statement->fetchAssociative()) {
+            $pageIdentifiers[] = $row['uid'];
+            $this->aggregateAllPageIdentifiers($row['uid'], $pageIdentifiers);
+        }
+
+        return $pageIdentifiers;
     }
 
     /**

@@ -17,11 +17,17 @@ class PostsDemand implements DemandInterface
     const ORDER_DEFAULT = 'date';
     const ORDER_DIRECTION_DEFAULT = 'DESC';
     const ARCHIVED_DEFAULT = false;
+    const NON_ARCHIVED_DEFAULT = false;
 
     /**
      * @var bool|null
      */
     protected $archived = null;
+
+    /**
+     * @var bool|null
+     */
+    protected $nonArchived = null;
 
     /**
      * @var array
@@ -78,6 +84,29 @@ class PostsDemand implements DemandInterface
     public function setArchived(bool $archived): PostsDemand
     {
         $this->archived = $archived;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNonArchived(): bool
+    {
+        return ($this->isNonArchivedSet()) ? $this->nonArchived : self::NON_ARCHIVED_DEFAULT;
+    }
+
+    public function isNonArchivedSet(): bool
+    {
+        return $this->nonArchived !== null;
+    }
+
+    /**
+     * @param bool $nonArchived
+     * @return PostsDemand
+     */
+    public function setNonArchived(bool $nonArchived): PostsDemand
+    {
+        $this->nonArchived = $nonArchived;
         return $this;
     }
 

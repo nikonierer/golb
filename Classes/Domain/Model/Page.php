@@ -107,9 +107,9 @@ class Page extends AbstractEntity
     protected int $contentFromPid;
 
     /**
-     * @var int
+     * @var ?int
      */
-    protected int $creationDate;
+    protected ?int $creationDate = null;
 
     /**
      * Create user identifier
@@ -455,9 +455,9 @@ class Page extends AbstractEntity
     /**
      * Returns create date timestamp
      *
-     * @return int
+     * @return ?int
      */
-    public function getCreationDate(): int
+    public function getCreationDate(): ?int
     {
         return $this->creationDate;
     }
