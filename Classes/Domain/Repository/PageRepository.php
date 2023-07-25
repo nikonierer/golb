@@ -120,7 +120,10 @@ class PageRepository extends Repository
             $this->categories = [];
             $categoryIds = [];
 
-            $allCategories = array_merge($demand->getCategories(), [$demand->getCategory()]);
+            $allCategories = $demand->getCategories();
+            if($demand->getCategory()) {
+                $allCategories = array_merge($demand->getCategories(), [$demand->getCategory()]);
+            }
 
             /** @var Category $category */
             $this->traverseCategories($allCategories);
