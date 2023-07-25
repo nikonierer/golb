@@ -237,7 +237,7 @@ class PageRepository extends Repository
         $pages = [];
 
         foreach ($rootPages as $rootPage) {
-            array_push($pages, ...$this->aggregateAllPageIdentifiers($rootPage));
+            array_push($pages, ...$this->aggregateAllPageIdentifiers((int)$rootPage));
         }
 
         $language = ($this->defaultQuerySettings) ?
