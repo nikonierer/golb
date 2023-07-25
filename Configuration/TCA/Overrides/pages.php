@@ -7,7 +7,7 @@ $boot = function () {
         'pages',
         'doktype',
         [
-            'LLL:EXT:golb/Resources/Private/Language/locallang_tca.xlf:doktype.post',
+            'LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:doktype.post',
             \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
             'apps-pagetree-post',
         ],
