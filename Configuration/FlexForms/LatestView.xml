@@ -124,6 +124,29 @@
                             </config>
                         </TCEforms>
                     </settings.archived>
+                    <settings.topPosts>
+                        <TCEforms>
+                            <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="0" type="array">
+                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts.all</numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts.topPostsOnly</numIndex>
+                                        <numIndex index="1">topPosts</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts.nonTopPostsOnly</numIndex>
+                                        <numIndex index="1">nonTopPosts</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.topPosts>
                     <settings.allowDemandOverwrite>
                         <TCEforms>
                             <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.allowDemandOverwrite</label>

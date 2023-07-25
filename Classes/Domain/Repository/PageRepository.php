@@ -150,6 +150,10 @@ class PageRepository extends Repository
                 unset($this->posts[$key]);
             } else if ($demand->isNonArchived() && $post->isArchived()) {
                 unset($this->posts[$key]);
+            } else if ($demand->isTopPost() && !$post->isTopPost()) {
+                unset($this->posts[$key]);
+            } else if ($demand->isNonTopPost() && $post->isTopPost()) {
+                unset($this->posts[$key]);
             } else if ($demand->hasTags()) {
                 $includeInResult = false;
                 foreach ($post->getTags() as $tag) {

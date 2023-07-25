@@ -44,6 +44,9 @@ return [
             'archived' => [
                 'fieldName' => 'tx_golb_archived'
             ],
+            'topPost' => [
+                'fieldName' => 'tx_golb_top_post'
+            ],
         ],
     ],
     \Greenfieldr\Golb\Domain\Model\ContentElement::class => [

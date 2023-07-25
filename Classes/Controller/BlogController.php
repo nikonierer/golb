@@ -158,6 +158,12 @@ class BlogController extends BaseController
         if(!$demand->isNonArchivedSet() && $this->settings['archived'] === 'nonArchived') {
             $demand->setNonArchived(true);
         }
+        if(!$demand->isTopPostSet() && $this->settings['topPosts'] === 'topPosts') {
+            $demand->setTopPost(true);
+        }
+        if(!$demand->isNonTopPostSet() && $this->settings['topPosts'] === 'nonTopPosts') {
+            $demand->setNonTopPost(true);
+        }
         if(!$demand->hasOrder() && $this->settings['sorting']) {
             $demand->setOrder($this->settings['sorting']);
         }

@@ -127,6 +127,15 @@ $boot = function () {
                 'default' => 0
             ]
         ],
+        'tx_golb_top_post' => [
+            'exclude' => true,
+            'label' => $ll . 'pages.tx_golb_top_post',
+            'displayCond' => 'FIELD:doktype:=:'.\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
+            'config' => [
+                'type' => 'check',
+                'default' => 0
+            ]
+        ],
     ];
 
     $GLOBALS['PAGES_TYPES'][\Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE] = [
@@ -138,7 +147,7 @@ $boot = function () {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',
         '--div--;LLL:EXT:golb/Resources/Private/Language/locallang_db.xlf:pages.golbTab, ' .
-            'tx_golb_publish_date, tx_golb_archived, tx_golb_tags, tx_golb_related'
+            'tx_golb_publish_date, tx_golb_archived, tx_golb_top_post, tx_golb_tags, tx_golb_related'
     );
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'pages',

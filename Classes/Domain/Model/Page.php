@@ -372,7 +372,12 @@ class Page extends AbstractEntity
     /**
      * @var bool
      */
-    protected bool $archived;
+    protected bool $archived = false;
+
+    /**
+     * @var bool
+     */
+    protected bool $topPost = false;
 
     /**
      * The constructor
@@ -1214,6 +1219,22 @@ class Page extends AbstractEntity
     public function setArchived(bool $archived): void
     {
         $this->archived = $archived;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTopPost(): bool
+    {
+        return $this->topPost;
+    }
+
+    /**
+     * @param bool $topPost
+     */
+    public function setTopPost(bool $topPost): void
+    {
+        $this->topPost = $topPost;
     }
 
 }

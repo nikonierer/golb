@@ -20,6 +20,8 @@ class PostsDemand implements DemandInterface
     const ORDER_DIRECTION_DEFAULT = 'DESC';
     const ARCHIVED_DEFAULT = false;
     const NON_ARCHIVED_DEFAULT = false;
+    const TOP_POST_DEFAULT = false;
+    const NON_TOP_POST_DEFAULT = false;
 
     /**
      * @var bool|null
@@ -30,6 +32,16 @@ class PostsDemand implements DemandInterface
      * @var bool|null
      */
     protected $nonArchived = null;
+
+    /**
+     * @var bool|null
+     */
+    protected $topPost = null;
+
+    /**
+     * @var bool|null
+     */
+    protected $nonTopPost = null;
 
     /**
      * @var array
@@ -114,6 +126,52 @@ class PostsDemand implements DemandInterface
     public function setNonArchived(bool $nonArchived): PostsDemand
     {
         $this->nonArchived = $nonArchived;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isTopPost(): bool
+    {
+        return ($this->isTopPostSet()) ? $this->topPost : self::TOP_POST_DEFAULT;
+    }
+
+    public function isTopPostSet(): bool
+    {
+        return $this->topPost !== null;
+    }
+
+    /**
+     * @param bool $topPost
+     * @return PostsDemand
+     */
+    public function setTopPost(bool $topPost): PostsDemand
+    {
+        $this->topPost = $topPost;
+        return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isNonTopPost(): bool
+    {
+        return ($this->isNonTopPostSet()) ? $this->nonTopPost : self::NON_TOP_POST_DEFAULT;
+    }
+
+    public function isNonTopPostSet(): bool
+    {
+        return $this->nonTopPost !== null;
+    }
+
+    /**
+     * @param bool $nonTopPost
+     * @return PostsDemand
+     */
+    public function setNonTopPost(bool $nonTopPost): PostsDemand
+    {
+        $this->nonTopPost = $nonTopPost;
         return $this;
     }
 

@@ -73,6 +73,18 @@
             <trans-unit id="flexforms_general.archived.nonArchivedOnly">
                 <source>Show non-archived posts only</source>
             </trans-unit>
+            <trans-unit id="flexforms_general.topPosts">
+                <source>Top posts</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.topPosts.all">
+                <source>Show all</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.topPosts.topPostsOnly">
+                <source>Show top posts only</source>
+            </trans-unit>
+            <trans-unit id="flexforms_general.topPosts.nonTopPostsOnly">
+                <source>Show non-top posts only</source>
+            </trans-unit>
             <trans-unit id="flexforms_general.allowDemandOverwrite">
                 <source>Allow demand overrite (e.g. via URL parameters)</source>
             </trans-unit>
