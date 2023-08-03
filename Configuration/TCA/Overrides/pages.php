@@ -8,7 +8,7 @@ $boot = function () {
         'doktype',
         [
             'LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:doktype.post',
-            \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
+            (string) \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE,
             'apps-pagetree-post',
         ],
         '1',
@@ -20,7 +20,8 @@ $boot = function () {
         [
             'ctrl' => [
                 'typeicon_classes' => [
-                    \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE => 'apps-pagetree-post',
+                    (string) \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE => 'apps-pagetree-post',
+                    (string) \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE . '-hideinmenu' => 'apps-pagetree-post',
                 ],
             ],
             'types' => [

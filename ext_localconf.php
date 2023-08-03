@@ -26,6 +26,9 @@ $boot = function ($packageKey) {
     \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPageTSConfig("
         @import 'EXT:golb/Configuration/TSconfig/ContentElementWizard.tsconfig'
     ");
+    \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addUserTSConfig(
+        'options.pageTree.doktypesToShowInNewPageDragArea := addToList(' . \Greenfieldr\Golb\Constants::BLOG_POST_DOKTYPE . ')'
+    );
 };
 
 $boot('golb');
