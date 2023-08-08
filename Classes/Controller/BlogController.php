@@ -99,10 +99,9 @@ class BlogController extends BaseController
      */
     public function latestAction(PostsDemand $demand = null): ResponseInterface
     {
-        $posts = $this->pageRepository->findPosts(
-            $this->pages,
-            $this->prepareDemandObject($demand)
-        );
+        $demand = $this->prepareDemandObject($demand);
+
+        $posts = $this->pageRepository->findPosts($this->pages, $demand);
         
         $this->view->assign('demand', $demand);
         $this->view->assign('posts', $posts);
