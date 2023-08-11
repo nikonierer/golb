@@ -12,6 +12,7 @@ namespace Greenfieldr\Golb\Domain\Model;
 use TYPO3\CMS\Extbase\Annotation\ORM\Lazy;
 use TYPO3\CMS\Extbase\Domain\Model\FileReference;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
+use TYPO3\CMS\Extbase\Persistence\Generic\LazyLoadingProxy;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 
@@ -49,10 +50,10 @@ class Page extends AbstractEntity
     /**
      * Contains author image
      *
-     * @var ?FileReference
+     * @var FileReference|LazyLoadingProxy
      */
     #[Lazy]
-    protected ?FileReference $authorImage = null;
+    protected FileReference|LazyLoadingProxy $authorImage;
 
     /**
      * Contains author name
@@ -94,10 +95,10 @@ class Page extends AbstractEntity
     /**
      * Contains relations to selected categories for this page
      *
-     * @var ?ObjectStorage<Category>
+     * @var ObjectStorage<Category>
      */
     #[Lazy]
-    protected ?ObjectStorage $categories = null;
+    protected ObjectStorage $categories;
 
     /**
      * Contains page id to show content from instead of the current page content itself
@@ -200,10 +201,10 @@ class Page extends AbstractEntity
     protected ?int $layout = null;
 
     /**
-     * @var ?ObjectStorage<FileReference>
+     * @var ObjectStorage<FileReference>
      */
     #[Lazy]
-    protected ?ObjectStorage $media = null;
+    protected ObjectStorage $media;
 
     /**
      * Contains page identifier from mount point if document type is set to mount point
@@ -251,10 +252,10 @@ class Page extends AbstractEntity
     /**
      * Contains related pages
      *
-     * @var ?ObjectStorage<Page>
+     * @var ObjectStorage<Page>
      */
     #[Lazy]
-    protected ?ObjectStorage $relatedPages = null;
+    protected ObjectStorage $relatedPages;
 
     /**
      * Shortcut target for document type shortcut depending on shortcut mode
@@ -294,10 +295,10 @@ class Page extends AbstractEntity
     /**
      * List of subpages
      *
-     * @var ?ObjectStorage<Page>
+     * @var ObjectStorage<Page>
      */
     #[Lazy]
-    protected ?ObjectStorage $subpages = null;
+    protected ObjectStorage $subpages;
 
     /**
      * Page subtitle
@@ -356,18 +357,18 @@ class Page extends AbstractEntity
     /**
      * List of content elements
      *
-     * @var ?ObjectStorage<ContentElement>
+     * @var ObjectStorage<ContentElement>
      */
     #[Lazy]
-    protected ?ObjectStorage $contentElements = null;
+    protected ObjectStorage $contentElements;
 
     /**
      * Contains tags for this page
      *
-     * @var ?ObjectStorage<Tag>
+     * @var ObjectStorage<Tag>
      */
     #[Lazy]
-    protected ?ObjectStorage $tags = null;
+    protected ObjectStorage $tags;
 
     /**
      * @var bool
@@ -860,6 +861,9 @@ class Page extends AbstractEntity
      */
     public function getAuthorImage(): ?FileReference
     {
+        if ($this->authorImage instanceof LazyLoadingProxy) {
+            $this->authorImage->_loadRealInstance();
+        }
         return $this->authorImage;
     }
 

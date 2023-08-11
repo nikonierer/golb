@@ -34,18 +34,31 @@ class Category extends AbstractEntity
     protected string $description = '';
 
     /**
-     * @var ?Category
+     * @var Category|LazyLoadingProxy
      */
     #[Lazy]
-    protected ?Category $parent = null;
+    protected Category|LazyLoadingProxy $parent;
 
     /**
      * List of sub categories
      *
-     * @var ?ObjectStorage<Category>
+     * @var ObjectStorage<Category>
      */
     #[Lazy]
-    protected ?ObjectStorage $subCategories = null;
+    protected ObjectStorage $subCategories;
+
+    /**
+     * Initialize object storage
+     */
+    protected function __construct()
+    {
+        $this->initializeObject();
+    }
+
+    public function initializeObject(): void
+    {
+        $this->subCategories = new ObjectStorage();
+    }
 
     /**
      * Gets the title.
@@ -87,18 +100,18 @@ class Category extends AbstractEntity
         $this->description = $description;
     }
 
-    /**
-     * Gets the parent category.
-     *
-     * @return ?Category the parent category
-     */
-    public function getParent(): ?Category
-    {
-        if ($this->parent instanceof LazyLoadingProxy) {
-            $this->parent->_loadRealInstance();
+        /**
+         * Gets the parent category.
+         *
+         * @return ?Category the parent category
+         */
+        public function getParent(): ?Category
+        {
+            if ($this->parent instanceof LazyLoadingProxy) {
+                $this->parent->_loadRealInstance();
+            }
+            return $this->parent;
         }
-        return $this->parent;
-    }
 
     /**
      * Sets the parent category.
