@@ -2,9 +2,7 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.sorting>

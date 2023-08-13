@@ -31,57 +31,57 @@ class PostsDemand implements DemandInterface
     /**
      * @var bool|null
      */
-    protected $nonArchived = null;
+    protected bool|null $nonArchived = null;
 
     /**
      * @var bool|null
      */
-    protected $topPost = null;
+    protected bool|null $topPost = null;
 
     /**
      * @var bool|null
      */
-    protected $nonTopPost = null;
+    protected bool|null $nonTopPost = null;
 
     /**
      * @var array
      */
-    protected $categories = [];
+    protected array $categories = [];
 
     /**
      * @var ?Category
      */
-    protected $category = null;
+    protected ?Category $category = null;
 
     /**
      * @var array
      */
-    protected $tags = [];
+    protected array $tags = [];
 
     /**
      * @var int|null
      */
-    protected $limit = null;
+    protected int|null $limit = null;
 
     /**
      * @var int|null
      */
-    protected $offset = null;
+    protected int|null $offset = null;
 
     /**
      * @var array
      */
-    protected $excluded = [];
+    protected array $excluded = [];
 
     /**
      * @var string|null
      */
-    protected $order = null;
+    protected string|null $order = null;
 
     /**
      * @var string|null
      */
-    protected $orderDirection = null;
+    protected string|null $orderDirection = null;
 
     /**
      * @return bool

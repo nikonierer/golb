@@ -15,7 +15,6 @@ use Greenfieldr\Golb\Domain\Model\Dto\PostsDemand;
 use Greenfieldr\Golb\Domain\Repository\CategoryRepository;
 use Greenfieldr\Golb\Domain\Repository\PageRepository;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Mvc\Exception\StopActionException;
 use TYPO3\CMS\Extbase\Utility\DebuggerUtility;
 use TYPO3Fluid\Fluid\View\ViewInterface;
 
@@ -67,7 +66,6 @@ class BlogController extends BaseController
      * Sets pages and categories properties
      *
      * @return void
-     * @throws StopActionException
      * @throws NoSuchArgumentException
      */
     public function initializeAction()
@@ -86,7 +84,7 @@ class BlogController extends BaseController
     /**
      * @param ViewInterface $view
      */
-    protected function initializeView(ViewInterface $view)
+    protected function initializeView(ViewInterface $view): void
     {
         $view->assign('contentElementData', $this->contentObject->data);
     }
@@ -95,7 +93,7 @@ class BlogController extends BaseController
      * Lists latest blog posts
      *
      * @param PostsDemand|null $demand
-     * @return void
+     * @return ResponseInterface
      */
     public function latestAction(PostsDemand $demand = null): ResponseInterface
     {
@@ -112,7 +110,7 @@ class BlogController extends BaseController
      * Lists blog posts
      *
      * @param PostsDemand|null $demand
-     * @return void
+     * @return ResponseInterface
      */
     public function listAction(PostsDemand $demand = null): ResponseInterface
     {
