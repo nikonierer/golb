@@ -9,6 +9,10 @@ namespace Greenfieldr\Golb\Controller;
  * the terms of the GNU General Public License, either version 3
  * of the License, or any later version.
  */
+
+use TYPO3\CMS\Core\Pagination\ArrayPaginator;
+use TYPO3\CMS\Core\Pagination\SimplePagination;
+use TYPO3\CMS\Core\Pagination\SlidingWindowPagination;
 use TYPO3\CMS\Extbase\Mvc\Exception\NoSuchArgumentException;
 use Psr\Http\Message\ResponseInterface;
 use Greenfieldr\Golb\Domain\Model\Dto\PostsDemand;
@@ -119,10 +123,20 @@ class BlogController extends BaseController
         // Reset limit to allow pagination of entries
         $demand->setLimit(0);
 
-        $posts = $this->pageRepository->findPosts($this->pages, $demand);
+        $paginator = new ArrayPaginator(
+            $this->pageRepository->findPosts($this->pages, $demand),
+            $demand->getCurrentPage(),
+            $demand->getItemsPerPage()
+        );
 
+        /**
+         * ToDo: Feature: Implement SlidingWindowPagination as optional alternative
+         */
+        $pagination = new SimplePagination($paginator);
+
+        $this->view->assign('pagination', $pagination);
+        $this->view->assign('paginator', $paginator);
         $this->view->assign('demand', $demand);
-        $this->view->assign('posts', $posts);
         return $this->htmlResponse();
     }
 
@@ -145,6 +159,9 @@ class BlogController extends BaseController
         }
         if(!$demand->hasLimit()) {
             $demand->setLimit($this->settings['limit'] ?? 0);
+        }
+        if(!$demand->hasItemsPerPage()) {
+            $demand->setItemsPerPage($this->settings['itemsPerPage'] ?? 0);
         }
         if(!$demand->hasOffset()) {
             $demand->setOffset($this->settings['offset'] ?? 0);

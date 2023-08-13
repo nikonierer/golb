@@ -59,6 +59,15 @@
                             </items>
                         </config>
                     </settings.sortingDirection>
+                    <settings.itemsPerPage>
+                        <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.itemsPerPage</label>
+                        <config>
+                            <type>number</type>
+                            <eval>decimal</eval>
+                            <size>10</size>
+                            <default>10</default>
+                        </config>
+                    </settings.itemsPerPage>
                     <settings.offset>
                         <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.offset</label>
                         <config>

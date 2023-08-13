@@ -15,6 +15,7 @@ use Greenfieldr\Golb\Domain\Model\Category;
 class PostsDemand implements DemandInterface
 {
     const LIMIT_DEFAULT = 10;
+    const ITEMS_PER_PAGE_DEFAULT = 10;
     const OFFSET_DEFAULT = 0;
     const ORDER_DEFAULT = 'date';
     const ORDER_DIRECTION_DEFAULT = 'DESC';
@@ -82,6 +83,16 @@ class PostsDemand implements DemandInterface
      * @var string|null
      */
     protected string|null $orderDirection = null;
+
+    /**
+     * @var int
+     */
+    protected int $currentPage = 1;
+
+    /**
+     * @var int
+     */
+    protected int $itemsPerPage = 0;
 
     /**
      * @return bool
@@ -371,6 +382,46 @@ class PostsDemand implements DemandInterface
     {
         $this->orderDirection = $orderDirection;
         return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCurrentPage(): int
+    {
+        return $this->currentPage;
+    }
+
+    /**
+     * @param int $currentPage
+     */
+    public function setCurrentPage(int $currentPage): void
+    {
+        $this->currentPage = $currentPage;
+    }
+
+    /**
+     * @return bool
+     */
+    public function hasItemsPerPage(): bool
+    {
+        return $this->itemsPerPage > 0;
+    }
+
+    /**
+     * @return int
+     */
+    public function getItemsPerPage(): int
+    {
+        return $this->hasItemsPerPage() ? $this->itemsPerPage : self::ITEMS_PER_PAGE_DEFAULT;
+    }
+
+    /**
+     * @param int $itemsPerPage
+     */
+    public function setItemsPerPage(int $itemsPerPage): void
+    {
+        $this->itemsPerPage = $itemsPerPage;
     }
 
 }
