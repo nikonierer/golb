@@ -2,147 +2,131 @@
     <sheets>
         <sDEF>
             <ROOT>
-                <TCEforms>
-                    <sheetTitle>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings</sheetTitle>
-                </TCEforms>
+                <sheetTitle>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_tab.settings</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.sorting>
-                        <TCEforms>
-                            <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0"></numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.date</numIndex>
-                                        <numIndex index="1">date</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.crdate</numIndex>
-                                        <numIndex index="1">crdate</numIndex>
-                                    </numIndex>
-                                    <numIndex index="2">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.tstamp</numIndex>
-                                        <numIndex index="1">tstamp</numIndex>
-                                    </numIndex>
-                                    <numIndex index="4">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.title</numIndex>
-                                        <numIndex index="1">title</numIndex>
-                                    </numIndex>
-                                    <numIndex index="5">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.author</numIndex>
-                                        <numIndex index="1">author</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0"></numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.date</numIndex>
+                                    <numIndex index="1">date</numIndex>
+                                </numIndex>
+                                <numIndex index="3">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.crdate</numIndex>
+                                    <numIndex index="1">crdate</numIndex>
+                                </numIndex>
+                                <numIndex index="2">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.tstamp</numIndex>
+                                    <numIndex index="1">tstamp</numIndex>
+                                </numIndex>
+                                <numIndex index="4">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.title</numIndex>
+                                    <numIndex index="1">title</numIndex>
+                                </numIndex>
+                                <numIndex index="5">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sorting.author</numIndex>
+                                    <numIndex index="1">author</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.sorting>
                     <settings.sortingDirection>
-                        <TCEforms>
-                            <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sortingDirection</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0"></numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sortingDirection.ascending</numIndex>
-                                        <numIndex index="1">ASC</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sortingDirection.descending</numIndex>
-                                        <numIndex index="1">DESC</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sortingDirection</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0"></numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sortingDirection.ascending</numIndex>
+                                    <numIndex index="1">ASC</numIndex>
+                                </numIndex>
+                                <numIndex index="3">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.sortingDirection.descending</numIndex>
+                                    <numIndex index="1">DESC</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.sortingDirection>
                     <settings.offset>
-                        <TCEforms>
-                            <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.offset</label>
-                            <config>
-                                <type>number</type>
-                                <eval>decimal</eval>
-                                <size>10</size>
-                                <default>0</default>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.offset</label>
+                        <config>
+                            <type>number</type>
+                            <eval>decimal</eval>
+                            <size>10</size>
+                            <default>0</default>
+                        </config>
                     </settings.offset>
                     <settings.exclude>
-                        <TCEforms>
-                            <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.exclude</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectMultipleSideBySide</renderType>
-                                <foreign_table>pages</foreign_table>
-                                <foreign_table_where>AND doktype = 41 ORDER BY crdate ASC</foreign_table_where>
-                                <size>5</size>
-                                <minitems>0</minitems>
-                                <maxitems>9999</maxitems>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.exclude</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectMultipleSideBySide</renderType>
+                            <foreign_table>pages</foreign_table>
+                            <foreign_table_where>AND doktype = 41 ORDER BY crdate ASC</foreign_table_where>
+                            <size>5</size>
+                            <minitems>0</minitems>
+                            <maxitems>9999</maxitems>
+                        </config>
                     </settings.exclude>
                     <settings.archived>
-                        <TCEforms>
-                            <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.archived</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.archived.all</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.archived.archivedOnly</numIndex>
-                                        <numIndex index="1">archived</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.archived.nonArchivedOnly</numIndex>
-                                        <numIndex index="1">nonArchived</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.archived</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.archived.all</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.archived.archivedOnly</numIndex>
+                                    <numIndex index="1">archived</numIndex>
+                                </numIndex>
+                                <numIndex index="3">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.archived.nonArchivedOnly</numIndex>
+                                    <numIndex index="1">nonArchived</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.archived>
                     <settings.topPosts>
-                        <TCEforms>
-                            <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts</label>
-                            <config>
-                                <type>select</type>
-                                <renderType>selectSingle</renderType>
-                                <items>
-                                    <numIndex index="0" type="array">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts.all</numIndex>
-                                        <numIndex index="1"></numIndex>
-                                    </numIndex>
-                                    <numIndex index="1">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts.topPostsOnly</numIndex>
-                                        <numIndex index="1">topPosts</numIndex>
-                                    </numIndex>
-                                    <numIndex index="3">
-                                        <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts.nonTopPostsOnly</numIndex>
-                                        <numIndex index="1">nonTopPosts</numIndex>
-                                    </numIndex>
-                                </items>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts</label>
+                        <config>
+                            <type>select</type>
+                            <renderType>selectSingle</renderType>
+                            <items>
+                                <numIndex index="0" type="array">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts.all</numIndex>
+                                    <numIndex index="1"></numIndex>
+                                </numIndex>
+                                <numIndex index="1">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts.topPostsOnly</numIndex>
+                                    <numIndex index="1">topPosts</numIndex>
+                                </numIndex>
+                                <numIndex index="3">
+                                    <numIndex index="0">LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.topPosts.nonTopPostsOnly</numIndex>
+                                    <numIndex index="1">nonTopPosts</numIndex>
+                                </numIndex>
+                            </items>
+                        </config>
                     </settings.topPosts>
                     <settings.allowDemandOverwrite>
-                        <TCEforms>
-                            <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.allowDemandOverwrite</label>
-                            <config>
-                                <type>check</type>
-                            </config>
-                        </TCEforms>
+                        <label>LLL:EXT:golb/Resources/Private/Language/locallang_be.xlf:flexforms_general.allowDemandOverwrite</label>
+                        <config>
+                            <type>check</type>
+                        </config>
                     </settings.allowDemandOverwrite>
                 </el>
             </ROOT>
