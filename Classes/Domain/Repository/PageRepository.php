@@ -111,6 +111,9 @@ class PageRepository extends Repository
                     });
                     break;
             }
+            if($demand->getOrderDirection() === 'DESC') {
+                $this->posts = array_reverse($this->posts);
+            }
         }
 
         /**
