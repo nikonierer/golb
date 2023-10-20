@@ -19,9 +19,7 @@ return [
         'sortby' => 'sorting',
         'delete' => 'deleted',
         'enablecolumns' => [
-            'enablecolumns' => [
-                'disabled' => 'hidden'
-            ],
+            'disabled' => 'hidden',
         ],
         'typeicon_classes' => [
             'default' => 'ext-golb-tag'
